@@ -41,6 +41,7 @@ URLS = {
     "per_game": f"https://www.basketball-reference.com/playoffs/NBA_{SEASON}_per_game.html",
     "totals":   f"https://www.basketball-reference.com/playoffs/NBA_{SEASON}_totals.html",
     "games":    f"https://www.basketball-reference.com/playoffs/NBA_{SEASON}_games.html",
+    "game_highs": f"https://www.basketball-reference.com/play-index/pgl_finder.fcgi?request=1&match=game&type=playoffs&year_min={SEASON}&year_max={SEASON}&age_min=0&age_max=99&is_playoffs=Y&order_by=pts&order_by_asc=&offset=0",
 }
 
 
@@ -303,22 +304,90 @@ def compute_game_records(games):
     }
 
 
-def compute_player_records(per_game_players, games):
-    """
-    Best per-game scorer as top_scorer_game proxy.
-    For max_player_pts we'd need individual game logs — using per-game pts leader for now.
-    """
-    if not per_game_players:
+def fetch_player_game_highs():
+    """Scrape BBRef playoff game finder for highest single-game scores."""
+    print("Fetching player single-game highs...")
+    # BBRef game finder URL — sorted by pts descending, playoffs only
+    url = URLS["game_highs"]
+    html = fetch(url)
+    if not html:
+        print("  Could not fetch game highs")
+        return []
+
+    soup = BeautifulSoup(html, "lxml")
+    # Also check comments
+    table = soup.find("table", {"id": "pgl_basic"})
+    if not table:
+        for comment in soup.find_all(string=lambda t: isinstance(t, Comment)):
+            inner = BeautifulSoup(comment, "lxml")
+            table = inner.find("table", {"id": "pgl_basic"})
+            if table:
+                break
+
+    if not table:
+        print("  pgl_basic table not found")
+        return []
+
+    results = []
+    headers = []
+    for row in table.find_all("tr"):
+        cls = row.get("class", [])
+        if "over_header" in cls or "thead" in cls:
+            cells = row.find_all(["th", "td"])
+            if cells:
+                headers = [c.get("data-stat", "") for c in cells]
+            continue
+        cells = row.find_all(["th", "td"])
+        if not cells or not headers:
+            continue
+        row_data = {headers[i]: c.get_text(strip=True) for i, c in enumerate(cells) if i < len(headers)}
+        player = row_data.get("player", "").replace("*", "").strip()
+        pts_str = row_data.get("pts", "")
+        date = row_data.get("date_game", "")
+        opp = row_data.get("opp_id", "")
+        if not player or not pts_str:
+            continue
+        try:
+            results.append({
+                "name": player,
+                "pts": int(pts_str),
+                "date": date,
+                "opp": opp,
+            })
+        except:
+            continue
+
+    print(f"  {len(results)} game log entries")
+    return results
+
+
+def compute_player_records(per_game_players, game_highs):
+    """Use actual game log data for single-game highs."""
+    if not game_highs and not per_game_players:
         return {"top_scorer_game": None, "top_scorer_context": None,
                 "max_player_pts": None, "max_player_pts_context": None}
 
-    top = max(per_game_players, key=lambda p: p["pts"])
-    return {
-        "top_scorer_game": top["name"],
-        "top_scorer_context": f"{top['pts']} PPG over {top['gp']} games",
-        "max_player_pts": None,  # would need game log scrape
-        "max_player_pts_context": None,
-    }
+    if game_highs:
+        top = game_highs[0]  # already sorted by pts desc
+        return {
+            "top_scorer_game": top["name"],
+            "top_scorer_context": f"{top['pts']} pts vs {top['opp']} ({top['date']})",
+            "max_player_pts": top["pts"],
+            "max_player_pts_context": f"{top['name']} — {top['pts']} pts vs {top['opp']} ({top['date']})",
+        }
+
+    # Fallback to per-game leader
+    if per_game_players:
+        top = max(per_game_players, key=lambda p: p["pts"])
+        return {
+            "top_scorer_game": top["name"],
+            "top_scorer_context": f"{top['pts']} PPG over {top['gp']} games",
+            "max_player_pts": None,
+            "max_player_pts_context": None,
+        }
+
+    return {"top_scorer_game": None, "top_scorer_context": None,
+            "max_player_pts": None, "max_player_pts_context": None}
 
 
 def push_to_github():
@@ -385,12 +454,14 @@ def main():
         exit(1)
     games = parse_games(games_html)
 
+    game_highs = fetch_player_game_highs()
+
     output = {
         "updated": datetime.utcnow().isoformat() + "Z",
         "season": SEASON,
         "per_game_leaders": compute_per_game_leaders(per_game_players, totals_players),
         "game_records": compute_game_records(games),
-        "player_records": compute_player_records(per_game_players, games),
+        "player_records": compute_player_records(per_game_players, game_highs),
         "series": compute_series_results(games),
         "manual": {
             "techs_leader": None,
