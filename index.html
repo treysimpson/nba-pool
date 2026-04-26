@@ -3,192 +3,213 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SLBL NBA Playoff Pool 2025</title>
+<title>SLBL NBA Playoff Pool 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0a0a0f;
-  --bg2: #111118;
-  --bg3: #1a1a28;
-  --fire: #ff6b00;
-  --fire2: #ffaa00;
-  --cyan: #00e5ff;
-  --purple: #8b00ff;
-  --green: #00ff88;
-  --red: #ff2244;
-  --text: #f0f0f0;
-  --muted: #6a7080;
-  --card: #141420;
-  --card2: #1c1c2c;
-  --border: rgba(255,255,255,0.07);
-  --border2: rgba(255,255,255,0.14);
+  --bg:#0a0a0f;--bg2:#111118;--fire:#ff6b00;--fire2:#ffaa00;
+  --cyan:#00e5ff;--purple:#8b00ff;--green:#00ff88;--red:#ff2244;
+  --text:#f0f0f0;--muted:#6a7080;--card:#141420;--card2:#1c1c2c;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.14);
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Barlow', sans-serif;
-  font-size: 14px;
-  min-height: 100vh;
-  background-image:
-    radial-gradient(ellipse 80% 40% at 50% -10%, rgba(139,0,255,0.15) 0%, transparent 70%),
-    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.02) 40px),
-    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.02) 40px);
-}
-.header {
-  background: linear-gradient(180deg,#1a0a2e 0%,#0a0a1a 100%);
-  border-bottom: 2px solid var(--fire);
-  padding: 12px 20px 10px;
-  display: flex; align-items: center; justify-content: space-between;
-  position: sticky; top: 0; z-index: 100;
-  box-shadow: 0 4px 30px rgba(255,107,0,0.25);
-}
-.header-slbl { font-family:'Bebas Neue',sans-serif; font-size:13px; letter-spacing:.3em; color:var(--fire2); text-shadow:0 0 10px var(--fire); }
-.header-title {
-  font-family:'Bebas Neue',sans-serif; font-size:32px; letter-spacing:.06em;
-  background: linear-gradient(180deg,#fff 0%,var(--fire2) 60%,var(--fire) 100%);
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-  filter:drop-shadow(2px 2px 0 rgba(0,0,0,0.9)); line-height:.9;
-}
-.header-title span { -webkit-text-fill-color:var(--cyan); filter:drop-shadow(2px 2px 0 rgba(0,229,255,.4)); }
-.header-meta { font-size:11px; color:var(--muted); text-align:right; }
-.header-meta strong { color:var(--cyan); }
-.live-dot { display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--green); margin-right:5px; box-shadow:0 0 6px var(--green); animation:pulse 1.5s ease-in-out infinite; }
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:14px;min-height:100vh;
+  background-image:radial-gradient(ellipse 80% 40% at 50% -10%,rgba(139,0,255,.15) 0%,transparent 70%),
+  repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,.02) 40px),
+  repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,.02) 40px);}
+
+/* ── UNPAID ALERT ── */
+/* TO REMOVE: delete the #unpaidAlert div in the HTML below */
+#unpaidAlert{position:fixed;bottom:16px;right:16px;z-index:300;pointer-events:none;
+  background:rgba(255,34,68,.15);border:2px solid var(--red);border-radius:10px;
+  padding:10px 16px;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.1em;
+  color:var(--red);text-shadow:0 0 8px var(--red);
+  animation:alertBlink .6s step-end infinite;}
+@keyframes alertBlink{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.97);}}
+
+.header{background:linear-gradient(180deg,#1a0a2e 0%,#0a0a1a 100%);border-bottom:2px solid var(--fire);
+  padding:12px 20px 10px;display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:100;box-shadow:0 4px 30px rgba(255,107,0,.25);}
+.header-slbl{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.3em;color:var(--fire2);text-shadow:0 0 10px var(--fire);}
+.header-title{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:.06em;
+  background:linear-gradient(180deg,#fff 0%,var(--fire2) 60%,var(--fire) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(2px 2px 0 rgba(0,0,0,.9));line-height:.9;}
+.header-title span{-webkit-text-fill-color:var(--cyan);filter:drop-shadow(2px 2px 0 rgba(0,229,255,.4));}
+.header-meta{font-size:11px;color:var(--muted);text-align:right;}
+.header-meta strong{color:var(--cyan);}
+.live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:5px;box-shadow:0 0 6px var(--green);animation:pulse 1.5s ease-in-out infinite;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
 
-.nav-tabs { display:flex; gap:2px; background:var(--bg2); padding:8px 20px 0; border-bottom:1px solid var(--border); }
-.nav-tab { font-family:'Bebas Neue',sans-serif; font-size:16px; letter-spacing:.1em; padding:8px 20px 10px; cursor:pointer; border-radius:6px 6px 0 0; color:var(--muted); border:none; background:none; transition:all .15s; }
-.nav-tab:hover { color:var(--text); background:rgba(255,255,255,.04); }
-.nav-tab.active { color:var(--fire2); background:var(--card); border-top:2px solid var(--fire); }
+.nav-tabs{display:flex;gap:2px;background:var(--bg2);padding:8px 20px 0;border-bottom:1px solid var(--border);}
+.nav-tab{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.1em;padding:8px 20px 10px;cursor:pointer;border-radius:6px 6px 0 0;color:var(--muted);border:none;background:none;transition:all .15s;}
+.nav-tab:hover{color:var(--text);background:rgba(255,255,255,.04);}
+.nav-tab.active{color:var(--fire2);background:var(--card);border-top:2px solid var(--fire);}
 
-.layout { display:grid; grid-template-columns:1fr 220px; gap:14px; padding:14px 20px; max-width:1200px; margin:0 auto; align-items:start; }
-.view { display:none; }
-.view.active { display:block; }
+.layout{display:grid;grid-template-columns:1fr 220px;gap:14px;padding:14px 20px;max-width:1200px;margin:0 auto;align-items:start;}
+.view{display:none;}.view.active{display:block;}
 
-.section-label {
-  font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:.15em;
-  color:var(--fire2); margin:0 0 10px; padding-bottom:6px;
-  border-bottom:1px solid rgba(255,107,0,.3);
-  display:flex; align-items:center; gap:8px;
-  text-shadow:0 0 12px rgba(255,170,0,.5);
-}
-.section-label::before { content:''; width:4px; height:18px; background:linear-gradient(180deg,var(--fire2),var(--fire)); border-radius:2px; box-shadow:0 0 8px var(--fire); }
+.section-label{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.15em;color:var(--fire2);
+  margin:0 0 10px;padding-bottom:6px;border-bottom:1px solid rgba(255,107,0,.3);
+  display:flex;align-items:center;gap:8px;text-shadow:0 0 12px rgba(255,170,0,.5);}
+.section-label::before{content:'';width:4px;height:18px;background:linear-gradient(180deg,var(--fire2),var(--fire));border-radius:2px;box-shadow:0 0 8px var(--fire);}
 
-.sidebar { position:sticky; top:80px; }
-.sidebar-card { background:var(--card); border-radius:10px; border:1px solid var(--border2); overflow:hidden; box-shadow:0 0 20px rgba(139,0,255,.15); }
-.sidebar-header { background:linear-gradient(135deg,#1a0040,#2d0060); padding:10px 14px; font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:.12em; color:var(--fire2); text-shadow:0 0 10px var(--fire); border-bottom:1px solid var(--purple); }
-.lb-col-headers { display:grid; grid-template-columns:22px 1fr 36px 36px 42px; gap:4px; padding:6px 12px; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); border-bottom:1px solid var(--border); }
-.lb-row { display:grid; grid-template-columns:22px 1fr 36px 36px 42px; gap:4px; padding:8px 12px; border-bottom:1px solid var(--border); align-items:center; cursor:pointer; transition:background .1s; }
-.lb-row:last-child { border-bottom:none; }
-.lb-row:hover { background:rgba(255,255,255,.04); }
-.lb-row.top1 { background:rgba(255,170,0,.07); }
-.lb-rank { font-family:'Bebas Neue',sans-serif; font-size:14px; color:var(--muted); }
-.lb-rank.gold { color:var(--fire2); font-size:16px; text-shadow:0 0 8px var(--fire2); }
-.lb-name { font-family:'Barlow Condensed',sans-serif; font-size:14px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.lb-pts { font-size:12px; text-align:right; color:var(--muted); }
-.lb-pts-total { font-family:'Bebas Neue',sans-serif; font-size:17px; text-align:right; color:var(--cyan); text-shadow:0 0 6px rgba(0,229,255,.4); }
-.sidebar-note { margin-top:8px; font-size:10px; color:var(--muted); text-align:center; line-height:1.7; }
+/* SIDEBAR */
+.sidebar{position:sticky;top:80px;}
+.sidebar-card{background:var(--card);border-radius:10px;border:1px solid var(--border2);overflow:hidden;box-shadow:0 0 20px rgba(139,0,255,.15);}
+.sidebar-header{background:linear-gradient(135deg,#1a0040,#2d0060);padding:10px 14px;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.12em;color:var(--fire2);text-shadow:0 0 10px var(--fire);border-bottom:1px solid var(--purple);}
+.lb-col-headers{display:grid;grid-template-columns:22px 1fr 36px 36px 42px;gap:4px;padding:6px 12px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);border-bottom:1px solid var(--border);}
+.lb-row{display:grid;grid-template-columns:22px 1fr 36px 36px 42px;gap:4px;padding:8px 12px;border-bottom:1px solid var(--border);align-items:center;cursor:pointer;transition:background .1s;}
+.lb-row:last-child{border-bottom:none;}
+.lb-row:hover{background:rgba(255,255,255,.04);}
+.lb-row.top1{background:rgba(255,170,0,.07);}
+.lb-rank{font-family:'Bebas Neue',sans-serif;font-size:14px;color:var(--muted);}
+.lb-rank.gold{color:var(--fire2);font-size:16px;text-shadow:0 0 8px var(--fire2);}
+.lb-name{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.lb-pts{font-size:12px;text-align:right;color:var(--muted);}
+.lb-pts-total{font-family:'Bebas Neue',sans-serif;font-size:17px;text-align:right;color:var(--cyan);text-shadow:0 0 6px rgba(0,229,255,.4);}
+.sidebar-note{margin-top:8px;font-size:10px;color:var(--muted);text-align:center;line-height:1.7;}
 
-.cards-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:10px; margin-bottom:22px; }
-.q-card { background:var(--card); border:1px solid var(--border2); border-radius:10px; overflow:hidden; transition:border-color .15s,box-shadow .15s; box-shadow:0 2px 12px rgba(0,0,0,.4); }
-.q-card:hover { border-color:rgba(255,107,0,.4); box-shadow:0 4px 20px rgba(255,107,0,.12); }
-.q-card-header { background:linear-gradient(135deg,#1e1230,#160e28); padding:8px 12px; font-family:'Bebas Neue',sans-serif; font-size:15px; letter-spacing:.08em; color:var(--fire2); border-bottom:1px solid rgba(139,0,255,.3); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.q-card-body { padding:10px 12px; }
+/* PAYOUT BOX */
+.payout-box{background:linear-gradient(135deg,rgba(255,170,0,.12),rgba(255,107,0,.08));border:1px solid rgba(255,170,0,.3);border-radius:10px;padding:12px 14px;margin-top:10px;text-align:center;}
+.payout-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;}
+.payout-val{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--fire2);text-shadow:0 0 12px var(--fire);}
+.payout-sub{font-size:10px;color:var(--muted);margin-top:2px;}
 
-.leader-row { display:flex; align-items:flex-end; gap:10px; padding-bottom:10px; margin-bottom:10px; border-bottom:1px solid var(--border); }
-.headshot-wrap {
-  flex-shrink:0; position:relative; overflow:hidden;
-  background:linear-gradient(135deg,#1e1040,#0d0820);
-  border:1px solid rgba(0,229,255,.3);
-  box-shadow:0 0 12px rgba(0,229,255,.15),inset 0 0 20px rgba(0,0,0,.5);
-}
-.headshot-wrap img { width:100%; height:100%; object-fit:cover; object-position:top center; filter:contrast(1.25) saturate(1.5) brightness(1.05) hue-rotate(-5deg); display:block; image-rendering:auto; }
-.headshot-initials { width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--cyan); }
-.headshot-wrap::after { content:''; position:absolute; inset:0; background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.15) 3px); pointer-events:none; }
-.headshot-wrap.on-fire { border-color:var(--fire); box-shadow:0 0 16px rgba(255,107,0,.5),0 0 4px rgba(255,170,0,.8); }
+/* CARDS */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin-bottom:22px;}
+.q-card{background:var(--card);border:1px solid var(--border2);border-radius:10px;overflow:hidden;transition:border-color .15s,box-shadow .15s;box-shadow:0 2px 12px rgba(0,0,0,.4);}
+.q-card:hover{border-color:rgba(255,107,0,.4);box-shadow:0 4px 20px rgba(255,107,0,.12);}
+.q-card-header{background:linear-gradient(135deg,#1e1230,#160e28);padding:8px 12px;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:.08em;color:var(--fire2);border-bottom:1px solid rgba(139,0,255,.3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.q-card-body{padding:10px 12px;}
 
-.leader-info { flex:1; min-width:0; }
-.leader-name { font-family:'Barlow Condensed',sans-serif; font-size:14px; font-weight:700; text-transform:uppercase; letter-spacing:.02em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; line-height:1.2; }
-.leader-stat-row { display:flex; align-items:baseline; gap:4px; margin:2px 0; }
-.leader-val { font-family:'Bebas Neue',sans-serif; font-size:26px; line-height:1; color:var(--cyan); text-shadow:0 0 10px rgba(0,229,255,.6); }
-.leader-val-label { font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; }
-.leader-badge { font-size:9px; background:rgba(0,229,255,.12); color:var(--cyan); padding:1px 6px; border-radius:8px; white-space:nowrap; max-width:100%; overflow:hidden; text-overflow:ellipsis; display:inline-block; margin-top:2px; border:1px solid rgba(0,229,255,.25); }
+/* HEADSHOTS */
+.leader-row{display:flex;align-items:flex-end;gap:10px;padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid var(--border);}
+.headshot-wrap{flex-shrink:0;position:relative;overflow:hidden;background:linear-gradient(135deg,#1e1040,#0d0820);border:1px solid rgba(0,229,255,.3);box-shadow:0 0 12px rgba(0,229,255,.15),inset 0 0 20px rgba(0,0,0,.5);}
+.headshot-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center;filter:contrast(1.25) saturate(1.5) brightness(1.05) hue-rotate(-5deg);display:block;}
+.headshot-initials{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--cyan);}
+.headshot-wrap::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.15) 3px);pointer-events:none;}
+.headshot-wrap.on-fire{border-color:var(--fire);box-shadow:0 0 16px rgba(255,107,0,.5),0 0 4px rgba(255,170,0,.8);}
+.leader-info{flex:1;min-width:0;}
+.leader-name{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.2;}
+.leader-stat-row{display:flex;align-items:baseline;gap:4px;margin:2px 0;}
+.leader-val{font-family:'Bebas Neue',sans-serif;font-size:26px;line-height:1;color:var(--cyan);text-shadow:0 0 10px rgba(0,229,255,.6);}
+.leader-val-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;}
+.leader-badge{font-size:9px;background:rgba(0,229,255,.12);color:var(--cyan);padding:1px 6px;border-radius:8px;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis;display:inline-block;margin-top:2px;border:1px solid rgba(0,229,255,.25);}
+.places-list{display:flex;flex-direction:column;gap:5px;}
+.place-row{display:flex;align-items:center;gap:6px;font-size:12px;}
+.place-num{width:14px;color:var(--muted);font-size:11px;font-weight:700;flex-shrink:0;}
+.place-name{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.place-val{font-family:'Bebas Neue',sans-serif;font-size:15px;min-width:30px;text-align:right;}
+.pick-tag{font-size:9px;padding:1px 5px;border-radius:8px;white-space:nowrap;flex-shrink:0;}
+.pick-hit{background:rgba(0,255,136,.15);color:var(--green);border:1px solid rgba(0,255,136,.25);}
+.pick-miss{background:rgba(255,255,255,.05);color:var(--muted);}
 
-.places-list { display:flex; flex-direction:column; gap:5px; }
-.place-row { display:flex; align-items:center; gap:6px; font-size:12px; }
-.place-num { width:14px; color:var(--muted); font-size:11px; font-weight:700; flex-shrink:0; }
-.place-name { flex:1; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.place-val { font-family:'Bebas Neue',sans-serif; font-size:15px; min-width:30px; text-align:right; }
-.pick-tag { font-size:9px; padding:1px 5px; border-radius:8px; white-space:nowrap; flex-shrink:0; }
-.pick-hit { background:rgba(0,255,136,.15); color:var(--green); border:1px solid rgba(0,255,136,.25); }
-.pick-miss { background:rgba(255,255,255,.05); color:var(--muted); }
+/* NUMERIC */
+.numeric-grid{display:flex;flex-direction:column;gap:4px;}
+.numeric-row{display:flex;align-items:center;justify-content:space-between;padding:5px 8px;border-radius:6px;background:var(--card2);border:1px solid transparent;}
+.numeric-row.current{background:rgba(0,229,255,.08);border-color:rgba(0,229,255,.25);}
+.numeric-name{font-size:12px;}
+.numeric-val{font-family:'Bebas Neue',sans-serif;font-size:17px;color:var(--cyan);}
+.numeric-diff{font-size:10px;color:var(--muted);margin-left:4px;}
+.current-answer-block{padding:8px 0;margin-bottom:8px;border-bottom:1px solid var(--border);}
+.answer-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px;}
+.current-value{font-family:'Bebas Neue',sans-serif;font-size:17px;color:var(--cyan);letter-spacing:.04em;text-shadow:0 0 8px rgba(0,229,255,.4);}
+.pending-tag{font-size:10px;background:rgba(255,170,0,.12);color:var(--fire2);padding:2px 8px;border-radius:8px;display:inline-block;border:1px solid rgba(255,170,0,.25);margin-bottom:8px;}
+.tbd{color:var(--muted);font-style:italic;font-size:12px;}
 
-.numeric-grid { display:flex; flex-direction:column; gap:4px; }
-.numeric-row { display:flex; align-items:center; justify-content:space-between; padding:5px 8px; border-radius:6px; background:var(--card2); border:1px solid transparent; }
-.numeric-row.current { background:rgba(0,229,255,.08); border-color:rgba(0,229,255,.25); }
-.numeric-name { font-size:12px; }
-.numeric-val { font-family:'Bebas Neue',sans-serif; font-size:17px; color:var(--cyan); }
-.numeric-diff { font-size:10px; color:var(--muted); margin-left:4px; }
+/* PARTICIPANTS */
+.player-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:16px;}
+.player-card{background:var(--card);border:1px solid var(--border2);border-radius:10px;padding:14px;cursor:pointer;transition:all .15s;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,.4);}
+.player-card:hover{border-color:var(--fire);box-shadow:0 4px 20px rgba(255,107,0,.2);transform:translateY(-2px);}
+.player-card-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#1e1040,#0d0820);margin:0 auto 10px;border:2px solid rgba(139,0,255,.5);overflow:hidden;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--purple);}
+.player-card-name{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;}
+.player-card-pts{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--fire2);text-shadow:0 0 8px var(--fire);}
+.player-card-sub{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;}
+.player-detail{display:none;}.player-detail.active{display:block;}
+.back-btn{background:none;border:1px solid var(--border2);color:var(--muted);padding:6px 14px;border-radius:6px;cursor:pointer;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:.08em;margin-bottom:14px;transition:all .15s;}
+.back-btn:hover{color:var(--text);border-color:var(--fire);}
+.detail-header{background:var(--card);border-radius:10px;padding:16px 20px;margin-bottom:16px;display:flex;align-items:center;gap:16px;border:1px solid var(--border2);}
+.detail-avatar{width:68px;height:68px;border-radius:50%;background:linear-gradient(135deg,#1e1040,#0d0820);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--cyan);border:2px solid rgba(0,229,255,.4);flex-shrink:0;}
+.detail-name{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:.06em;}
+.detail-pts-row{display:flex;gap:20px;margin-top:6px;}
+.detail-pts-val{font-family:'Bebas Neue',sans-serif;font-size:24px;}
+.detail-pts-label{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
+.answers-table{width:100%;border-collapse:collapse;}
+.answers-table th{text-align:left;padding:8px 12px;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.08em;color:var(--muted);border-bottom:1px solid var(--border);}
+.answers-table td{padding:8px 12px;border-bottom:1px solid var(--border);font-size:13px;vertical-align:middle;}
+.answers-table tr:hover td{background:rgba(255,255,255,.02);}
+.ans-status{font-size:10px;padding:2px 8px;border-radius:8px;white-space:nowrap;}
+.ans-correct{background:rgba(0,255,136,.15);color:var(--green);border:1px solid rgba(0,255,136,.25);}
+.ans-pending{background:rgba(255,170,0,.12);color:var(--fire2);border:1px solid rgba(255,170,0,.2);}
+.ans-wrong{background:rgba(255,34,68,.12);color:var(--red);border:1px solid rgba(255,34,68,.2);}
+.ans-pts{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--cyan);text-align:right;}
 
-.current-answer-block { padding:8px 0; margin-bottom:8px; border-bottom:1px solid var(--border); }
-.answer-label { font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; margin-bottom:2px; }
-.current-value { font-family:'Bebas Neue',sans-serif; font-size:17px; color:var(--cyan); letter-spacing:.04em; text-shadow:0 0 8px rgba(0,229,255,.4); }
-.pending-tag { font-size:10px; background:rgba(255,170,0,.12); color:var(--fire2); padding:2px 8px; border-radius:8px; display:inline-block; border:1px solid rgba(255,170,0,.25); margin-bottom:8px; }
-.tbd { color:var(--muted); font-style:italic; font-size:12px; }
+/* QUESTIONS TAB */
+.q-view-card{background:var(--card);border:1px solid var(--border2);border-radius:10px;margin-bottom:12px;overflow:hidden;}
+.q-view-header{background:linear-gradient(135deg,#1e1230,#160e28);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(139,0,255,.3);}
+.q-view-title{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.08em;color:var(--fire2);}
+.q-view-current{font-size:12px;color:var(--cyan);}
+.q-answers-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:1px;background:var(--border);}
+.q-answer-cell{background:var(--card);padding:8px 12px;}
+.q-answer-cell.correct{background:rgba(0,255,136,.07);}
+.q-answer-cell.wrong{background:rgba(255,34,68,.05);}
+.q-cell-name{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px;}
+.q-cell-val{font-size:13px;}
 
-.player-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; margin-bottom:16px; }
-.player-card { background:var(--card); border:1px solid var(--border2); border-radius:10px; padding:14px; cursor:pointer; transition:all .15s; text-align:center; box-shadow:0 2px 12px rgba(0,0,0,.4); }
-.player-card:hover { border-color:var(--fire); box-shadow:0 4px 20px rgba(255,107,0,.2); transform:translateY(-2px); }
-.player-card-avatar { width:56px; height:56px; border-radius:50%; background:linear-gradient(135deg,#1e1040,#0d0820); margin:0 auto 10px; border:2px solid rgba(139,0,255,.5); overflow:hidden; display:flex; align-items:center; justify-content:center; font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--purple); }
-.player-card-name { font-family:'Barlow Condensed',sans-serif; font-size:15px; font-weight:700; text-transform:uppercase; }
-.player-card-pts { font-family:'Bebas Neue',sans-serif; font-size:26px; color:var(--fire2); text-shadow:0 0 8px var(--fire); }
-.player-card-sub { font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; }
+/* BRACKET TAB */
+.bracket-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:20px;}
+.bracket-person-card{background:var(--card);border:1px solid var(--border2);border-radius:10px;overflow:hidden;cursor:pointer;transition:all .15s;box-shadow:0 2px 12px rgba(0,0,0,.4);}
+.bracket-person-card:hover{border-color:var(--fire);box-shadow:0 4px 20px rgba(255,107,0,.2);transform:translateY(-2px);}
+.bracket-person-header{background:linear-gradient(135deg,#1e1230,#160e28);padding:12px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(139,0,255,.3);}
+.bracket-champ-logo{font-size:28px;}
+.bracket-person-name{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.06em;flex:1;}
+.bracket-pts-earned{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--cyan);text-shadow:0 0 6px rgba(0,229,255,.4);}
+.bracket-pts-possible{font-size:10px;color:var(--muted);}
+.bracket-person-body{padding:10px 14px;}
+.bracket-series-row{display:flex;align-items:center;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);font-size:11px;}
+.bracket-series-row:last-child{border-bottom:none;}
+.bracket-pick-correct{color:var(--green);}
+.bracket-pick-wrong{color:var(--red);}
+.bracket-pick-pending{color:var(--muted);}
+.bracket-pick-dead{color:var(--red);text-decoration:line-through;opacity:.6;}
+.bracket-round-label{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding:6px 0 2px;}
 
-.player-detail { display:none; }
-.player-detail.active { display:block; }
-.back-btn { background:none; border:1px solid var(--border2); color:var(--muted); padding:6px 14px; border-radius:6px; cursor:pointer; font-family:'Bebas Neue',sans-serif; font-size:15px; letter-spacing:.08em; margin-bottom:14px; transition:all .15s; }
-.back-btn:hover { color:var(--text); border-color:var(--fire); }
-.detail-header { background:var(--card); border-radius:10px; padding:16px 20px; margin-bottom:16px; display:flex; align-items:center; gap:16px; border:1px solid var(--border2); }
-.detail-avatar { width:68px; height:68px; border-radius:50%; background:linear-gradient(135deg,#1e1040,#0d0820); display:flex; align-items:center; justify-content:center; font-family:'Bebas Neue',sans-serif; font-size:24px; color:var(--cyan); border:2px solid rgba(0,229,255,.4); flex-shrink:0; overflow:hidden; }
-.detail-name { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:.06em; }
-.detail-pts-row { display:flex; gap:20px; margin-top:6px; }
-.detail-pts-val { font-family:'Bebas Neue',sans-serif; font-size:24px; }
-.detail-pts-label { font-size:9px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; }
+/* BRACKET MODAL */
+.bracket-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:200;display:flex;align-items:center;justify-content:center;display:none;}
+.bracket-modal{background:#1a1a28;border:1px solid rgba(255,107,0,.4);border-radius:12px;padding:20px;width:90%;max-width:700px;max-height:85vh;overflow-y:auto;box-shadow:0 0 40px rgba(255,107,0,.2);}
+.bracket-modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.bracket-modal-title{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:.08em;color:var(--fire2);}
+.bracket-close-btn{background:none;border:1px solid var(--border2);color:var(--muted);padding:4px 12px;border-radius:6px;cursor:pointer;font-family:'Bebas Neue',sans-serif;font-size:14px;}
+.bracket-modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.bracket-conf-section{background:var(--card2);border-radius:8px;padding:12px;}
+.bracket-conf-title{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:.1em;color:var(--fire2);margin-bottom:10px;}
+.bm-pick{display:flex;align-items:center;justify-content:space-between;padding:6px 8px;border-radius:6px;margin-bottom:4px;font-size:12px;}
+.bm-pick.correct{background:rgba(0,255,136,.15);border:1px solid rgba(0,255,136,.25);}
+.bm-pick.wrong{background:rgba(255,34,68,.12);border:1px solid rgba(255,34,68,.2);}
+.bm-pick.pending{background:rgba(255,255,255,.04);border:1px solid var(--border);}
+.bm-pick.dead{background:rgba(255,34,68,.05);border:1px solid rgba(255,34,68,.1);opacity:.7;}
+.bm-round{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;min-width:60px;}
+.bm-team{flex:1;font-weight:600;}
+.bm-status{font-size:10px;font-weight:700;}
+.bracket-finals-section{background:var(--card2);border-radius:8px;padding:12px;margin-top:12px;text-align:center;}
+.bracket-tiebreaker{margin-top:8px;font-size:11px;color:var(--muted);}
 
-.answers-table { width:100%; border-collapse:collapse; }
-.answers-table th { text-align:left; padding:8px 12px; font-family:'Bebas Neue',sans-serif; font-size:13px; letter-spacing:.08em; color:var(--muted); border-bottom:1px solid var(--border); }
-.answers-table td { padding:8px 12px; border-bottom:1px solid var(--border); font-size:13px; vertical-align:middle; }
-.answers-table tr:hover td { background:rgba(255,255,255,.02); }
-.ans-status { font-size:10px; padding:2px 8px; border-radius:8px; white-space:nowrap; }
-.ans-correct { background:rgba(0,255,136,.15); color:var(--green); border:1px solid rgba(0,255,136,.25); }
-.ans-pending { background:rgba(255,170,0,.12); color:var(--fire2); border:1px solid rgba(255,170,0,.2); }
-.ans-wrong { background:rgba(255,34,68,.12); color:var(--red); border:1px solid rgba(255,34,68,.2); }
-.ans-pts { font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--cyan); text-align:right; }
-
-.q-view-card { background:var(--card); border:1px solid var(--border2); border-radius:10px; margin-bottom:12px; overflow:hidden; }
-.q-view-header { background:linear-gradient(135deg,#1e1230,#160e28); padding:10px 16px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid rgba(139,0,255,.3); }
-.q-view-title { font-family:'Bebas Neue',sans-serif; font-size:16px; letter-spacing:.08em; color:var(--fire2); }
-.q-view-current { font-size:12px; color:var(--cyan); }
-.q-answers-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:1px; background:var(--border); }
-.q-answer-cell { background:var(--card); padding:8px 12px; }
-.q-answer-cell.correct { background:rgba(0,255,136,.07); }
-.q-cell-name { font-size:9px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; margin-bottom:2px; }
-.q-cell-val { font-size:13px; }
-
-.loading-overlay { position:fixed; inset:0; background:var(--bg); display:flex; align-items:center; justify-content:center; z-index:999; flex-direction:column; gap:14px; }
-.loading-overlay.hidden { display:none; }
-.jam-logo { font-family:'Bebas Neue',sans-serif; font-size:48px; letter-spacing:.1em; background:linear-gradient(180deg,#fff 0%,var(--fire2) 50%,var(--fire) 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; filter:drop-shadow(3px 3px 0 rgba(0,0,0,.9)); }
-.spinner { width:36px; height:36px; border:3px solid rgba(255,107,0,.2); border-top-color:var(--fire); border-radius:50%; animation:spin .7s linear infinite; }
+/* LOADING */
+.loading-overlay{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:999;flex-direction:column;gap:14px;}
+.loading-overlay.hidden{display:none;}
+.jam-logo{font-family:'Bebas Neue',sans-serif;font-size:48px;letter-spacing:.1em;background:linear-gradient(180deg,#fff 0%,var(--fire2) 50%,var(--fire) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(3px 3px 0 rgba(0,0,0,.9));}
+.spinner{width:36px;height:36px;border:3px solid rgba(255,107,0,.2);border-top-color:var(--fire);border-radius:50%;animation:spin .7s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg);}}
-.loading-text { font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--muted); letter-spacing:.2em; animation:blink 1s step-end infinite; }
+.loading-text{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--muted);letter-spacing:.2em;animation:blink 1s step-end infinite;}
 @keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
-.error-banner { background:rgba(255,34,68,.1); border:1px solid rgba(255,34,68,.3); color:var(--red); padding:10px 16px; border-radius:8px; margin-bottom:12px; font-size:13px; display:none; }
+.error-banner{background:rgba(255,34,68,.1);border:1px solid rgba(255,34,68,.3);color:var(--red);padding:10px 16px;border-radius:8px;margin-bottom:12px;font-size:13px;display:none;}
 
 @media(max-width:700px){
   .layout{grid-template-columns:1fr;padding:10px;}
   .sidebar{position:static;}
   .cards-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));}
   .header-title{font-size:26px;}
+  .bracket-modal-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -200,57 +221,51 @@ body {
   <div class="loading-text">LOADING STATS...</div>
 </div>
 
+<!-- UNPAID ALERT — To remove: delete this div -->
+<div id="unpaidAlert">💸 STEVE HAS NOT PAID!</div>
+
 <header class="header">
   <div>
-    <div class="header-slbl">SLBL · 2025</div>
+    <div class="header-slbl">SLBL · 2026</div>
     <div class="header-title">NBA <span>PLAYOFF</span> POOL</div>
   </div>
   <div style="display:flex;align-items:center;gap:12px;">
     <div>
       <div class="header-meta"><span class="live-dot"></span>Updated: <strong id="lastUpdated">--</strong></div>
-      <div class="header-meta" style="margin-top:3px;">2025 NBA Playoffs</div>
+      <div class="header-meta" style="margin-top:3px;">2026 NBA Playoffs</div>
     </div>
-    <button onclick="populateAdminFields();toggleAdmin();" style="background:none;border:1px solid rgba(255,107,0,0.4);color:var(--muted);padding:6px 12px;border-radius:6px;cursor:pointer;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:.08em;" title="Update manual fields">⚙ ADMIN</button>
+    <button onclick="populateAdminFields();toggleAdmin();" style="background:none;border:1px solid rgba(255,107,0,0.4);color:var(--muted);padding:6px 12px;border-radius:6px;cursor:pointer;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:.08em;">⚙ ADMIN</button>
   </div>
 </header>
 
 <!-- Admin panel -->
-<div id="adminPanel" style="display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.85);display:none;align-items:center;justify-content:center;">
+<div id="adminPanel" style="display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.85);align-items:center;justify-content:center;">
   <div style="background:#1a1a28;border:1px solid rgba(255,107,0,0.5);border-radius:12px;padding:24px;width:90%;max-width:480px;box-shadow:0 0 40px rgba(255,107,0,0.2);">
     <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--fire2);letter-spacing:.1em;margin-bottom:16px;">⚙ Update Manual Fields</div>
     <div style="display:flex;flex-direction:column;gap:10px;">
-      <div>
-        <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Techs leader (player name)</div>
-        <input id="admin_techs_leader" type="text" placeholder="e.g. Dillon Brooks" style="width:100%;background:#0a0a1a;border:1px solid rgba(255,255,255,0.15);border-radius:6px;padding:8px 10px;color:var(--text);font-size:13px;">
-      </div>
-      <div>
-        <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Ejections leader (player name)</div>
-        <input id="admin_ejections_leader" type="text" placeholder="e.g. Dillon Brooks" style="width:100%;background:#0a0a1a;border:1px solid rgba(255,255,255,0.15);border-radius:6px;padding:8px 10px;color:var(--text);font-size:13px;">
-      </div>
-      <div>
-        <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Larry Bird Trophy — ECF MVP</div>
-        <input id="admin_larry_bird_trophy" type="text" placeholder="e.g. Jaylen Brown" style="width:100%;background:#0a0a1a;border:1px solid rgba(255,255,255,0.15);border-radius:6px;padding:8px 10px;color:var(--text);font-size:13px;">
-      </div>
-      <div>
-        <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Earvin Johnson Trophy — WCF MVP</div>
-        <input id="admin_magic_trophy" type="text" placeholder="e.g. Shai Gilgeous-Alexander" style="width:100%;background:#0a0a1a;border:1px solid rgba(255,255,255,0.15);border-radius:6px;padding:8px 10px;color:var(--text);font-size:13px;">
-      </div>
-      <div>
-        <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Finals MVP</div>
-        <input id="admin_finals_mvp" type="text" placeholder="e.g. Shai Gilgeous-Alexander" style="width:100%;background:#0a0a1a;border:1px solid rgba(255,255,255,0.15);border-radius:6px;padding:8px 10px;color:var(--text);font-size:13px;">
-      </div>
+      <div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Techs leader</div><input id="admin_techs_leader" type="text" placeholder="e.g. Dillon Brooks" style="width:100%;background:#0a0a1a;border:1px solid rgba(255,255,255,0.15);border-radius:6px;padding:8px 10px;color:var(--text);font-size:13px;"></div>
+      <div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Ejections leader</div><input id="admin_ejections_leader" type="text" placeholder="e.g. Dillon Brooks" style="width:100%;background:#0a0a1a;border:1px solid rgba(255,255,255,0.15);border-radius:6px;padding:8px 10px;color:var(--text);font-size:13px;"></div>
+      <div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Larry Bird Trophy (ECF MVP)</div><input id="admin_larry_bird_trophy" type="text" placeholder="e.g. Jaylen Brown" style="width:100%;background:#0a0a1a;border:1px solid rgba(255,255,255,0.15);border-radius:6px;padding:8px 10px;color:var(--text);font-size:13px;"></div>
+      <div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Earvin Johnson Trophy (WCF MVP)</div><input id="admin_magic_trophy" type="text" placeholder="e.g. Shai Gilgeous-Alexander" style="width:100%;background:#0a0a1a;border:1px solid rgba(255,255,255,0.15);border-radius:6px;padding:8px 10px;color:var(--text);font-size:13px;"></div>
+      <div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Finals MVP</div><input id="admin_finals_mvp" type="text" placeholder="e.g. Shai Gilgeous-Alexander" style="width:100%;background:#0a0a1a;border:1px solid rgba(255,255,255,0.15);border-radius:6px;padding:8px 10px;color:var(--text);font-size:13px;"></div>
     </div>
     <div style="display:flex;gap:10px;margin-top:18px;">
       <button onclick="saveManual()" style="flex:1;background:rgba(255,107,0,0.15);border:1px solid var(--fire);color:var(--fire2);padding:10px;border-radius:6px;cursor:pointer;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.08em;">Save &amp; Apply</button>
       <button onclick="toggleAdmin()" style="background:none;border:1px solid rgba(255,255,255,0.15);color:var(--muted);padding:10px 20px;border-radius:6px;cursor:pointer;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.08em;">Cancel</button>
     </div>
-    <div style="margin-top:12px;font-size:11px;color:var(--muted);line-height:1.6;">Note: these changes apply to this browser session. To make them permanent, update the <code style="color:var(--cyan)">manual</code> fields in <code style="color:var(--cyan)">stats.json</code> and push to GitHub.</div>
+    <div style="margin-top:12px;font-size:11px;color:var(--muted);line-height:1.6;">To make permanent: update <code style="color:var(--cyan)">manual</code> fields in <code style="color:var(--cyan)">stats.json</code> and push to GitHub.</div>
   </div>
+</div>
+
+<!-- Bracket modal -->
+<div class="bracket-modal-overlay" id="bracketModalOverlay" onclick="closeBracketModal(event)">
+  <div class="bracket-modal" id="bracketModal"></div>
 </div>
 
 <div class="nav-tabs">
   <button class="nav-tab active" onclick="switchTab('dashboard')">Dashboard</button>
   <button class="nav-tab" onclick="switchTab('participants')">Participants</button>
+  <button class="nav-tab" onclick="switchTab('brackets')">Brackets</button>
   <button class="nav-tab" onclick="switchTab('questions')">Questions</button>
 </div>
 
@@ -258,6 +273,7 @@ body {
   <div class="error-banner" id="errorBanner"></div>
 </div>
 
+<!-- DASHBOARD -->
 <div id="tab-dashboard" class="view active">
   <div class="layout">
     <div>
@@ -283,11 +299,17 @@ body {
         </div>
         <div id="leaderboard"></div>
       </div>
-      <div class="sidebar-note">BKT = bracket · QS = questions<br>Tiebreaker: ESPN bracket</div>
+      <div class="payout-box">
+        <div class="payout-label">Winner Takes All</div>
+        <div class="payout-val">$70</div>
+        <div class="payout-sub">7 of 8 participants paid · $10/person</div>
+      </div>
+      <div class="sidebar-note">BKT = bracket · QS = questions<br>Tiebreaker: ESPN bracket score</div>
     </div>
   </div>
 </div>
 
+<!-- PARTICIPANTS -->
 <div id="tab-participants" class="view">
   <div style="padding:16px 20px;max-width:1200px;margin:0 auto;">
     <div id="participantsList">
@@ -305,6 +327,21 @@ body {
   </div>
 </div>
 
+<!-- BRACKETS -->
+<div id="tab-brackets" class="view">
+  <div style="padding:16px 20px;max-width:1200px;margin:0 auto;">
+    <div class="section-label">Bracket Picks</div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:14px;line-height:1.6;">
+      Click any card to see full bracket detail. <span style="color:var(--green);">■</span> Correct &nbsp;
+      <span style="color:var(--red);">■</span> Eliminated/Wrong &nbsp;
+      <span style="color:var(--muted);">■</span> Pending &nbsp;
+      Points possible = max remaining points if all remaining picks are correct.
+    </div>
+    <div class="bracket-grid" id="bracketGrid"></div>
+  </div>
+</div>
+
+<!-- QUESTIONS -->
 <div id="tab-questions" class="view">
   <div style="padding:16px 20px;max-width:1200px;margin:0 auto;">
     <div class="section-label">All Questions — Everyone's Answers</div>
@@ -313,16 +350,169 @@ body {
 </div>
 
 <script>
+// ============================================================
+// PARTICIPANTS
+// ============================================================
 const PARTICIPANTS = [
-  {id:'sean',display:'Sean'},
-  {id:'spider',display:'Leif'},
-  {id:'trey',display:'Trey'},
-  {id:'beryl',display:'Beryl'},
-  {id:'v',display:'V'},
-  {id:'justin',display:'Justin'},
-  {id:'steve',display:'Steve'},
+  {id:'sean',   display:'Sean'},
+  {id:'leif',   display:'Leif'},
+  {id:'trey',   display:'Trey'},
+  {id:'beryl',  display:'Beryl'},
+  {id:'v',      display:'V'},
+  {id:'justin', display:'Justin'},
+  {id:'steve',  display:'Steve'},
+  {id:'andy',   display:'Andy', bracketOnly:true},
 ];
 
+// ============================================================
+// BRACKET PICKS
+// Format: R1 (8 picks), Semis (4 picks), ConfFinals (2 picks), Finals (1 pick)
+// Points: R1=1, Semis=2, ConfFinals=4, Finals=12
+// ============================================================
+const ROUND_PTS = {r1:1, semis:2, confFinals:4, finals:12};
+
+const BRACKETS = {
+  trey: {
+    west: {
+      r1: ['Oklahoma City Thunder','Los Angeles Lakers','Denver Nuggets','San Antonio Spurs'],
+      semis: ['Oklahoma City Thunder','Denver Nuggets'],
+      confFinals: ['Denver Nuggets'],
+    },
+    east: {
+      r1: ['Detroit Pistons','Cleveland Cavaliers','New York Knicks','Boston Celtics'],
+      semis: ['Boston Celtics','Boston Celtics'],
+      confFinals: ['Boston Celtics'],
+    },
+    finals: 'Denver Nuggets',
+    tiebreaker: 521,
+  },
+  justin: {
+    west: {
+      r1: ['Oklahoma City Thunder','Houston Rockets','Denver Nuggets','Portland Trail Blazers'],
+      semis: ['Oklahoma City Thunder','Denver Nuggets'],
+      confFinals: ['Oklahoma City Thunder'],
+    },
+    east: {
+      r1: ['Detroit Pistons','Toronto Raptors','New York Knicks','Boston Celtics'],
+      semis: ['Detroit Pistons','New York Knicks'],
+      confFinals: ['New York Knicks'],
+    },
+    finals: 'Oklahoma City Thunder',
+    tiebreaker: 145,
+  },
+  steve: {
+    west: {
+      r1: ['Phoenix Suns','Houston Rockets','Denver Nuggets','San Antonio Spurs'],
+      semis: ['Phoenix Suns','San Antonio Spurs'],
+      confFinals: ['Phoenix Suns'],
+    },
+    east: {
+      r1: ['Detroit Pistons','Toronto Raptors','New York Knicks','Boston Celtics'],
+      semis: ['Boston Celtics','Boston Celtics'],
+      confFinals: ['Boston Celtics'],
+    },
+    finals: 'Phoenix Suns',
+    tiebreaker: 168,
+  },
+  sean: {
+    west: {
+      r1: ['Oklahoma City Thunder','Houston Rockets','Denver Nuggets','San Antonio Spurs'],
+      semis: ['Oklahoma City Thunder','Denver Nuggets'],
+      confFinals: ['Oklahoma City Thunder'],
+    },
+    east: {
+      r1: ['Detroit Pistons','Cleveland Cavaliers','New York Knicks','Boston Celtics'],
+      semis: ['Detroit Pistons','Boston Celtics'],
+      confFinals: ['Boston Celtics'],
+    },
+    finals: 'Oklahoma City Thunder',
+    tiebreaker: 452,
+  },
+  v: {
+    west: {
+      r1: ['Oklahoma City Thunder','Houston Rockets','Denver Nuggets','San Antonio Spurs'],
+      semis: ['Oklahoma City Thunder','San Antonio Spurs'],
+      confFinals: ['Oklahoma City Thunder'],
+    },
+    east: {
+      r1: ['Detroit Pistons','Cleveland Cavaliers','Atlanta Hawks','Boston Celtics'],
+      semis: ['Cleveland Cavaliers','Boston Celtics'],
+      confFinals: ['Boston Celtics'],
+    },
+    finals: 'Boston Celtics',
+    tiebreaker: 538,
+  },
+  andy: {
+    west: {
+      r1: ['Oklahoma City Thunder','Houston Rockets','Denver Nuggets','San Antonio Spurs'],
+      semis: ['Oklahoma City Thunder','San Antonio Spurs'],
+      confFinals: ['San Antonio Spurs'],
+    },
+    east: {
+      r1: ['Detroit Pistons','Cleveland Cavaliers','New York Knicks','Boston Celtics'],
+      semis: ['Cleveland Cavaliers','Boston Celtics'],
+      confFinals: ['Boston Celtics'],
+    },
+    finals: 'San Antonio Spurs',
+    tiebreaker: 616,
+  },
+  beryl: {
+    west: {
+      r1: ['Oklahoma City Thunder','Los Angeles Lakers','Denver Nuggets','Portland Trail Blazers'],
+      semis: ['Oklahoma City Thunder','Denver Nuggets'],
+      confFinals: ['Denver Nuggets'],
+    },
+    east: {
+      r1: ['Detroit Pistons','Cleveland Cavaliers','New York Knicks','Boston Celtics'],
+      semis: ['Detroit Pistons','Boston Celtics'],
+      confFinals: ['Boston Celtics'],
+    },
+    finals: 'Denver Nuggets',
+    tiebreaker: 10,
+  },
+  leif: {
+    west: {
+      r1: ['Oklahoma City Thunder','Los Angeles Lakers','Denver Nuggets','San Antonio Spurs'],
+      semis: ['Oklahoma City Thunder','Denver Nuggets'],
+      confFinals: ['Oklahoma City Thunder'],
+    },
+    east: {
+      r1: ['Detroit Pistons','Cleveland Cavaliers','Atlanta Hawks','Boston Celtics'],
+      semis: ['Detroit Pistons','Boston Celtics'],
+      confFinals: ['Boston Celtics'],
+    },
+    finals: 'Oklahoma City Thunder',
+    tiebreaker: 555,
+  },
+};
+
+// R1 matchup structure [west4, east4] for display purposes
+const R1_MATCHUPS_WEST = [
+  {high:'Oklahoma City Thunder', low:'Phoenix Suns'},
+  {high:'Los Angeles Lakers',    low:'Houston Rockets'},
+  {high:'Denver Nuggets',        low:'Minnesota Timberwolves'},
+  {high:'San Antonio Spurs',     low:'Portland Trail Blazers'},
+];
+const R1_MATCHUPS_EAST = [
+  {high:'Detroit Pistons',    low:'Orlando Magic'},
+  {high:'Cleveland Cavaliers',low:'Toronto Raptors'},
+  {high:'New York Knicks',    low:'Atlanta Hawks'},
+  {high:'Boston Celtics',     low:'Philadelphia 76ers'},
+];
+
+// Team logos (emoji stand-ins — easy to replace with real logos later)
+const TEAM_LOGOS = {
+  'Oklahoma City Thunder':'⚡','Phoenix Suns':'☀️','Los Angeles Lakers':'💜',
+  'Houston Rockets':'🚀','Denver Nuggets':'⛏️','Minnesota Timberwolves':'🐺',
+  'San Antonio Spurs':'🌹','Portland Trail Blazers':'🌲',
+  'Detroit Pistons':'🔧','Orlando Magic':'✨','Cleveland Cavaliers':'⚔️',
+  'Toronto Raptors':'🦖','New York Knicks':'🗽','Atlanta Hawks':'🦅',
+  'Boston Celtics':'🍀','Philadelphia 76ers':'🔔',
+};
+
+// ============================================================
+// HEADSHOTS
+// ============================================================
 const HEADSHOTS = {
   'Shai Gilgeous-Alexander':1628983,'Nikola Jokic':203999,'Nikola Jokić':203999,
   'Anthony Edwards':1630162,'Victor Wembanyama':1641705,'Luka Doncic':1629029,
@@ -333,62 +523,58 @@ const HEADSHOTS = {
   "De'Aaron Fox":1628368,'Ausar Thompson':1641706,'OG Anunoby':1628384,
   'Baylor Scheierman':1641748,'Tim Hardaway Jr':203501,'Rudy Gobert':203497,
   'Jordan Goodwin':1630230,'Jalen Brunson':1628973,'Devin Booker':1626164,
-  // Additional players that appear in 2026 playoffs
   'LeBron James':2544,'Chet Holmgren':1631096,'Marcus Smart':203935,
   'Amen Thompson':1641708,'Alperen Sengun':1630578,'Alperen Şengün':1630578,
   'Jalen Duren':1631105,'Karl-Anthony Towns':1626157,'Tyrese Haliburton':1630169,
   'Pascal Siakam':1627783,'Kawhi Leonard':202695,'Paul George':202331,
   'Tyrese Maxey':1630178,'Joel Embiid':203954,'Jimmy Butler':202710,
-  'Bam Adebayo':1628389,'Tyler Herro':1629639,'Trae Young':1629029,
-  'Dejounte Murray':1627749,'Jalen Johnson':1630553,'Scottie Barnes':1630567,
+  'Bam Adebayo':1628389,'Tyler Herro':1629639,'Trae Young':1628384,
+  'Dejounte Murray':1629627,'Jalen Johnson':1630553,'Scottie Barnes':1630567,
   'Fred VanVleet':1627832,'Immanuel Quickley':1630193,
   'Mikal Bridges':1628969,'Josh Hart':1628404,
   'Aaron Holiday':1629004,'Tari Eason':1631106,
   'Jabari Smith':1631109,'Cam Thomas':1631115,
 };
 
-function headshotURL(n){ const id=HEADSHOTS[n]; return id?`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${id}.png`:null; }
+function headshotURL(n){ const id=HEADSHOTS[n]; return id?`https://cdn.nba.com/headshots/nba/latest/260x190/${id}.png`:null; }
 function getInitials(n){ return n.split(' ').filter(w=>w).map(w=>w[0].toUpperCase()).slice(0,2).join(''); }
-
-function avatarHTML(name, size=56, circle=false, onFire=false) {
-  const url = headshotURL(name);
-  const r = circle ? 'border-radius:50%;' : 'border-radius:8px;';
-  const fc = onFire ? ' on-fire' : '';
-  const ini = `<div class="headshot-initials">${getInitials(name)}</div>`;
-  const img = url
-    ? `<img src="${url}" alt="${name}" onerror="hsErr(this)">`
-    : ini;
+function avatarHTML(name,size=56,circle=false,onFire=false){
+  const url=headshotURL(name);
+  const r=circle?'border-radius:50%;':'border-radius:8px;';
+  const fc=onFire?' on-fire':'';
+  const ini=`<div class="headshot-initials">${getInitials(name)}</div>`;
+  const img=url?`<img src="${url}" alt="${name}" onerror="hsErr(this)">`:ini;
   return `<div class="headshot-wrap${fc}" style="width:${size}px;height:${size}px;${r}flex-shrink:0;">${img}</div>`;
 }
-function hsErr(el) {
-  const ini = el.alt ? getInitials(el.alt) : '??';
-  el.parentElement.innerHTML = `<div class="headshot-initials">${ini}</div>`;
-}
+function hsErr(el){ el.parentElement.innerHTML=`<div class="headshot-initials">${getInitials(el.alt||'?')}</div>`; }
 
+// ============================================================
+// PICKS (questions)
+// ============================================================
 const PICKS = {
-  ppg:{sean:{raw:'Shai',canonical:'Shai Gilgeous-Alexander'},spider:{raw:'Anthony Edwards',canonical:'Anthony Edwards'},trey:{raw:'sga',canonical:'Shai Gilgeous-Alexander'},beryl:{raw:'Jokic',canonical:'Nikola Jokic'},v:{raw:'Shai',canonical:'Shai Gilgeous-Alexander'},justin:{raw:'Donovan Mitchell',canonical:'Donovan Mitchell'},steve:{raw:'Shai gilgeous alexander',canonical:'Shai Gilgeous-Alexander'}},
-  rpg:{sean:{raw:'Wemby',canonical:'Victor Wembanyama'},spider:{raw:'Gobert',canonical:'Rudy Gobert'},trey:{raw:'jokic',canonical:'Nikola Jokic'},beryl:{raw:'Jokic',canonical:'Nikola Jokic'},v:{raw:'Wemby',canonical:'Victor Wembanyama'},justin:{raw:'Nikola Jokic',canonical:'Nikola Jokic'},steve:{raw:'Jokic',canonical:'Nikola Jokic'}},
-  apg:{sean:{raw:'Jokic',canonical:'Nikola Jokic'},spider:{raw:'Cade',canonical:'Cade Cunningham'},trey:{raw:'jokic',canonical:'Nikola Jokic'},beryl:{raw:'Jokic',canonical:'Nikola Jokic'},v:{raw:'Jokic',canonical:'Nikola Jokic'},justin:{raw:'Cade Cunningham',canonical:'Cade Cunningham'},steve:{raw:'Jokic',canonical:'Nikola Jokic'}},
-  ftpg:{sean:{raw:'Deni Avdija',canonical:'Deni Avdija'},spider:{raw:'SGA',canonical:'Shai Gilgeous-Alexander'},trey:{raw:'avdija',canonical:'Deni Avdija'},beryl:{raw:'SGA',canonical:'Shai Gilgeous-Alexander'},v:{raw:'Shai',canonical:'Shai Gilgeous-Alexander'},justin:{raw:'Deni Avdija',canonical:'Deni Avdija'},steve:{raw:'Shai',canonical:'Shai Gilgeous-Alexander'}},
-  tpm:{sean:{raw:'KD',canonical:'Kevin Durant'},spider:{raw:'Luka',canonical:'Luka Doncic'},trey:{raw:'murray',canonical:'Jamal Murray'},beryl:{raw:'Hardaway Jr',canonical:'Tim Hardaway Jr'},v:{raw:'Baylor schierman',canonical:'Baylor Scheierman'},justin:{raw:'Anthony Edwards',canonical:'Anthony Edwards'},steve:{raw:'Anthony edwards',canonical:'Anthony Edwards'}},
-  bpg:{sean:{raw:'Wemby',canonical:'Victor Wembanyama'},spider:{raw:'Wemby',canonical:'Victor Wembanyama'},trey:{raw:'wemby',canonical:'Victor Wembanyama'},beryl:{raw:'Wemby',canonical:'Victor Wembanyama'},v:{raw:'Wemby',canonical:'Victor Wembanyama'},justin:{raw:'Victor Wembanyama',canonical:'Victor Wembanyama'},steve:{raw:'Wemby',canonical:'Victor Wembanyama'}},
-  spg:{sean:{raw:'Ausar Thompson',canonical:'Ausar Thompson'},spider:{raw:'FOX',canonical:"De'Aaron Fox"},trey:{raw:'caruso',canonical:'Alex Caruso'},beryl:{raw:'Dort',canonical:'Luguentz Dort'},v:{raw:'Caruso',canonical:'Alex Caruso'},justin:{raw:'OG Anunobt',canonical:'OG Anunoby'},steve:{raw:'Jordan goodwin',canonical:'Jordan Goodwin'}},
-  tovpg:{sean:{raw:'Harden',canonical:'James Harden'},spider:{raw:'Deni',canonical:'Deni Avdija'},trey:{raw:'jokic',canonical:'Nikola Jokic'},beryl:{raw:'Murry',canonical:'Jamal Murray'},v:{raw:'Jalen green',canonical:'Jalen Green'},justin:{raw:'Deni Avdija',canonical:'Deni Avdija'},steve:{raw:'Kevin durant',canonical:'Kevin Durant'}},
-  techs:{sean:{raw:'Lu Dort',canonical:'Luguentz Dort'},spider:{raw:'Brown, Jalen',canonical:'Jaylen Brown'},trey:{raw:'Dort',canonical:'Luguentz Dort'},beryl:{raw:'Dort',canonical:'Luguentz Dort'},v:{raw:'Dillon brooks',canonical:'Dillon Brooks'},justin:{raw:'Lu Dort',canonical:'Luguentz Dort'},steve:{raw:'Dillon brooks',canonical:'Dillon Brooks'}},
-  ejections:{sean:{raw:'Dillon Brooks',canonical:'Dillon Brooks'},spider:{raw:'Dillon Brooks',canonical:'Dillon Brooks'},trey:{raw:'brooks',canonical:'Dillon Brooks'},beryl:{raw:'Gobert',canonical:'Rudy Gobert'},v:{raw:'Dillon brooks',canonical:'Dillon Brooks'},justin:{raw:'Dillon Brooks',canonical:'Dillon Brooks'},steve:{raw:'Gobert',canonical:'Rudy Gobert'}},
-  minutes:{sean:{raw:'Cade',canonical:'Cade Cunningham'},spider:{raw:'Brown, Jalen',canonical:'Jaylen Brown'},trey:{raw:'jokic',canonical:'Nikola Jokic'},beryl:{raw:'Jokic',canonical:'Nikola Jokic'},v:{raw:'Jaylen brown',canonical:'Jaylen Brown'},justin:{raw:'Shai Gilgeous Alexander',canonical:'Shai Gilgeous-Alexander'},steve:{raw:'Shai',canonical:'Shai Gilgeous-Alexander'}},
-  mov_num:{sean:{raw:'40',canonical:40},spider:{raw:'38',canonical:38},trey:{raw:'32',canonical:32},beryl:{raw:'30',canonical:30},v:{raw:'35',canonical:35},justin:{raw:'38',canonical:38},steve:{raw:'34',canonical:34}},
-  max_team_pts:{sean:{raw:'135',canonical:135},spider:{raw:'166',canonical:166},trey:{raw:'142',canonical:142},beryl:{raw:'131',canonical:131},v:{raw:'143',canonical:143},justin:{raw:'139',canonical:139},steve:{raw:'137',canonical:137}},
-  max_player_pts:{sean:{raw:'54',canonical:54},spider:{raw:'41',canonical:41},trey:{raw:'54',canonical:54},beryl:{raw:'42',canonical:42},v:{raw:'44',canonical:44},justin:{raw:'51',canonical:51},steve:{raw:'51',canonical:51}},
-  game7s:{sean:{raw:'4',canonical:4},spider:{raw:'6',canonical:6},trey:{raw:'3',canonical:3},beryl:{raw:'7',canonical:7},v:{raw:'4',canonical:4},justin:{raw:'5',canonical:5},steve:{raw:'4',canonical:4}},
-  mov_team:{sean:{raw:'OKC',canonical:'Oklahoma City Thunder'},spider:{raw:'🌩️',canonical:'Oklahoma City Thunder'},trey:{raw:'Celtics',canonical:'Boston Celtics'},beryl:{raw:'Thunder',canonical:'Oklahoma City Thunder'},v:{raw:'Celtics',canonical:'Boston Celtics'},justin:{raw:'Spurs',canonical:'San Antonio Spurs'},steve:{raw:'Thunder',canonical:'Oklahoma City Thunder'}},
-  mod_team:{sean:{raw:'Suns',canonical:'Phoenix Suns'},spider:{raw:'🚀',canonical:'Houston Rockets'},trey:{raw:'magic',canonical:'Orlando Magic'},beryl:{raw:'Suns',canonical:'Phoenix Suns'},v:{raw:'Suns',canonical:'Phoenix Suns'},justin:{raw:'Magic',canonical:'Orlando Magic'},steve:{raw:'Lakers',canonical:'Los Angeles Lakers'}},
-  most_games:{sean:{raw:'Boston',canonical:'Boston Celtics'},spider:{raw:'🍀',canonical:'Boston Celtics'},trey:{raw:'Pistons',canonical:'Detroit Pistons'},beryl:{raw:'Nuggets',canonical:'Denver Nuggets'},v:{raw:'Celtics',canonical:'Boston Celtics'},justin:{raw:'Knicks',canonical:'New York Knicks'},steve:{raw:'Celtics',canonical:'Boston Celtics'}},
-  least_games:{sean:{raw:'Suns',canonical:'Phoenix Suns'},spider:{raw:'🇺🇸🇺🇸🇺🇸📜📜📜',canonical:'Phoenix Suns'},trey:{raw:'Suns',canonical:'Phoenix Suns'},beryl:{raw:'Suns',canonical:'Phoenix Suns'},v:{raw:'Suns',canonical:'Phoenix Suns'},justin:{raw:'Suns',canonical:'Phoenix Suns'},steve:{raw:'76ers',canonical:'Philadelphia 76ers'}},
-  top_scorer_game:{sean:{raw:'Shai',canonical:'Shai Gilgeous-Alexander'},spider:{raw:'Edwards',canonical:'Anthony Edwards'},trey:{raw:'Murray',canonical:'Jamal Murray'},beryl:{raw:'SGA',canonical:'Shai Gilgeous-Alexander'},v:{raw:'Jokic',canonical:'Nikola Jokic'},justin:{raw:'Anthony Edwards',canonical:'Anthony Edwards'},steve:{raw:'Devin booker',canonical:'Devin Booker'}},
-  larry_bird:{sean:{raw:'Jaylen brown',canonical:'Jaylen Brown'},spider:{raw:'Tatum',canonical:'Jayson Tatum'},trey:{raw:'Cade',canonical:'Cade Cunningham'},beryl:{raw:'Tatum',canonical:'Jayson Tatum'},v:{raw:'Jayson Tatum',canonical:'Jayson Tatum'},justin:{raw:'Jalen Brunson',canonical:'Jalen Brunson'},steve:{raw:'Jaylen brown',canonical:'Jaylen Brown'}},
-  magic_trophy:{sean:{raw:'Shai',canonical:'Shai Gilgeous-Alexander'},spider:{raw:'SGA',canonical:'Shai Gilgeous-Alexander'},trey:{raw:'Jokic',canonical:'Nikola Jokic'},beryl:{raw:'Jokic',canonical:'Nikola Jokic'},v:{raw:'Shai',canonical:'Shai Gilgeous-Alexander'},justin:{raw:'Shai Gilgeous Alexander',canonical:'Shai Gilgeous-Alexander'},steve:{raw:'Wemby',canonical:'Victor Wembanyama'}},
-  finals_mvp:{sean:{raw:'Shai',canonical:'Shai Gilgeous-Alexander'},spider:{raw:'SGA',canonical:'Shai Gilgeous-Alexander'},trey:{raw:'Jokic',canonical:'Nikola Jokic'},beryl:{raw:'Jokic',canonical:'Nikola Jokic'},v:{raw:'JASON TATUM IN A GLORIOUS RETURN TO FORM',canonical:'Jayson Tatum'},justin:{raw:'Shai Gilgeous Alexander',canonical:'Shai Gilgeous-Alexander'},steve:{raw:'Wemby',canonical:'Victor Wembanyama'}},
+  ppg:{sean:{raw:'Shai',canonical:'Shai Gilgeous-Alexander'},leif:{raw:'Anthony Edwards',canonical:'Anthony Edwards'},trey:{raw:'sga',canonical:'Shai Gilgeous-Alexander'},beryl:{raw:'Jokic',canonical:'Nikola Jokic'},v:{raw:'Shai',canonical:'Shai Gilgeous-Alexander'},justin:{raw:'Donovan Mitchell',canonical:'Donovan Mitchell'},steve:{raw:'Shai gilgeous alexander',canonical:'Shai Gilgeous-Alexander'}},
+  rpg:{sean:{raw:'Wemby',canonical:'Victor Wembanyama'},leif:{raw:'Gobert',canonical:'Rudy Gobert'},trey:{raw:'jokic',canonical:'Nikola Jokic'},beryl:{raw:'Jokic',canonical:'Nikola Jokic'},v:{raw:'Wemby',canonical:'Victor Wembanyama'},justin:{raw:'Nikola Jokic',canonical:'Nikola Jokic'},steve:{raw:'Jokic',canonical:'Nikola Jokic'}},
+  apg:{sean:{raw:'Jokic',canonical:'Nikola Jokic'},leif:{raw:'Cade',canonical:'Cade Cunningham'},trey:{raw:'jokic',canonical:'Nikola Jokic'},beryl:{raw:'Jokic',canonical:'Nikola Jokic'},v:{raw:'Jokic',canonical:'Nikola Jokic'},justin:{raw:'Cade Cunningham',canonical:'Cade Cunningham'},steve:{raw:'Jokic',canonical:'Nikola Jokic'}},
+  ftpg:{sean:{raw:'Deni Avdija',canonical:'Deni Avdija'},leif:{raw:'SGA',canonical:'Shai Gilgeous-Alexander'},trey:{raw:'avdija',canonical:'Deni Avdija'},beryl:{raw:'SGA',canonical:'Shai Gilgeous-Alexander'},v:{raw:'Shai',canonical:'Shai Gilgeous-Alexander'},justin:{raw:'Deni Avdija',canonical:'Deni Avdija'},steve:{raw:'Shai',canonical:'Shai Gilgeous-Alexander'}},
+  tpm:{sean:{raw:'KD',canonical:'Kevin Durant'},leif:{raw:'Luka',canonical:'Luka Doncic'},trey:{raw:'murray',canonical:'Jamal Murray'},beryl:{raw:'Hardaway Jr',canonical:'Tim Hardaway Jr'},v:{raw:'Baylor schierman',canonical:'Baylor Scheierman'},justin:{raw:'Anthony Edwards',canonical:'Anthony Edwards'},steve:{raw:'Anthony edwards',canonical:'Anthony Edwards'}},
+  bpg:{sean:{raw:'Wemby',canonical:'Victor Wembanyama'},leif:{raw:'Wemby',canonical:'Victor Wembanyama'},trey:{raw:'wemby',canonical:'Victor Wembanyama'},beryl:{raw:'Wemby',canonical:'Victor Wembanyama'},v:{raw:'Wemby',canonical:'Victor Wembanyama'},justin:{raw:'Victor Wembanyama',canonical:'Victor Wembanyama'},steve:{raw:'Wemby',canonical:'Victor Wembanyama'}},
+  spg:{sean:{raw:'Ausar Thompson',canonical:'Ausar Thompson'},leif:{raw:'FOX',canonical:"De'Aaron Fox"},trey:{raw:'caruso',canonical:'Alex Caruso'},beryl:{raw:'Dort',canonical:'Luguentz Dort'},v:{raw:'Caruso',canonical:'Alex Caruso'},justin:{raw:'OG Anunobt',canonical:'OG Anunoby'},steve:{raw:'Jordan goodwin',canonical:'Jordan Goodwin'}},
+  tovpg:{sean:{raw:'Harden',canonical:'James Harden'},leif:{raw:'Deni',canonical:'Deni Avdija'},trey:{raw:'jokic',canonical:'Nikola Jokic'},beryl:{raw:'Murry',canonical:'Jamal Murray'},v:{raw:'Jalen green',canonical:'Jalen Green'},justin:{raw:'Deni Avdija',canonical:'Deni Avdija'},steve:{raw:'Kevin durant',canonical:'Kevin Durant'}},
+  techs:{sean:{raw:'Lu Dort',canonical:'Luguentz Dort'},leif:{raw:'Brown, Jalen',canonical:'Jaylen Brown'},trey:{raw:'Dort',canonical:'Luguentz Dort'},beryl:{raw:'Dort',canonical:'Luguentz Dort'},v:{raw:'Dillon brooks',canonical:'Dillon Brooks'},justin:{raw:'Lu Dort',canonical:'Luguentz Dort'},steve:{raw:'Dillon brooks',canonical:'Dillon Brooks'}},
+  ejections:{sean:{raw:'Dillon Brooks',canonical:'Dillon Brooks'},leif:{raw:'Dillon Brooks',canonical:'Dillon Brooks'},trey:{raw:'brooks',canonical:'Dillon Brooks'},beryl:{raw:'Gobert',canonical:'Rudy Gobert'},v:{raw:'Dillon brooks',canonical:'Dillon Brooks'},justin:{raw:'Dillon Brooks',canonical:'Dillon Brooks'},steve:{raw:'Gobert',canonical:'Rudy Gobert'}},
+  minutes:{sean:{raw:'Cade',canonical:'Cade Cunningham'},leif:{raw:'Brown, Jalen',canonical:'Jaylen Brown'},trey:{raw:'jokic',canonical:'Nikola Jokic'},beryl:{raw:'Jokic',canonical:'Nikola Jokic'},v:{raw:'Jaylen brown',canonical:'Jaylen Brown'},justin:{raw:'Shai Gilgeous Alexander',canonical:'Shai Gilgeous-Alexander'},steve:{raw:'Shai',canonical:'Shai Gilgeous-Alexander'}},
+  mov_num:{sean:{raw:'40',canonical:40},leif:{raw:'38',canonical:38},trey:{raw:'32',canonical:32},beryl:{raw:'30',canonical:30},v:{raw:'35',canonical:35},justin:{raw:'38',canonical:38},steve:{raw:'34',canonical:34}},
+  max_team_pts:{sean:{raw:'135',canonical:135},leif:{raw:'166',canonical:166},trey:{raw:'142',canonical:142},beryl:{raw:'131',canonical:131},v:{raw:'143',canonical:143},justin:{raw:'139',canonical:139},steve:{raw:'137',canonical:137}},
+  max_player_pts:{sean:{raw:'54',canonical:54},leif:{raw:'41',canonical:41},trey:{raw:'54',canonical:54},beryl:{raw:'42',canonical:42},v:{raw:'44',canonical:44},justin:{raw:'51',canonical:51},steve:{raw:'51',canonical:51}},
+  game7s:{sean:{raw:'4',canonical:4},leif:{raw:'6',canonical:6},trey:{raw:'3',canonical:3},beryl:{raw:'7',canonical:7},v:{raw:'4',canonical:4},justin:{raw:'5',canonical:5},steve:{raw:'4',canonical:4}},
+  mov_team:{sean:{raw:'OKC',canonical:'Oklahoma City Thunder'},leif:{raw:'🌩️',canonical:'Oklahoma City Thunder'},trey:{raw:'Celtics',canonical:'Boston Celtics'},beryl:{raw:'Thunder',canonical:'Oklahoma City Thunder'},v:{raw:'Celtics',canonical:'Boston Celtics'},justin:{raw:'Spurs',canonical:'San Antonio Spurs'},steve:{raw:'Thunder',canonical:'Oklahoma City Thunder'}},
+  mod_team:{sean:{raw:'Suns',canonical:'Phoenix Suns'},leif:{raw:'🚀',canonical:'Houston Rockets'},trey:{raw:'magic',canonical:'Orlando Magic'},beryl:{raw:'Suns',canonical:'Phoenix Suns'},v:{raw:'Suns',canonical:'Phoenix Suns'},justin:{raw:'Magic',canonical:'Orlando Magic'},steve:{raw:'Lakers',canonical:'Los Angeles Lakers'}},
+  most_games:{sean:{raw:'Boston',canonical:'Boston Celtics'},leif:{raw:'🍀',canonical:'Boston Celtics'},trey:{raw:'Pistons',canonical:'Detroit Pistons'},beryl:{raw:'Nuggets',canonical:'Denver Nuggets'},v:{raw:'Celtics',canonical:'Boston Celtics'},justin:{raw:'Knicks',canonical:'New York Knicks'},steve:{raw:'Celtics',canonical:'Boston Celtics'}},
+  least_games:{sean:{raw:'Suns',canonical:'Phoenix Suns'},leif:{raw:'🇺🇸🇺🇸🇺🇸📜📜📜',canonical:'Phoenix Suns'},trey:{raw:'Suns',canonical:'Phoenix Suns'},beryl:{raw:'Suns',canonical:'Phoenix Suns'},v:{raw:'Suns',canonical:'Phoenix Suns'},justin:{raw:'Suns',canonical:'Phoenix Suns'},steve:{raw:'76ers',canonical:'Philadelphia 76ers'}},
+  top_scorer_game:{sean:{raw:'Shai',canonical:'Shai Gilgeous-Alexander'},leif:{raw:'Edwards',canonical:'Anthony Edwards'},trey:{raw:'Murray',canonical:'Jamal Murray'},beryl:{raw:'SGA',canonical:'Shai Gilgeous-Alexander'},v:{raw:'Jokic',canonical:'Nikola Jokic'},justin:{raw:'Anthony Edwards',canonical:'Anthony Edwards'},steve:{raw:'Devin booker',canonical:'Devin Booker'}},
+  larry_bird:{sean:{raw:'Jaylen brown',canonical:'Jaylen Brown'},leif:{raw:'Tatum',canonical:'Jayson Tatum'},trey:{raw:'Cade',canonical:'Cade Cunningham'},beryl:{raw:'Tatum',canonical:'Jayson Tatum'},v:{raw:'Jayson Tatum',canonical:'Jayson Tatum'},justin:{raw:'Jalen Brunson',canonical:'Jalen Brunson'},steve:{raw:'Jaylen brown',canonical:'Jaylen Brown'}},
+  magic_trophy:{sean:{raw:'Shai',canonical:'Shai Gilgeous-Alexander'},leif:{raw:'SGA',canonical:'Shai Gilgeous-Alexander'},trey:{raw:'Jokic',canonical:'Nikola Jokic'},beryl:{raw:'Jokic',canonical:'Nikola Jokic'},v:{raw:'Shai',canonical:'Shai Gilgeous-Alexander'},justin:{raw:'Shai Gilgeous Alexander',canonical:'Shai Gilgeous-Alexander'},steve:{raw:'Wemby',canonical:'Victor Wembanyama'}},
+  finals_mvp:{sean:{raw:'Shai',canonical:'Shai Gilgeous-Alexander'},leif:{raw:'SGA',canonical:'Shai Gilgeous-Alexander'},trey:{raw:'Jokic',canonical:'Nikola Jokic'},beryl:{raw:'Jokic',canonical:'Nikola Jokic'},v:{raw:'JASON TATUM IN A GLORIOUS RETURN TO FORM',canonical:'Jayson Tatum'},justin:{raw:'Shai Gilgeous Alexander',canonical:'Shai Gilgeous-Alexander'},steve:{raw:'Wemby',canonical:'Victor Wembanyama'}},
 };
 
 const QUESTIONS = [
@@ -402,7 +588,7 @@ const QUESTIONS = [
   {id:'tovpg',label:'Turnovers per game',section:'perGame',type:'player',unit:'TOV/G',apiKey:'tov'},
   {id:'techs',label:'Technical fouls',section:'total',type:'player',unit:'Techs',apiKey:null},
   {id:'ejections',label:'Ejections',section:'total',type:'player',unit:'Ejec',apiKey:null},
-  {id:'minutes',label:'Minutes played',section:'total',type:'player',unit:'MIN',apiKey:'min'},
+  {id:'minutes',label:'Minutes played (total)',section:'total',type:'player',unit:'MIN',apiKey:'min'},
   {id:'mov_num',label:'Largest margin of victory',section:'numeric',type:'numeric',unit:'pts',current:null},
   {id:'max_team_pts',label:'Most pts by team in a game',section:'numeric',type:'numeric',unit:'pts',current:null},
   {id:'max_player_pts',label:'Most pts by player in a game',section:'numeric',type:'numeric',unit:'pts',current:null},
@@ -417,21 +603,26 @@ const QUESTIONS = [
   {id:'finals_mvp',label:'Finals MVP',section:'awards',type:'text',current:null},
 ];
 
-const BRACKET_PICKS = {sean:0,spider:0,trey:0,beryl:0,v:0,justin:0,steve:0};
+// ============================================================
+// LIVE STATS STATE
+// ============================================================
 let liveStats = {};
+let seriesResults = {}; // populated from stats.json series data
 
-// ── Load from stats.json (written by GitHub Actions scraper) ──
-async function fetchNBAStats() {
+// ============================================================
+// LOAD STATS.JSON
+// ============================================================
+async function fetchNBAStats(){
   document.getElementById('loadingOverlay').classList.remove('hidden');
   try {
-    const res = await fetch('stats.json?v=' + Date.now());
-    if (!res.ok) throw new Error('stats.json not found');
-    const data = await res.json();
+    const res=await fetch('stats.json?v='+Date.now());
+    if(!res.ok) throw new Error('not found');
+    const data=await res.json();
     applyStatsJson(data);
-    const updated = data.updated ? new Date(data.updated).toLocaleDateString('en-US',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}) : '—';
-    document.getElementById('lastUpdated').textContent = updated;
+    const updated=data.updated?new Date(data.updated).toLocaleDateString('en-US',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}):'—';
+    document.getElementById('lastUpdated').textContent=updated;
     hideError();
-  } catch(e) {
+  } catch(e){
     showError('Could not load stats.json — make sure the file is in the same folder as index.html.');
   } finally {
     document.getElementById('loadingOverlay').classList.add('hidden');
@@ -439,116 +630,182 @@ async function fetchNBAStats() {
   }
 }
 
-function applyStatsJson(data) {
-  // Per-game leaders → rebuild liveStats lookup
-  liveStats = {};
-  const keyMap = {ppg:'pts',rpg:'reb',apg:'ast',ftpg:'ftm',tpm:'fg3m',bpg:'blk',spg:'stl',tovpg:'tov',min:'min'};
-  Object.entries(keyMap).forEach(([qid, field]) => {
-    const leaders = data.per_game_leaders?.[qid] || [];
-    leaders.forEach(entry => {
-      if (!liveStats[entry.name]) liveStats[entry.name] = {};
-      liveStats[entry.name][field] = entry.value;
+function applyStatsJson(data){
+  liveStats={};
+  const keyMap={ppg:'pts',rpg:'reb',apg:'ast',ftpg:'ftm',tpm:'fg3m',bpg:'blk',spg:'stl',tovpg:'tov',min:'min'};
+  Object.entries(keyMap).forEach(([qid,field])=>{
+    (data.per_game_leaders?.[qid]||[]).forEach(entry=>{
+      if(!liveStats[entry.name]) liveStats[entry.name]={};
+      liveStats[entry.name][field]=entry.value;
     });
   });
 
-  const gr = data.game_records || {};
-  const pr = data.player_records || {};
-  const mn = data.manual || {};
+  // Series results from scraper
+  seriesResults = data.series || {};
 
-  QUESTIONS.forEach(q => {
-    if (q.id === 'mov_num')         { q.current = gr.mov_num ?? null; q.context = gr.mov_context ?? null; }
-    if (q.id === 'max_team_pts')    { q.current = gr.max_team_pts ?? null; q.context = gr.max_team_pts_context ?? null; }
-    if (q.id === 'max_player_pts')  { q.current = pr.max_player_pts ?? null; q.context = pr.max_player_pts_context ?? null; }
-    if (q.id === 'game7s')          q.current = gr.game7s ?? null;
-    if (q.id === 'mov_team')        { q.current = gr.mov_team ?? null; q.context = gr.mov_context ?? null; }
-    if (q.id === 'mod_team')        { q.current = gr.mod_team ?? null; q.context = gr.mov_context ?? null; }
-    if (q.id === 'most_games')      q.current = gr.most_games_team ?? null;
-    if (q.id === 'least_games')     q.current = gr.least_games_team ?? null;
-    if (q.id === 'top_scorer_game') { q.current = pr.top_scorer_game ?? null; q.context = pr.top_scorer_context ?? null; }
-    if (q.id === 'techs')           q.current = mn.techs_leader ?? null;
-    if (q.id === 'ejections')       q.current = mn.ejections_leader ?? null;
-    if (q.id === 'larry_bird')      q.current = mn.larry_bird_trophy ?? null;
-    if (q.id === 'magic_trophy')    q.current = mn.magic_trophy ?? null;
-    if (q.id === 'finals_mvp')      q.current = mn.finals_mvp ?? null;
+  const gr=data.game_records||{};
+  const pr=data.player_records||{};
+  const mn=data.manual||{};
+
+  QUESTIONS.forEach(q=>{
+    if(q.id==='mov_num')        {q.current=gr.mov_num??null;q.context=gr.mov_context??null;}
+    if(q.id==='max_team_pts')   {q.current=gr.max_team_pts??null;q.context=gr.max_team_pts_context??null;}
+    if(q.id==='max_player_pts') {q.current=pr.max_player_pts??null;q.context=pr.max_player_pts_context??null;}
+    if(q.id==='game7s')          q.current=gr.game7s??null;
+    if(q.id==='mov_team')       {q.current=gr.mov_team??null;q.context=gr.mov_context??null;}
+    if(q.id==='mod_team')       {q.current=gr.mod_team??null;q.context=gr.mov_context??null;}
+    if(q.id==='most_games')      q.current=gr.most_games_team??null;
+    if(q.id==='least_games')     q.current=gr.least_games_team??null;
+    if(q.id==='top_scorer_game'){q.current=pr.top_scorer_game??null;q.context=pr.top_scorer_context??null;}
+    if(q.id==='techs')           q.current=mn.techs_leader??null;
+    if(q.id==='ejections')       q.current=mn.ejections_leader??null;
+    if(q.id==='larry_bird')      q.current=mn.larry_bird_trophy??null;
+    if(q.id==='magic_trophy')    q.current=mn.magic_trophy??null;
+    if(q.id==='finals_mvp')      q.current=mn.finals_mvp??null;
   });
 }
 
-// ── Admin panel for manual fields ──
-function toggleAdmin() {
-  const panel = document.getElementById('adminPanel');
-  panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+// ============================================================
+// BRACKET SCORING
+// ============================================================
+function getSeriesWinner(teamA, teamB){
+  // Look up in seriesResults from scraper
+  const key1 = `${teamA} vs ${teamB}`;
+  const key2 = `${teamB} vs ${teamA}`;
+  const s = seriesResults[key1] || seriesResults[key2];
+  if(s && s.winner) return s.winner;
+  return null;
 }
 
-async function saveManual() {
-  // Read current stats.json, update manual fields, re-render
-  // Since we can't write files from the browser, we generate
-  // the updated stats.json content for the user to commit
-  const fields = ['techs_leader','ejections_leader','larry_bird_trophy','magic_trophy','finals_mvp'];
-  const values = {};
-  fields.forEach(f => {
-    const el = document.getElementById('admin_' + f);
-    values[f] = el.value.trim() || null;
+function isTeamEliminated(team){
+  // A team is eliminated if they lost any series
+  for(const [key, series] of Object.entries(seriesResults)){
+    if(series.winner && series.winner !== team){
+      if(key.includes(team)) return true;
+    }
+  }
+  return false;
+}
+
+function scoreBracket(pid){
+  const b = BRACKETS[pid];
+  if(!b) return {earned:0, possible:0, picks:[]};
+
+  let earned = 0;
+  let possible = 0;
+  const picks = [];
+
+  // Helper: evaluate a single pick
+  function evalPick(pick, opponentPool, round, pts){
+    // Find the actual winner of the matchup involving this pick
+    // For R1 picks, opponent is known; for later rounds it may be TBD
+    const winner = getSeriesWinner(pick, opponentPool);
+    const eliminated = isTeamEliminated(pick);
+    let status = 'pending';
+
+    if(winner === pick){
+      status = 'correct';
+      earned += pts;
+      possible += pts;
+    } else if(winner && winner !== pick){
+      status = 'wrong';
+      // no pts
+    } else if(eliminated){
+      status = 'dead';
+      // can't earn these pts
+    } else {
+      status = 'pending';
+      possible += pts;
+    }
+    picks.push({pick, round, pts, status});
+  }
+
+  // West R1
+  const wr1 = b.west.r1;
+  R1_MATCHUPS_WEST.forEach((m,i)=>{
+    const opp = wr1[i]===m.high ? m.low : m.high;
+    evalPick(wr1[i], opp, 'W R1', ROUND_PTS.r1);
   });
-
-  // Apply immediately to the page
-  const mn = values;
-  QUESTIONS.forEach(q => {
-    if (q.id === 'techs')      q.current = mn.techs_leader;
-    if (q.id === 'ejections')  q.current = mn.ejections_leader;
-    if (q.id === 'larry_bird') q.current = mn.larry_bird_trophy;
-    if (q.id === 'magic_trophy') q.current = mn.magic_trophy;
-    if (q.id === 'finals_mvp') q.current = mn.finals_mvp;
+  // West Semis
+  b.west.semis.forEach(pick=>{
+    evalPick(pick, null, 'W Semis', ROUND_PTS.semis);
   });
+  // West Finals
+  evalPick(b.west.confFinals[0], null, 'W Finals', ROUND_PTS.confFinals);
 
-  renderAll();
-  document.getElementById('adminPanel').style.display = 'none';
-  showAdminSuccess();
-}
-
-function showAdminSuccess() {
-  const b = document.getElementById('errorBanner');
-  b.style.background = 'rgba(0,255,136,0.1)';
-  b.style.border = '1px solid rgba(0,255,136,0.3)';
-  b.style.color = 'var(--green)';
-  b.textContent = '✓ Manual fields updated';
-  b.style.display = 'block';
-  setTimeout(() => { b.style.display='none'; b.style.background=''; b.style.border=''; b.style.color=''; }, 3000);
-}
-
-function populateAdminFields() {
-  const map = {techs_leader:'techs',ejections_leader:'ejections',larry_bird_trophy:'larry_bird',magic_trophy:'magic_trophy',finals_mvp:'finals_mvp'};
-  Object.entries(map).forEach(([field, qid]) => {
-    const q = QUESTIONS.find(q=>q.id===qid);
-    const el = document.getElementById('admin_'+field);
-    if (el && q) el.value = q.current || '';
+  // East R1
+  const er1 = b.east.r1;
+  R1_MATCHUPS_EAST.forEach((m,i)=>{
+    const opp = er1[i]===m.high ? m.low : m.high;
+    evalPick(er1[i], opp, 'E R1', ROUND_PTS.r1);
   });
+  // East Semis
+  b.east.semis.forEach(pick=>{
+    evalPick(pick, null, 'E Semis', ROUND_PTS.semis);
+  });
+  // East Finals
+  evalPick(b.east.confFinals[0], null, 'E Finals', ROUND_PTS.confFinals);
+
+  // Finals
+  evalPick(b.finals, null, 'Finals', ROUND_PTS.finals);
+
+  return {earned, possible, picks};
 }
 
+// ============================================================
+// QUESTION SCORING
+// ============================================================
 function getRanked(k){ return Object.entries(liveStats).filter(([,s])=>s[k]>0).sort((a,b)=>b[1][k]-a[1][k]); }
 function getPickersFor(qid,canon){ const q=PICKS[qid]; if(!q) return []; return PARTICIPANTS.filter(p=>q[p.id]?.canonical.toLowerCase()===canon.toLowerCase()).map(p=>p.display); }
 function getClosestPickers(qid,cur){ if(cur===null) return null; const q=PICKS[qid]; if(!q) return []; let min=Infinity,val=null; Object.values(q).forEach(p=>{ const d=Math.abs(p.canonical-cur); if(d<min){min=d;val=p.canonical;} }); return PARTICIPANTS.filter(p=>q[p.id]?.canonical===val).map(p=>p.display); }
 
-function computeScores(){
-  const s={}; PARTICIPANTS.forEach(p=>{s[p.id]={q:0,bracket:BRACKET_PICKS[p.id]||0};});
-  QUESTIONS.filter(q=>q.type==='player'&&q.apiKey).forEach(q=>{ const r=getRanked(q.apiKey); if(!r.length) return; const w=r[0][0]; PARTICIPANTS.forEach(p=>{if(PICKS[q.id]?.[p.id]?.canonical.toLowerCase()===w.toLowerCase()) s[p.id].q+=1;}); });
-  QUESTIONS.filter(q=>q.type==='numeric').forEach(q=>{ if(q.current===null) return; const cp=getClosestPickers(q.id,q.current); if(cp) PARTICIPANTS.filter(p=>cp.includes(p.display)).forEach(p=>s[p.id].q+=1); });
-  QUESTIONS.filter(q=>q.type==='text').forEach(q=>{ if(!q.current) return; PARTICIPANTS.forEach(p=>{if(PICKS[q.id]?.[p.id]?.canonical.toLowerCase()===q.current.toLowerCase()) s[p.id].q+=1;}); });
+function computeQScores(){
+  const s={};
+  PARTICIPANTS.filter(p=>!p.bracketOnly).forEach(p=>{ s[p.id]=0; });
+  QUESTIONS.filter(q=>q.type==='player'&&q.apiKey).forEach(q=>{
+    const r=getRanked(q.apiKey); if(!r.length) return;
+    const w=r[0][0];
+    PARTICIPANTS.filter(p=>!p.bracketOnly).forEach(p=>{ if(PICKS[q.id]?.[p.id]?.canonical.toLowerCase()===w.toLowerCase()) s[p.id]+=1; });
+  });
+  QUESTIONS.filter(q=>q.type==='numeric').forEach(q=>{
+    if(q.current===null) return;
+    const cp=getClosestPickers(q.id,q.current);
+    if(cp) PARTICIPANTS.filter(p=>!p.bracketOnly&&cp.includes(p.display)).forEach(p=>s[p.id]+=1);
+  });
+  QUESTIONS.filter(q=>q.type==='text').forEach(q=>{
+    if(!q.current) return;
+    PARTICIPANTS.filter(p=>!p.bracketOnly).forEach(p=>{ if(PICKS[q.id]?.[p.id]?.canonical.toLowerCase()===q.current.toLowerCase()) s[p.id]+=1; });
+  });
   return s;
 }
 
+function computeAllScores(){
+  const qScores=computeQScores();
+  return PARTICIPANTS.map(p=>{
+    const bkt=scoreBracket(p.id);
+    const q=qScores[p.id]||0;
+    return {...p, bkt:bkt.earned, bktPossible:bkt.possible, q, total:bkt.earned+q};
+  }).sort((a,b)=>b.total-a.total);
+}
+
+// ============================================================
+// RENDER — LEADERBOARD
+// ============================================================
 function renderLeaderboard(){
-  const sc=computeScores();
-  const sorted=PARTICIPANTS.map(p=>({...p,...sc[p.id],total:sc[p.id].q+sc[p.id].bracket})).sort((a,b)=>b.total-a.total);
-  document.getElementById('leaderboard').innerHTML=sorted.map((p,i)=>`
+  const scores=computeAllScores();
+  document.getElementById('leaderboard').innerHTML=scores.map((p,i)=>`
     <div class="lb-row ${i===0?'top1':''}" onclick="openPlayerDetail('${p.id}')">
       <div class="lb-rank ${i===0?'gold':''}">${i===0?'🔥':i+1}</div>
       <div class="lb-name">${p.display}</div>
-      <div class="lb-pts">${p.bracket}</div>
-      <div class="lb-pts">${p.q}</div>
+      <div class="lb-pts">${p.bkt}</div>
+      <div class="lb-pts">${p.bracketOnly?'—':p.q}</div>
       <div class="lb-pts-total">${p.total}</div>
     </div>`).join('');
 }
 
+// ============================================================
+// RENDER — PLAYER CARDS
+// ============================================================
 function makePlayerCard(qid,ranked,unit,apiKey){
   if(!ranked.length) return '<div class="tbd">No data yet</div>';
   const [name,stats]=ranked[0]; const val=stats[apiKey];
@@ -576,75 +833,247 @@ function renderTotalGrid(){
 
 function renderNumericGrid(){
   document.getElementById('numericGrid').innerHTML=QUESTIONS.filter(q=>q.section==='numeric').map(q=>{
-    const cur=q.current;
-    const ctx=q.context;
+    const cur=q.current; const ctx=q.context;
     const sorted=Object.entries(PICKS[q.id]||{}).sort((a,b)=>cur===null?a[1].canonical-b[1].canonical:Math.abs(a[1].canonical-cur)-Math.abs(b[1].canonical-cur));
     const rows=sorted.map(([pid,pick],i)=>{ const per=PARTICIPANTS.find(p=>p.id===pid); const diff=cur!==null?Math.abs(pick.canonical-cur):null; return `<div class="numeric-row ${i===0&&cur!==null?'current':''}"><div class="numeric-name">${per.display}</div><div style="display:flex;align-items:baseline;"><div class="numeric-val">${pick.raw}</div>${diff!==null?`<div class="numeric-diff">&nbsp;${diff===0?'✓':'±'+diff}</div>`:''}</div></div>`; }).join('');
-    const ctxLine = ctx ? `<div style="font-size:10px;color:var(--muted);margin-bottom:6px;">${ctx}</div>` : '';
+    const ctxLine=ctx?`<div style="font-size:10px;color:var(--muted);margin-bottom:6px;">${ctx}</div>`:'';
     const hdr=cur!==null?`<div style="font-size:11px;color:var(--cyan);font-weight:700;margin-bottom:4px;">Current: ${cur} ${q.unit}</div>${ctxLine}`:`<div class="pending-tag" style="margin-bottom:8px;">Pending</div>`;
     return `<div class="q-card"><div class="q-card-header">${q.label}</div><div class="q-card-body">${hdr}<div class="numeric-grid">${rows}</div></div></div>`;
   }).join('');
 }
 
-function renderTextCards(section, containerId){
+function renderTextCards(section,containerId){
   document.getElementById(containerId).innerHTML=QUESTIONS.filter(q=>q.section===section).map(q=>{
-    const cur=q.current;
-    const ctx=q.context;
+    const cur=q.current; const ctx=q.context;
     const groups={};
-    Object.entries(PICKS[q.id]||{}).forEach(([pid,pick])=>{
-      if(!groups[pick.canonical]) groups[pick.canonical]=[];
-      const per=PARTICIPANTS.find(p=>p.id===pid);
-      if(per) groups[pick.canonical].push(per.display);
-    });
-    const ctxLine = ctx ? `<div style="font-size:10px;color:var(--muted);margin-top:2px;margin-bottom:8px;">${ctx}</div>` : '';
-    const hdr=cur
-      ?`<div class="current-answer-block"><div class="answer-label">Current</div><div class="current-value">${cur}</div>${ctxLine}</div>`
-      :`<div class="pending-tag">Pending</div>`;
-    const rows=Object.entries(groups).map(([canon,names])=>{
-      const hit=cur&&canon.toLowerCase()===cur.toLowerCase();
-      return `<div class="place-row" style="margin-bottom:5px;"><div class="place-name" style="font-size:12px;">${canon}</div><span class="pick-tag ${hit?'pick-hit':'pick-miss'}">${names.join(' · ')}</span></div>`;
-    }).join('');
+    Object.entries(PICKS[q.id]||{}).forEach(([pid,pick])=>{ if(!groups[pick.canonical]) groups[pick.canonical]=[]; const per=PARTICIPANTS.find(p=>p.id===pid); if(per) groups[pick.canonical].push(per.display); });
+    const ctxLine=ctx?`<div style="font-size:10px;color:var(--muted);margin-top:2px;margin-bottom:8px;">${ctx}</div>`:'';
+    const hdr=cur?`<div class="current-answer-block"><div class="answer-label">Current</div><div class="current-value">${cur}</div>${ctxLine}</div>`:`<div class="pending-tag">Pending</div>`;
+    const rows=Object.entries(groups).map(([canon,names])=>{ const hit=cur&&canon.toLowerCase()===cur.toLowerCase(); return `<div class="place-row" style="margin-bottom:5px;"><div class="place-name" style="font-size:12px;">${canon}</div><span class="pick-tag ${hit?'pick-hit':'pick-miss'}">${names.join(' · ')}</span></div>`; }).join('');
     return `<div class="q-card"><div class="q-card-header">${q.label}</div><div class="q-card-body">${hdr}${rows}</div></div>`;
   }).join('');
 }
 
+// ============================================================
+// RENDER — BRACKETS TAB
+// ============================================================
+function renderBracketGrid(){
+  const scores=computeAllScores();
+  document.getElementById('bracketGrid').innerHTML=scores.map(p=>{
+    const b=BRACKETS[p.id];
+    if(!b) return '';
+    const logo=TEAM_LOGOS[b.finals]||'🏀';
+    const bScore=scoreBracket(p.id);
+
+    // Summary rows — just show round totals
+    const roundSummary = [
+      {label:'R1 West', picks:b.west.r1, pts:ROUND_PTS.r1},
+      {label:'Semis W', picks:b.west.semis, pts:ROUND_PTS.semis},
+      {label:'W Finals', picks:b.west.confFinals, pts:ROUND_PTS.confFinals},
+      {label:'R1 East', picks:b.east.r1, pts:ROUND_PTS.r1},
+      {label:'Semis E', picks:b.east.semis, pts:ROUND_PTS.semis},
+      {label:'E Finals', picks:b.east.confFinals, pts:ROUND_PTS.confFinals},
+    ].map(round=>{
+      const correct=round.picks.filter(pick=>bScore.picks.find(bp=>bp.pick===pick&&bp.status==='correct')).length;
+      const total=round.picks.length;
+      const dead=round.picks.some(pick=>bScore.picks.find(bp=>bp.pick===pick&&bp.status==='dead'));
+      const cls=correct===total?'bracket-pick-correct':dead?'bracket-pick-dead':'bracket-pick-pending';
+      return `<div class="bracket-series-row"><span style="color:var(--muted);font-size:10px;">${round.label}</span><span class="${cls}">${correct}/${total}</span></div>`;
+    }).join('');
+
+    return `<div class="bracket-person-card" onclick="openBracketModal('${p.id}')">
+      <div class="bracket-person-header">
+        <div class="bracket-champ-logo">${logo}</div>
+        <div>
+          <div class="bracket-person-name">${p.display}</div>
+          <div style="font-size:11px;color:var(--muted);">${b.finals}</div>
+        </div>
+        <div style="text-align:right;">
+          <div class="bracket-pts-earned">${bScore.earned}</div>
+          <div class="bracket-pts-possible">/ ${bScore.possible} possible</div>
+        </div>
+      </div>
+      <div class="bracket-person-body">${roundSummary}</div>
+    </div>`;
+  }).join('');
+}
+
+function openBracketModal(pid){
+  const p=PARTICIPANTS.find(x=>x.id===pid);
+  const b=BRACKETS[pid];
+  if(!b) return;
+  const bScore=scoreBracket(pid);
+
+  function pickHTML(pick, roundLabel){
+    const bp=bScore.picks.find(x=>x.pick===pick&&x.round===roundLabel);
+    const status=bp?bp.status:'pending';
+    const icon=status==='correct'?'✓':status==='wrong'?'✗':status==='dead'?'✗':'?';
+    const cls=`bm-pick ${status}`;
+    return `<div class="${cls}">
+      <span class="bm-round">${roundLabel}</span>
+      <span class="bm-team">${pick}</span>
+      <span class="bm-status">${icon}</span>
+    </div>`;
+  }
+
+  const westHTML=`
+    <div class="bracket-conf-section">
+      <div class="bracket-conf-title">🌎 West</div>
+      ${b.west.r1.map((t,i)=>pickHTML(t,`W R1`)).join('')}
+      ${b.west.semis.map(t=>pickHTML(t,'W Semis')).join('')}
+      ${pickHTML(b.west.confFinals[0],'W Finals')}
+    </div>`;
+
+  const eastHTML=`
+    <div class="bracket-conf-section">
+      <div class="bracket-conf-title">🌍 East</div>
+      ${b.east.r1.map(t=>pickHTML(t,'E R1')).join('')}
+      ${b.east.semis.map(t=>pickHTML(t,'E Semis')).join('')}
+      ${pickHTML(b.east.confFinals[0],'E Finals')}
+    </div>`;
+
+  const finalsHTML=`
+    <div class="bracket-finals-section">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--fire2);margin-bottom:8px;">🏆 Championship Pick</div>
+      ${pickHTML(b.finals,'Finals')}
+      <div class="bracket-tiebreaker">Tiebreaker: ${b.tiebreaker} pts (Finals MVP score)</div>
+    </div>`;
+
+  document.getElementById('bracketModal').innerHTML=`
+    <div class="bracket-modal-header">
+      <div class="bracket-modal-title">${TEAM_LOGOS[b.finals]||'🏀'} ${p.display}'s Bracket</div>
+      <button class="bracket-close-btn" onclick="closeBracketModal()">✕ Close</button>
+    </div>
+    <div class="bracket-modal-grid">${westHTML}${eastHTML}</div>
+    ${finalsHTML}`;
+
+  const overlay=document.getElementById('bracketModalOverlay');
+  overlay.style.display='flex';
+}
+
+function closeBracketModal(e){
+  if(!e||e.target===document.getElementById('bracketModalOverlay')){
+    document.getElementById('bracketModalOverlay').style.display='none';
+  }
+}
+
+// ============================================================
+// RENDER — PARTICIPANTS TAB
+// ============================================================
 function renderPlayerGrid(){
-  const sc=computeScores();
-  const sorted=PARTICIPANTS.map(p=>({...p,...sc[p.id],total:sc[p.id].q+sc[p.id].bracket})).sort((a,b)=>b.total-a.total);
-  document.getElementById('playerGrid').innerHTML=sorted.map(p=>`<div class="player-card" onclick="openPlayerDetail('${p.id}')"><div class="player-card-avatar">${getInitials(p.display)}</div><div class="player-card-name">${p.display}</div><div class="player-card-pts">${p.total}</div><div class="player-card-sub">pts total</div></div>`).join('');
+  const scores=computeAllScores();
+  document.getElementById('playerGrid').innerHTML=scores.filter(p=>!p.bracketOnly).map(p=>`
+    <div class="player-card" onclick="openPlayerDetail('${p.id}')">
+      <div class="player-card-avatar">${getInitials(p.display)}</div>
+      <div class="player-card-name">${p.display}</div>
+      <div class="player-card-pts">${p.total}</div>
+      <div class="player-card-sub">pts total</div>
+    </div>`).join('');
 }
 
 function openPlayerDetail(pid){
   switchTab('participants');
   const per=PARTICIPANTS.find(p=>p.id===pid);
-  const sc=computeScores(); const s=sc[pid];
+  if(!per||per.bracketOnly){ switchTab('brackets'); return; }
+  const scores=computeAllScores(); const s=scores.find(x=>x.id===pid);
   document.getElementById('participantsList').style.display='none';
   document.getElementById('playerDetail').classList.add('active');
-  document.getElementById('detailHeader').innerHTML=`<div class="detail-avatar">${getInitials(per.display)}</div><div><div class="detail-name">${per.display}</div><div class="detail-pts-row"><div><div class="detail-pts-val" style="color:var(--fire2)">${s.bracket}</div><div class="detail-pts-label">Bracket</div></div><div><div class="detail-pts-val" style="color:var(--cyan)">${s.q}</div><div class="detail-pts-label">Questions</div></div><div><div class="detail-pts-val">${s.bracket+s.q}</div><div class="detail-pts-label">Total</div></div></div></div>`;
+  document.getElementById('detailHeader').innerHTML=`
+    <div class="detail-avatar">${getInitials(per.display)}</div>
+    <div>
+      <div class="detail-name">${per.display}</div>
+      <div class="detail-pts-row">
+        <div><div class="detail-pts-val" style="color:var(--fire2)">${s.bkt}</div><div class="detail-pts-label">Bracket</div></div>
+        <div><div class="detail-pts-val" style="color:var(--cyan)">${s.q}</div><div class="detail-pts-label">Questions</div></div>
+        <div><div class="detail-pts-val">${s.total}</div><div class="detail-pts-label">Total</div></div>
+      </div>
+    </div>`;
   const rows=QUESTIONS.map(q=>{
     const pick=PICKS[q.id]?.[pid]; if(!pick) return '';
     let status='pending',stxt='Pending',pts='';
-    if(q.type==='player'&&q.apiKey){ const r=getRanked(q.apiKey); if(r.length){ if(pick.canonical.toLowerCase()===r[0][0].toLowerCase()){status='correct';stxt='✓ Correct';pts='1';}else{status='wrong';stxt=r[0][0].split(' ').pop()+' leads';} } }
+    if(q.type==='player'&&q.apiKey){ const r=getRanked(q.apiKey); if(r.length){ if(pick.canonical.toLowerCase()===r[0][0].toLowerCase()){status='correct';stxt='✓ Correct';pts='1';}else{status='wrong';stxt=r[0][0]+' leads';} } }
     else if(q.type==='numeric'&&q.current!==null){ const cp=getClosestPickers(q.id,q.current); if(cp&&cp.includes(per.display)){status='correct';stxt='✓ Closest';pts='1';}else{status='wrong';stxt='Off by '+Math.abs(pick.canonical-q.current);} }
     else if(q.type==='text'&&q.current){ if(pick.canonical.toLowerCase()===q.current.toLowerCase()){status='correct';stxt='✓ Correct';pts='1';}else{status='wrong';stxt='Current: '+q.current;} }
     return `<tr><td style="color:var(--muted);font-size:12px;max-width:140px;">${q.label}</td><td>${pick.raw}</td><td><span class="ans-status ans-${status}">${stxt}</span></td><td class="ans-pts">${pts}</td></tr>`;
   }).join('');
   document.getElementById('detailTable').innerHTML=`<thead><tr><th>Question</th><th>Your pick</th><th>Status</th><th style="text-align:right">Pts</th></tr></thead><tbody>${rows}</tbody>`;
 }
-
 function closePlayerDetail(){ document.getElementById('participantsList').style.display=''; document.getElementById('playerDetail').classList.remove('active'); }
 
+// ============================================================
+// RENDER — QUESTIONS TAB
+// ============================================================
 function renderQuestionsView(){
   document.getElementById('questionsView').innerHTML=QUESTIONS.map(q=>{
-    const ans=PARTICIPANTS.map(p=>{ const pk=PICKS[q.id]?.[p.id]; if(!pk) return ''; return `<div class="q-answer-cell"><div class="q-cell-name">${p.display}</div><div class="q-cell-val">${pk.raw}</div></div>`; }).join('');
-    const cur=q.current!==null&&q.current!==undefined?`Current: ${q.current}${q.unit?' '+q.unit:''}`:'Pending';
-    return `<div class="q-view-card"><div class="q-view-header"><div class="q-view-title">${q.label}</div><div class="q-view-current">${cur}</div></div><div class="q-answers-grid">${ans}</div></div>`;
+    const participants=PARTICIPANTS.filter(p=>!p.bracketOnly);
+    const answers=participants.map(p=>{
+      const pk=PICKS[q.id]?.[p.id]; if(!pk) return '';
+      let isCorrect=false,isWrong=false;
+      if(q.type==='player'&&q.apiKey){ const r=getRanked(q.apiKey); if(r.length){ isCorrect=pk.canonical.toLowerCase()===r[0][0].toLowerCase(); isWrong=!isCorrect&&r.length>0; } }
+      else if(q.type==='numeric'&&q.current!==null){ const cp=getClosestPickers(q.id,q.current); isCorrect=cp&&cp.includes(p.display); isWrong=!isCorrect; }
+      else if(q.type==='text'&&q.current){ isCorrect=pk.canonical.toLowerCase()===q.current.toLowerCase(); isWrong=!isCorrect; }
+      const cls=isCorrect?'correct':isWrong?'wrong':'';
+      return `<div class="q-answer-cell ${cls}"><div class="q-cell-name">${p.display}</div><div class="q-cell-val">${pk.raw}</div></div>`;
+    }).join('');
+    // Current answer display
+    let curText='Pending';
+    if(q.type==='player'&&q.apiKey){ const r=getRanked(q.apiKey); if(r.length) curText=`${r[0][0]} (${r[0][1][q.apiKey].toFixed(1)})`; }
+    else if(q.current!==null&&q.current!==undefined) curText=`${q.current}${q.unit?' '+q.unit:''}`;
+    return `<div class="q-view-card"><div class="q-view-header"><div class="q-view-title">${q.label}</div><div class="q-view-current">${curText}</div></div><div class="q-answers-grid">${answers}</div></div>`;
   }).join('');
 }
 
-function renderAll(){ renderLeaderboard(); renderPerGameGrid(); renderTotalGrid(); renderNumericGrid(); renderTextCards('team','teamGrid'); renderTextCards('awards','awardsGrid'); renderPlayerGrid(); renderQuestionsView(); }
+// ============================================================
+// ADMIN
+// ============================================================
+function toggleAdmin(){
+  const p=document.getElementById('adminPanel');
+  p.style.display=p.style.display==='flex'?'none':'flex';
+}
+function saveManual(){
+  const fields=['techs_leader','ejections_leader','larry_bird_trophy','magic_trophy','finals_mvp'];
+  const mn={};
+  fields.forEach(f=>{ const el=document.getElementById('admin_'+f); mn[f]=el.value.trim()||null; });
+  QUESTIONS.forEach(q=>{
+    if(q.id==='techs') q.current=mn.techs_leader;
+    if(q.id==='ejections') q.current=mn.ejections_leader;
+    if(q.id==='larry_bird') q.current=mn.larry_bird_trophy;
+    if(q.id==='magic_trophy') q.current=mn.magic_trophy;
+    if(q.id==='finals_mvp') q.current=mn.finals_mvp;
+  });
+  renderAll();
+  document.getElementById('adminPanel').style.display='none';
+  const b=document.getElementById('errorBanner');
+  b.style.cssText='background:rgba(0,255,136,.1);border:1px solid rgba(0,255,136,.3);color:var(--green);display:block;';
+  b.textContent='✓ Manual fields updated';
+  setTimeout(()=>{b.style.display='none';b.style.cssText='';},3000);
+}
+function populateAdminFields(){
+  const map={techs_leader:'techs',ejections_leader:'ejections',larry_bird_trophy:'larry_bird',magic_trophy:'magic_trophy',finals_mvp:'finals_mvp'};
+  Object.entries(map).forEach(([f,qid])=>{ const q=QUESTIONS.find(x=>x.id===qid); const el=document.getElementById('admin_'+f); if(el&&q) el.value=q.current||''; });
+}
 
-function switchTab(t){ document.querySelectorAll('.nav-tab').forEach(x=>x.classList.remove('active')); document.querySelectorAll('.view').forEach(x=>x.classList.remove('active')); document.getElementById('tab-'+t).classList.add('active'); document.querySelector(`.nav-tab[onclick="switchTab('${t}')"]`).classList.add('active'); if(t!=='participants') closePlayerDetail(); }
+// ============================================================
+// MISC
+// ============================================================
+function renderAll(){
+  renderLeaderboard();
+  renderPerGameGrid();
+  renderTotalGrid();
+  renderNumericGrid();
+  renderTextCards('team','teamGrid');
+  renderTextCards('awards','awardsGrid');
+  renderPlayerGrid();
+  renderBracketGrid();
+  renderQuestionsView();
+}
+function switchTab(t){
+  document.querySelectorAll('.nav-tab').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
+  document.getElementById('tab-'+t).classList.add('active');
+  document.querySelector(`.nav-tab[onclick="switchTab('${t}')"]`).classList.add('active');
+  if(t!=='participants') closePlayerDetail();
+}
 function showError(m){ const b=document.getElementById('errorBanner'); b.textContent=m; b.style.display='block'; }
 function hideError(){ document.getElementById('errorBanner').style.display='none'; }
 
