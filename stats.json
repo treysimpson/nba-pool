@@ -1,20 +1,270 @@
 {
-  "updated": null,
+  "updated": "2026-04-26T19:47:04.854478Z",
   "season": 2026,
   "per_game_leaders": {
-    "ppg": [], "rpg": [], "apg": [], "ftpg": [],
-    "tpm": [], "bpg": [], "spg": [], "tovpg": [], "min": []
+    "ppg": [
+      {
+        "name": "Shai Gilgeous-Alexander",
+        "value": 34.7,
+        "gp": 3
+      },
+      {
+        "name": "Cade Cunningham",
+        "value": 31.0,
+        "gp": 3
+      },
+      {
+        "name": "Jaylen Brown",
+        "value": 29.0,
+        "gp": 3
+      },
+      {
+        "name": "Dillon Brooks",
+        "value": 27.0,
+        "gp": 3
+      },
+      {
+        "name": "Tyrese Maxey",
+        "value": 27.0,
+        "gp": 3
+      }
+    ],
+    "rpg": [
+      {
+        "name": "Nikola Joki\u0107",
+        "value": 14.5,
+        "gp": 4
+      },
+      {
+        "name": "Alperen \u015eeng\u00fcn",
+        "value": 11.7,
+        "gp": 3
+      },
+      {
+        "name": "Josh Hart",
+        "value": 11.3,
+        "gp": 4
+      },
+      {
+        "name": "Rudy Gobert",
+        "value": 11.0,
+        "gp": 4
+      },
+      {
+        "name": "Karl-Anthony Towns",
+        "value": 10.8,
+        "gp": 4
+      }
+    ],
+    "apg": [
+      {
+        "name": "LeBron James",
+        "value": 8.7,
+        "gp": 3
+      },
+      {
+        "name": "Jrue Holiday",
+        "value": 8.3,
+        "gp": 3
+      },
+      {
+        "name": "Marcus Smart",
+        "value": 8.3,
+        "gp": 3
+      },
+      {
+        "name": "Cade Cunningham",
+        "value": 8.0,
+        "gp": 3
+      },
+      {
+        "name": "Shai Gilgeous-Alexander",
+        "value": 8.0,
+        "gp": 3
+      }
+    ],
+    "ftpg": [
+      {
+        "name": "Shai Gilgeous-Alexander",
+        "value": 11.7,
+        "gp": 3
+      },
+      {
+        "name": "Jamal Murray",
+        "value": 7.8,
+        "gp": 4
+      },
+      {
+        "name": "Cade Cunningham",
+        "value": 7.3,
+        "gp": 3
+      },
+      {
+        "name": "Nikola Joki\u0107",
+        "value": 6.8,
+        "gp": 4
+      },
+      {
+        "name": "Paolo Banchero",
+        "value": 6.7,
+        "gp": 3
+      }
+    ],
+    "tpm": [
+      {
+        "name": "Dillon Brooks",
+        "value": 4.0,
+        "gp": 3
+      },
+      {
+        "name": "Scoot Henderson",
+        "value": 4.0,
+        "gp": 3
+      },
+      {
+        "name": "Jabari Smith Jr.",
+        "value": 4.0,
+        "gp": 3
+      },
+      {
+        "name": "Tyrese Maxey",
+        "value": 3.7,
+        "gp": 3
+      },
+      {
+        "name": "Nickeil Alexander-Walker",
+        "value": 3.3,
+        "gp": 4
+      }
+    ],
+    "bpg": [
+      {
+        "name": "Chet Holmgren",
+        "value": 2.7,
+        "gp": 3
+      },
+      {
+        "name": "Jarrett Allen",
+        "value": 2.0,
+        "gp": 3
+      },
+      {
+        "name": "Jalen Duren",
+        "value": 2.0,
+        "gp": 3
+      },
+      {
+        "name": "Ausar Thompson",
+        "value": 2.0,
+        "gp": 3
+      },
+      {
+        "name": "Karl-Anthony Towns",
+        "value": 1.8,
+        "gp": 4
+      }
+    ],
+    "spg": [
+      {
+        "name": "Marcus Smart",
+        "value": 3.7,
+        "gp": 3
+      },
+      {
+        "name": "Alperen \u015eeng\u00fcn",
+        "value": 2.7,
+        "gp": 3
+      },
+      {
+        "name": "Dyson Daniels",
+        "value": 2.5,
+        "gp": 4
+      },
+      {
+        "name": "Anthony Black",
+        "value": 2.3,
+        "gp": 3
+      },
+      {
+        "name": "Tari Eason",
+        "value": 2.3,
+        "gp": 3
+      }
+    ],
+    "tovpg": [
+      {
+        "name": "Cade Cunningham",
+        "value": 6.3,
+        "gp": 3
+      },
+      {
+        "name": "James Harden",
+        "value": 5.7,
+        "gp": 3
+      },
+      {
+        "name": "LeBron James",
+        "value": 4.3,
+        "gp": 3
+      },
+      {
+        "name": "Nikola Joki\u0107",
+        "value": 4.0,
+        "gp": 4
+      },
+      {
+        "name": "CJ McCollum",
+        "value": 3.8,
+        "gp": 4
+      }
+    ],
+    "min": [
+      {
+        "name": "Jamal Murray",
+        "value": 159.0,
+        "gp": 0
+      },
+      {
+        "name": "Nikola Joki\u0107",
+        "value": 156.0,
+        "gp": 0
+      },
+      {
+        "name": "OG Anunoby",
+        "value": 152.0,
+        "gp": 0
+      },
+      {
+        "name": "Nickeil Alexander-Walker",
+        "value": 150.0,
+        "gp": 0
+      },
+      {
+        "name": "Jalen Johnson",
+        "value": 148.0,
+        "gp": 0
+      }
+    ]
   },
   "game_records": {
-    "mov_num": null, "mov_team": null, "mod_team": null, "mov_context": null,
-    "most_games_team": null, "most_games_count": 0,
-    "least_games_team": null, "least_games_count": 0,
-    "max_team_pts": null, "max_team_pts_team": null, "max_team_pts_context": null,
-    "game7s": null
+    "mov_num": 35,
+    "mov_team": "Oklahoma City Thunder",
+    "mod_team": "Phoenix Suns",
+    "mov_context": "Oklahoma City Thunder def. Phoenix Suns 119-84 (Game 1)",
+    "most_games_team": "Denver Nuggets",
+    "most_games_count": 4,
+    "least_games_team": "Cleveland Cavaliers",
+    "least_games_count": 3,
+    "max_team_pts": 126,
+    "max_team_pts_team": "Cleveland Cavaliers",
+    "max_team_pts_context": "Cleveland Cavaliers vs Toronto Raptors, Game 1",
+    "game7s": 0
   },
   "player_records": {
-    "top_scorer_game": null, "top_scorer_context": null,
-    "max_player_pts": null, "max_player_pts_context": null
+    "top_scorer_game": "Shai Gilgeous-Alexander",
+    "top_scorer_context": "34.7 PPG over 3 games",
+    "max_player_pts": null,
+    "max_player_pts_context": null
   },
   "manual": {
     "techs_leader": null,
