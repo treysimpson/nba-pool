@@ -41,7 +41,6 @@ URLS = {
     "per_game": f"https://www.basketball-reference.com/playoffs/NBA_{SEASON}_per_game.html",
     "totals":   f"https://www.basketball-reference.com/playoffs/NBA_{SEASON}_totals.html",
     "games":    f"https://www.basketball-reference.com/playoffs/NBA_{SEASON}_games.html",
-    "game_highs": f"https://www.basketball-reference.com/play-index/pgl_finder.fcgi?request=1&match=game&type=playoffs&year_min={SEASON}&year_max={SEASON}&age_min=0&age_max=99&is_playoffs=Y&order_by=pts&order_by_asc=&offset=0",
 }
 
 
@@ -117,22 +116,56 @@ def parse_player_table(html, table_id):
 
 def parse_per_game(html):
     print("Parsing per-game stats...")
-    rows = parse_player_table(html, "per_game_stats")
+    table = find_table(html, "per_game_stats")
+    if not table:
+        soup = BeautifulSoup(html, "lxml")
+        tables = soup.find_all("table")
+        print(f"  per_game_stats not found. Available: {[t.get('id') for t in tables]}")
+        return []
+
     players = []
-    for row_data in rows:
+    headers = []
+    for row in table.find_all("tr"):
+        cls = row.get("class", [])
+        if "over_header" in cls:
+            continue
+        cells = row.find_all(["th", "td"])
+        if not cells:
+            continue
+        if "thead" in cls or row.find("th", {"data-stat": "player"}):
+            headers = [c.get("data-stat", "") for c in cells]
+            continue
+        if not headers:
+            continue
+        row_data = {headers[i]: c.get_text(strip=True) for i, c in enumerate(cells) if i < len(headers)}
         player = row_data.get("player", "").replace("*", "").strip()
+        if not player or player == "Player":
+            continue
+
+        # Extract BBRef player ID from the link e.g. /players/j/jamesle01.html
+        player_link = None
+        for cell in cells:
+            a = cell.find("a", href=True)
+            if a and "/players/" in a["href"]:
+                import re
+                m = re.search(r'/players/\w/(\w+)\.html', a["href"])
+                if m:
+                    player_link = m.group(1)
+                    break
+
         try:
             entry = {
-                "name": player,
-                "gp":   int(row_data.get("g", 0) or 0),
-                "pts":  float(row_data.get("pts_per_g", 0) or 0),
-                "reb":  float(row_data.get("trb_per_g", 0) or 0),
-                "ast":  float(row_data.get("ast_per_g", 0) or 0),
-                "ftm":  float(row_data.get("ft_per_g", 0) or 0),
-                "fg3m": float(row_data.get("fg3_per_g", 0) or 0),
-                "blk":  float(row_data.get("blk_per_g", 0) or 0),
-                "stl":  float(row_data.get("stl_per_g", 0) or 0),
-                "tov":  float(row_data.get("tov_per_g", 0) or 0),
+                "name":      player,
+                "bbref_id":  player_link,
+                "gp":        int(row_data.get("g", 0) or 0),
+                "pts":       float(row_data.get("pts_per_g", 0) or 0),
+                "reb":       float(row_data.get("trb_per_g", 0) or 0),
+                "ast":       float(row_data.get("ast_per_g", 0) or 0),
+                "ftm":       float(row_data.get("ft_per_g", 0) or 0),
+                "fg3m":      float(row_data.get("fg3_per_g", 0) or 0),
+                "blk":       float(row_data.get("blk_per_g", 0) or 0),
+                "stl":       float(row_data.get("stl_per_g", 0) or 0),
+                "tov":       float(row_data.get("tov_per_g", 0) or 0),
             }
             if entry["gp"] >= 1:
                 players.append(entry)
@@ -304,52 +337,60 @@ def compute_game_records(games):
     }
 
 
-def fetch_player_game_highs():
-    """Scrape BBRef playoff game finder for highest single-game scores."""
-    print("Fetching player single-game highs...")
-    # BBRef game finder URL — sorted by pts descending, playoffs only
-    url = URLS["game_highs"]
+def fetch_player_game_highs(per_game_players):
+    """Fetch single-game scoring highs from StatMuse — one page, no blocking."""
+    print("Fetching single-game highs from StatMuse...")
+    url = "https://www.statmuse.com/nba/ask/most-points-in-a-single-playoff-game-in-this-years-playoffs"
     html = fetch(url)
     if not html:
-        print("  Could not fetch game highs")
+        print("  Could not fetch from StatMuse")
         return []
 
     soup = BeautifulSoup(html, "lxml")
-    # Also check comments
-    table = soup.find("table", {"id": "pgl_basic"})
-    if not table:
-        for comment in soup.find_all(string=lambda t: isinstance(t, Comment)):
-            inner = BeautifulSoup(comment, "lxml")
-            table = inner.find("table", {"id": "pgl_basic"})
-            if table:
-                break
 
+    # Find the results table
+    table = soup.find("table")
     if not table:
-        print("  pgl_basic table not found")
+        print("  No table found on StatMuse page")
         return []
 
     results = []
     headers = []
     for row in table.find_all("tr"):
-        cls = row.get("class", [])
-        if "over_header" in cls or "thead" in cls:
-            cells = row.find_all(["th", "td"])
-            if cells:
-                headers = [c.get("data-stat", "") for c in cells]
-            continue
         cells = row.find_all(["th", "td"])
-        if not cells or not headers:
+        if not cells:
             continue
-        row_data = {headers[i]: c.get_text(strip=True) for i, c in enumerate(cells) if i < len(headers)}
-        player = row_data.get("player", "").replace("*", "").strip()
-        pts_str = row_data.get("pts", "")
-        date = row_data.get("date_game", "")
-        opp = row_data.get("opp_id", "")
-        if not player or not pts_str:
+        texts = [c.get_text(strip=True) for c in cells]
+        # Header row
+        if not headers and any(t in texts for t in ["NAME", "PTS", "DATE"]):
+            headers = texts
+            continue
+        if not headers:
+            continue
+        if len(texts) < len(headers):
+            continue
+        row_data = dict(zip(headers, texts))
+        name = row_data.get("NAME", "").strip()
+        # StatMuse sometimes has "First Last F. Last" — take first occurrence only
+        if name:
+            # If name contains itself repeated, take the longer cleaner version
+            parts = name.split()
+            # Deduplicate: "Ayo Dosunmu A. Dosunmu" -> "Ayo Dosunmu"
+            # Strategy: if >3 words and last part looks like abbreviation, trim
+            if len(parts) >= 4:
+                # Check if it's "First Last Initial. Last" pattern
+                for i in range(2, len(parts)):
+                    if len(parts[i]) <= 2 and parts[i].endswith('.'):
+                        name = ' '.join(parts[:i])
+                        break
+        pts_str = row_data.get("PTS", "")
+        date = row_data.get("DATE", "")
+        opp = row_data.get("OPP", "")
+        if not name or not pts_str:
             continue
         try:
             results.append({
-                "name": player,
+                "name": name,
                 "pts": int(pts_str),
                 "date": date,
                 "opp": opp,
@@ -357,7 +398,9 @@ def fetch_player_game_highs():
         except:
             continue
 
-    print(f"  {len(results)} game log entries")
+    if results:
+        top = results[0]
+        print(f"  Top: {top['name']} {top['pts']} pts vs {top['opp']} ({top['date']})")
     return results
 
 
@@ -454,7 +497,7 @@ def main():
         exit(1)
     games = parse_games(games_html)
 
-    game_highs = fetch_player_game_highs()
+    game_highs = fetch_player_game_highs(per_game_players)
 
     output = {
         "updated": datetime.utcnow().isoformat() + "Z",

@@ -810,9 +810,23 @@ function renderPerGameGrid(){
 function renderTotalGrid(){
   document.getElementById('totalGrid').innerHTML=QUESTIONS.filter(q=>q.section==='total').map(q=>{
     if(q.apiKey){ return `<div class="q-card"><div class="q-card-header">${q.label}</div><div class="q-card-body">${makePlayerCard(q.id,getRanked(q.apiKey),q.unit,q.apiKey)}</div></div>`; }
-    const counts={}; Object.entries(PICKS[q.id]||{}).forEach(([pid,pick])=>{ if(!counts[pick.canonical]) counts[pick.canonical]=[]; const per=PARTICIPANTS.find(p=>p.id===pid); if(per&&!counts[pick.canonical].includes(per.display)) counts[pick.canonical].push(per.display); });
-    const rows=Object.entries(counts).map(([n,pp])=>`<div class="place-row" style="margin-bottom:5px;"><div class="place-name" style="font-size:12px;">${n}</div><span class="pick-tag pick-hit">${pp.join(' · ')}</span></div>`).join('');
-    return `<div class="q-card"><div class="q-card-header">${q.label}</div><div class="q-card-body">${rows}<div style="margin-top:8px;"><div class="pending-tag">Updated manually</div></div></div></div>`;
+    // Manual fields — show current leader at top, then picks with hit/miss highlighting
+    const cur = q.current;
+    const curVals = cur ? cur.split(',').map(v=>v.trim().toLowerCase()).filter(Boolean) : [];
+    const counts={};
+    Object.entries(PICKS[q.id]||{}).forEach(([pid,pick])=>{
+      if(!counts[pick.canonical]) counts[pick.canonical]=[];
+      const per=PARTICIPANTS.find(p=>p.id===pid);
+      if(per&&!counts[pick.canonical].includes(per.display)) counts[pick.canonical].push(per.display);
+    });
+    const hdr = cur
+      ? `<div class="current-answer-block"><div class="answer-label">Current Leader</div><div class="current-value">${cur}</div></div>`
+      : `<div class="pending-tag" style="margin-bottom:8px;">Pending</div>`;
+    const rows=Object.entries(counts).map(([canon,pp])=>{
+      const hit = curVals.length>0 && curVals.includes(canon.toLowerCase());
+      return `<div class="place-row" style="margin-bottom:5px;"><div class="place-name" style="font-size:12px;">${canon}</div><span class="pick-tag ${hit?'pick-hit':'pick-miss'}">${pp.join(' · ')}</span></div>`;
+    }).join('');
+    return `<div class="q-card"><div class="q-card-header">${q.label}</div><div class="q-card-body">${hdr}${rows}<div style="margin-top:8px;"><div class="pending-tag">Updated manually</div></div></div></div>`;
   }).join('');
 }
 
