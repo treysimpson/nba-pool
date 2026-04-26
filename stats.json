@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-26T19:47:04.854478Z",
+  "updated": "2026-04-26T20:32:35.031584Z",
   "season": 2026,
   "per_game_leaders": {
     "ppg": [
@@ -265,6 +265,70 @@
     "top_scorer_context": "34.7 PPG over 3 games",
     "max_player_pts": null,
     "max_player_pts_context": null
+  },
+  "series": {
+    "Cleveland Cavaliers vs Toronto Raptors": {
+      "wins": {
+        "Cleveland Cavaliers": 2,
+        "Toronto Raptors": 1
+      },
+      "games": 3,
+      "winner": null
+    },
+    "Denver Nuggets vs Minnesota Timberwolves": {
+      "wins": {
+        "Denver Nuggets": 1,
+        "Minnesota Timberwolves": 3
+      },
+      "games": 4,
+      "winner": null
+    },
+    "Atlanta Hawks vs New York Knicks": {
+      "wins": {
+        "New York Knicks": 2,
+        "Atlanta Hawks": 2
+      },
+      "games": 4,
+      "winner": null
+    },
+    "Houston Rockets vs Los Angeles Lakers": {
+      "wins": {
+        "Los Angeles Lakers": 3
+      },
+      "games": 3,
+      "winner": null
+    },
+    "Boston Celtics vs Philadelphia 76ers": {
+      "wins": {
+        "Boston Celtics": 2,
+        "Philadelphia 76ers": 1
+      },
+      "games": 3,
+      "winner": null
+    },
+    "Oklahoma City Thunder vs Phoenix Suns": {
+      "wins": {
+        "Oklahoma City Thunder": 3
+      },
+      "games": 3,
+      "winner": null
+    },
+    "Detroit Pistons vs Orlando Magic": {
+      "wins": {
+        "Orlando Magic": 2,
+        "Detroit Pistons": 1
+      },
+      "games": 3,
+      "winner": null
+    },
+    "Portland Trail Blazers vs San Antonio Spurs": {
+      "wins": {
+        "San Antonio Spurs": 2,
+        "Portland Trail Blazers": 1
+      },
+      "games": 3,
+      "winner": null
+    }
   },
   "manual": {
     "techs_leader": null,
