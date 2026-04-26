@@ -1,0 +1,26 @@
+{
+  "updated": null,
+  "season": 2026,
+  "per_game_leaders": {
+    "ppg": [], "rpg": [], "apg": [], "ftpg": [],
+    "tpm": [], "bpg": [], "spg": [], "tovpg": [], "min": []
+  },
+  "game_records": {
+    "mov_num": null, "mov_team": null, "mod_team": null, "mov_context": null,
+    "most_games_team": null, "most_games_count": 0,
+    "least_games_team": null, "least_games_count": 0,
+    "max_team_pts": null, "max_team_pts_team": null, "max_team_pts_context": null,
+    "game7s": null
+  },
+  "player_records": {
+    "top_scorer_game": null, "top_scorer_context": null,
+    "max_player_pts": null, "max_player_pts_context": null
+  },
+  "manual": {
+    "techs_leader": null,
+    "ejections_leader": null,
+    "larry_bird_trophy": null,
+    "magic_trophy": null,
+    "finals_mvp": null
+  }
+}
