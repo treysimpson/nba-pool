@@ -234,28 +234,8 @@ body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font
       <div class="header-meta"><span class="live-dot"></span>Updated: <strong id="lastUpdated">--</strong></div>
       <div class="header-meta" style="margin-top:3px;">2026 NBA Playoffs</div>
     </div>
-    <button onclick="populateAdminFields();toggleAdmin();" style="background:none;border:1px solid rgba(255,107,0,0.4);color:var(--muted);padding:6px 12px;border-radius:6px;cursor:pointer;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:.08em;">⚙ ADMIN</button>
   </div>
 </header>
-
-<!-- Admin panel -->
-<div id="adminPanel" style="display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.85);align-items:center;justify-content:center;">
-  <div style="background:#1a1a28;border:1px solid rgba(255,107,0,0.5);border-radius:12px;padding:24px;width:90%;max-width:480px;box-shadow:0 0 40px rgba(255,107,0,0.2);">
-    <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--fire2);letter-spacing:.1em;margin-bottom:16px;">⚙ Update Manual Fields</div>
-    <div style="display:flex;flex-direction:column;gap:10px;">
-      <div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Techs leader</div><input id="admin_techs_leader" type="text" placeholder="e.g. Dillon Brooks" style="width:100%;background:#0a0a1a;border:1px solid rgba(255,255,255,0.15);border-radius:6px;padding:8px 10px;color:var(--text);font-size:13px;"></div>
-      <div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Ejections leader</div><input id="admin_ejections_leader" type="text" placeholder="e.g. Dillon Brooks" style="width:100%;background:#0a0a1a;border:1px solid rgba(255,255,255,0.15);border-radius:6px;padding:8px 10px;color:var(--text);font-size:13px;"></div>
-      <div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Larry Bird Trophy (ECF MVP)</div><input id="admin_larry_bird_trophy" type="text" placeholder="e.g. Jaylen Brown" style="width:100%;background:#0a0a1a;border:1px solid rgba(255,255,255,0.15);border-radius:6px;padding:8px 10px;color:var(--text);font-size:13px;"></div>
-      <div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Earvin Johnson Trophy (WCF MVP)</div><input id="admin_magic_trophy" type="text" placeholder="e.g. Shai Gilgeous-Alexander" style="width:100%;background:#0a0a1a;border:1px solid rgba(255,255,255,0.15);border-radius:6px;padding:8px 10px;color:var(--text);font-size:13px;"></div>
-      <div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Finals MVP</div><input id="admin_finals_mvp" type="text" placeholder="e.g. Shai Gilgeous-Alexander" style="width:100%;background:#0a0a1a;border:1px solid rgba(255,255,255,0.15);border-radius:6px;padding:8px 10px;color:var(--text);font-size:13px;"></div>
-    </div>
-    <div style="display:flex;gap:10px;margin-top:18px;">
-      <button onclick="saveManual()" style="flex:1;background:rgba(255,107,0,0.15);border:1px solid var(--fire);color:var(--fire2);padding:10px;border-radius:6px;cursor:pointer;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.08em;">Save &amp; Apply</button>
-      <button onclick="toggleAdmin()" style="background:none;border:1px solid rgba(255,255,255,0.15);color:var(--muted);padding:10px 20px;border-radius:6px;cursor:pointer;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.08em;">Cancel</button>
-    </div>
-    <div style="margin-top:12px;font-size:11px;color:var(--muted);line-height:1.6;">To make permanent: update <code style="color:var(--cyan)">manual</code> fields in <code style="color:var(--cyan)">stats.json</code> and push to GitHub.</div>
-  </div>
-</div>
 
 <!-- Bracket modal -->
 <div class="bracket-modal-overlay" id="bracketModalOverlay" onclick="closeBracketModal(event)">
@@ -302,7 +282,7 @@ body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font
       <div class="payout-box">
         <div class="payout-label">Winner Takes All</div>
         <div class="payout-val">$70</div>
-        <div class="payout-sub">7 of 8 participants paid · $10/person</div>
+        <div class="payout-sub">$10/person · winner takes all</div>
       </div>
       <div class="sidebar-note">BKT = bracket · QS = questions<br>Tiebreaker: ESPN bracket score</div>
     </div>
@@ -774,7 +754,12 @@ function computeQScores(){
   });
   QUESTIONS.filter(q=>q.type==='text').forEach(q=>{
     if(!q.current) return;
-    PARTICIPANTS.filter(p=>!p.bracketOnly).forEach(p=>{ if(PICKS[q.id]?.[p.id]?.canonical.toLowerCase()===q.current.toLowerCase()) s[p.id]+=1; });
+    // Support comma-separated tied values (e.g. "Dillon Brooks, Lu Dort")
+    const currentVals = q.current.split(',').map(v=>v.trim().toLowerCase()).filter(Boolean);
+    PARTICIPANTS.filter(p=>!p.bracketOnly).forEach(p=>{
+      const pick = PICKS[q.id]?.[p.id];
+      if(pick && currentVals.includes(pick.canonical.toLowerCase())) s[p.id]+=1;
+    });
   });
   return s;
 }
@@ -904,14 +889,15 @@ function openBracketModal(pid){
   if(!b) return;
   const bScore=scoreBracket(pid);
 
-  function pickHTML(pick, roundLabel){
+  function pickHTML(pick, roundLabel, opponent){
     const bp=bScore.picks.find(x=>x.pick===pick&&x.round===roundLabel);
     const status=bp?bp.status:'pending';
     const icon=status==='correct'?'✓':status==='wrong'?'✗':status==='dead'?'✗':'?';
     const cls=`bm-pick ${status}`;
+    const label = opponent ? `${pick} over ${opponent}` : pick;
     return `<div class="${cls}">
       <span class="bm-round">${roundLabel}</span>
-      <span class="bm-team">${pick}</span>
+      <span class="bm-team">${label}</span>
       <span class="bm-status">${icon}</span>
     </div>`;
   }
@@ -919,7 +905,7 @@ function openBracketModal(pid){
   const westHTML=`
     <div class="bracket-conf-section">
       <div class="bracket-conf-title">🌎 West</div>
-      ${b.west.r1.map((t,i)=>pickHTML(t,`W R1`)).join('')}
+      ${b.west.r1.map((t,i)=>{ const m=R1_MATCHUPS_WEST[i]; const opp=t===m.high?m.low:m.high; return pickHTML(t,'W R1',opp); }).join('')}
       ${b.west.semis.map(t=>pickHTML(t,'W Semis')).join('')}
       ${pickHTML(b.west.confFinals[0],'W Finals')}
     </div>`;
@@ -927,7 +913,7 @@ function openBracketModal(pid){
   const eastHTML=`
     <div class="bracket-conf-section">
       <div class="bracket-conf-title">🌍 East</div>
-      ${b.east.r1.map(t=>pickHTML(t,'E R1')).join('')}
+      ${b.east.r1.map((t,i)=>{ const m=R1_MATCHUPS_EAST[i]; const opp=t===m.high?m.low:m.high; return pickHTML(t,'E R1',opp); }).join('')}
       ${b.east.semis.map(t=>pickHTML(t,'E Semis')).join('')}
       ${pickHTML(b.east.confFinals[0],'E Finals')}
     </div>`;
@@ -1011,7 +997,7 @@ function renderQuestionsView(){
       let isCorrect=false,isWrong=false;
       if(q.type==='player'&&q.apiKey){ const r=getRanked(q.apiKey); if(r.length){ isCorrect=pk.canonical.toLowerCase()===r[0][0].toLowerCase(); isWrong=!isCorrect&&r.length>0; } }
       else if(q.type==='numeric'&&q.current!==null){ const cp=getClosestPickers(q.id,q.current); isCorrect=cp&&cp.includes(p.display); isWrong=!isCorrect; }
-      else if(q.type==='text'&&q.current){ isCorrect=pk.canonical.toLowerCase()===q.current.toLowerCase(); isWrong=!isCorrect; }
+      else if(q.type==='text'&&q.current){ const cv=q.current.split(',').map(v=>v.trim().toLowerCase()).filter(Boolean); isCorrect=cv.includes(pk.canonical.toLowerCase()); isWrong=!isCorrect; }
       const cls=isCorrect?'correct':isWrong?'wrong':'';
       return `<div class="q-answer-cell ${cls}"><div class="q-cell-name">${p.display}</div><div class="q-cell-val">${pk.raw}</div></div>`;
     }).join('');

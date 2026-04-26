@@ -338,6 +338,35 @@ def push_to_github():
         print(f"  Git error: {e}")
 
 
+
+def compute_series_results(games):
+    """Build a series results dict keyed by 'TeamA vs TeamB'."""
+    from collections import defaultdict
+    series = defaultdict(lambda: {'wins': {}, 'games': 0})
+
+    for g in games:
+        v, h = g['visitor'], g['home']
+        vpts, hpts = g['visitor_pts'], g['home_pts']
+        winner = h if hpts > vpts else v
+        key = ' vs '.join(sorted([h, v]))
+        series[key]['games'] += 1
+        series[key]['wins'][winner] = series[key]['wins'].get(winner, 0) + 1
+
+    result = {}
+    for key, data in series.items():
+        teams = key.split(' vs ')
+        winner = None
+        for team, wins in data['wins'].items():
+            if wins >= 4:
+                winner = team
+                break
+        result[key] = {
+            'wins': data['wins'],
+            'games': data['games'],
+            'winner': winner,
+        }
+    return result
+
 def main():
     print(f"=== SLBL NBA Playoff Pool Scraper (BBRef {SEASON}) ===\n")
 
@@ -396,31 +425,3 @@ def main():
 if __name__ == "__main__":
     main()
 
-
-def compute_series_results(games):
-    """Build a series results dict keyed by 'TeamA vs TeamB'."""
-    from collections import defaultdict
-    series = defaultdict(lambda: {'wins': {}, 'games': 0})
-
-    for g in games:
-        v, h = g['visitor'], g['home']
-        vpts, hpts = g['visitor_pts'], g['home_pts']
-        winner = h if hpts > vpts else v
-        key = ' vs '.join(sorted([h, v]))
-        series[key]['games'] += 1
-        series[key]['wins'][winner] = series[key]['wins'].get(winner, 0) + 1
-
-    result = {}
-    for key, data in series.items():
-        teams = key.split(' vs ')
-        winner = None
-        for team, wins in data['wins'].items():
-            if wins >= 4:
-                winner = team
-                break
-        result[key] = {
-            'wins': data['wins'],
-            'games': data['games'],
-            'winner': winner,
-        }
-    return result
