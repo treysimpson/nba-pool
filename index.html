@@ -18,14 +18,6 @@ body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font
   repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,.02) 40px),
   repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,.02) 40px);}
 
-/* ── UNPAID ALERT ── */
-/* TO REMOVE: delete the #unpaidAlert div in the HTML below */
-#unpaidAlert{position:fixed;bottom:16px;right:16px;z-index:300;pointer-events:none;
-  background:rgba(255,34,68,.15);border:2px solid var(--red);border-radius:10px;
-  padding:10px 16px;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.1em;
-  color:var(--red);text-shadow:0 0 8px var(--red);
-  animation:alertBlink .6s step-end infinite;}
-@keyframes alertBlink{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.97);}}
 
 .header{background:linear-gradient(180deg,#1a0a2e 0%,#0a0a1a 100%);border-bottom:2px solid var(--fire);
   padding:12px 20px 10px;display:flex;align-items:center;justify-content:space-between;
@@ -220,9 +212,6 @@ body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font
   <div class="spinner"></div>
   <div class="loading-text">LOADING STATS...</div>
 </div>
-
-<!-- UNPAID ALERT — To remove: delete this div -->
-<div id="unpaidAlert">💸 STEVE HAS NOT PAID!</div>
 
 <header class="header">
   <div>
@@ -626,6 +615,7 @@ function applyStatsJson(data){
   const gr=data.game_records||{};
   const pr=data.player_records||{};
   const mn=data.manual||{};
+  window._manualDate = mn.updated_date || null;
 
   QUESTIONS.forEach(q=>{
     if(q.id==='mov_num')        {q.current=gr.mov_num??null;q.context=gr.mov_context??null;}
@@ -737,7 +727,7 @@ function scoreBracket(pid){
 // ============================================================
 function getRanked(k){ return Object.entries(liveStats).filter(([,s])=>s[k]>0).sort((a,b)=>b[1][k]-a[1][k]); }
 function getPickersFor(qid,canon){ const q=PICKS[qid]; if(!q) return []; return PARTICIPANTS.filter(p=>q[p.id]?.canonical.toLowerCase()===canon.toLowerCase()).map(p=>p.display); }
-function getClosestPickers(qid,cur){ if(cur===null) return null; const q=PICKS[qid]; if(!q) return []; let min=Infinity,val=null; Object.values(q).forEach(p=>{ const d=Math.abs(p.canonical-cur); if(d<min){min=d;val=p.canonical;} }); return PARTICIPANTS.filter(p=>q[p.id]?.canonical===val).map(p=>p.display); }
+function getClosestPickers(qid,cur){ if(cur===null) return null; const q=PICKS[qid]; if(!q) return []; let min=Infinity; Object.values(q).forEach(p=>{ const d=Math.abs(p.canonical-cur); if(d<min) min=d; }); return PARTICIPANTS.filter(p=>{ const pick=q[p.id]; return pick&&Math.abs(pick.canonical-cur)===min; }).map(p=>p.display); }
 
 function computeQScores(){
   const s={};
@@ -826,7 +816,7 @@ function renderTotalGrid(){
       const hit = curVals.length>0 && curVals.includes(canon.toLowerCase());
       return `<div class="place-row" style="margin-bottom:5px;"><div class="place-name" style="font-size:12px;">${canon}</div><span class="pick-tag ${hit?'pick-hit':'pick-miss'}">${pp.join(' · ')}</span></div>`;
     }).join('');
-    return `<div class="q-card"><div class="q-card-header">${q.label}</div><div class="q-card-body">${hdr}${rows}<div style="margin-top:8px;"><div class="pending-tag">Updated manually</div></div></div></div>`;
+    const updDate=window._manualDate?` on ${window._manualDate}`:''; return `<div class="q-card"><div class="q-card-header">${q.label}</div><div class="q-card-body">${hdr}${rows}<div style="margin-top:8px;"><div class="pending-tag">Updated manually${updDate}</div></div></div></div>`;
   }).join('');
 }
 

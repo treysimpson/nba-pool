@@ -6,6 +6,7 @@ Runs locally on your PC via Task Scheduler, then pushes stats.json to GitHub
 
 import json
 import os
+import re
 import time
 import subprocess
 from collections import defaultdict
@@ -147,7 +148,6 @@ def parse_per_game(html):
         for cell in cells:
             a = cell.find("a", href=True)
             if a and "/players/" in a["href"]:
-                import re
                 m = re.search(r'/players/\w/(\w+)\.html', a["href"])
                 if m:
                     player_link = m.group(1)
@@ -371,18 +371,9 @@ def fetch_player_game_highs(per_game_players):
             continue
         row_data = dict(zip(headers, texts))
         name = row_data.get("NAME", "").strip()
-        # StatMuse sometimes has "First Last F. Last" — take first occurrence only
-        if name:
-            # If name contains itself repeated, take the longer cleaner version
-            parts = name.split()
-            # Deduplicate: "Ayo Dosunmu A. Dosunmu" -> "Ayo Dosunmu"
-            # Strategy: if >3 words and last part looks like abbreviation, trim
-            if len(parts) >= 4:
-                # Check if it's "First Last Initial. Last" pattern
-                for i in range(2, len(parts)):
-                    if len(parts[i]) <= 2 and parts[i].endswith('.'):
-                        name = ' '.join(parts[:i])
-                        break
+        # StatMuse combines "Ayo Dosunmu" + "A. Dosunmu" into "Ayo DosunmuA. Dosunmu"
+        # Fix: split at the point where a lowercase letter is immediately followed by an uppercase
+        name = re.sub(r'([a-z])([A-Z])', r'\1|\2', name).split('|')[0].strip()
         pts_str = row_data.get("PTS", "")
         date = row_data.get("DATE", "")
         opp = row_data.get("OPP", "")
