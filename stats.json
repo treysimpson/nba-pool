@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-28T18:27:15.459127Z",
+  "updated": "2026-04-28T18:33:58.292258Z",
   "season": 2026,
   "per_game_leaders": {
     "ppg": [
@@ -332,8 +332,8 @@
     }
   },
   "manual": {
-    "techs_leader": "Devin Booker, Deni Avdija",
-    "ejections_leader": "Nikola Jokic, Julius Randle, Deandre Ayton",
+    "techs_leader": null,
+    "ejections_leader": null,
     "larry_bird_trophy": null,
     "magic_trophy": null,
     "finals_mvp": null
