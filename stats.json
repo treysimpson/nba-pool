@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-29T14:01:00.858572Z",
+  "updated": "2026-05-05T14:01:00.906913Z",
   "season": 2026,
   "per_game_leaders": {
     "ppg": [
@@ -10,67 +10,67 @@
       },
       {
         "name": "Cade Cunningham",
-        "value": 29.5,
-        "gp": 4
+        "value": 32.4,
+        "gp": 7
       },
       {
-        "name": "Jaylen Brown",
-        "value": 26.8,
-        "gp": 4
+        "name": "Jalen Brunson",
+        "value": 27.6,
+        "gp": 7
+      },
+      {
+        "name": "Paolo Banchero",
+        "value": 26.3,
+        "gp": 7
       },
       {
         "name": "Dillon Brooks",
         "value": 26.0,
         "gp": 4
-      },
-      {
-        "name": "Jamal Murray",
-        "value": 26.0,
-        "gp": 5
       }
     ],
     "rpg": [
       {
         "name": "Nikola Joki\u0107",
-        "value": 14.0,
-        "gp": 5
+        "value": 13.2,
+        "gp": 6
       },
       {
-        "name": "Josh Hart",
-        "value": 11.3,
-        "gp": 4
-      },
-      {
-        "name": "Karl-Anthony Towns",
+        "name": "Deandre Ayton",
         "value": 10.8,
-        "gp": 4
+        "gp": 6
       },
       {
-        "name": "Alperen \u015eeng\u00fcn",
-        "value": 10.3,
-        "gp": 4
+        "name": "Jayson Tatum",
+        "value": 10.7,
+        "gp": 6
       },
       {
         "name": "Rudy Gobert",
-        "value": 10.2,
-        "gp": 5
+        "value": 10.6,
+        "gp": 7
+      },
+      {
+        "name": "Karl-Anthony Towns",
+        "value": 10.6,
+        "gp": 7
       }
     ],
     "apg": [
       {
         "name": "Nikola Joki\u0107",
-        "value": 9.4,
-        "gp": 5
+        "value": 9.5,
+        "gp": 6
+      },
+      {
+        "name": "Scottie Barnes",
+        "value": 8.6,
+        "gp": 7
       },
       {
         "name": "LeBron James",
-        "value": 8.8,
-        "gp": 4
-      },
-      {
-        "name": "Jayson Tatum",
-        "value": 8.5,
-        "gp": 4
+        "value": 8.3,
+        "gp": 6
       },
       {
         "name": "Shai Gilgeous-Alexander",
@@ -78,9 +78,9 @@
         "gp": 4
       },
       {
-        "name": "Cade Cunningham",
-        "value": 7.5,
-        "gp": 4
+        "name": "Jrue Holiday",
+        "value": 7.2,
+        "gp": 5
       }
     ],
     "ftpg": [
@@ -90,36 +90,31 @@
         "gp": 4
       },
       {
-        "name": "Paolo Banchero",
-        "value": 7.5,
-        "gp": 4
-      },
-      {
         "name": "Cade Cunningham",
-        "value": 7.5,
-        "gp": 4
+        "value": 8.9,
+        "gp": 7
       },
       {
-        "name": "Scottie Barnes",
-        "value": 7.0,
-        "gp": 4
+        "name": "Joel Embiid",
+        "value": 7.8,
+        "gp": 5
       },
       {
-        "name": "Nikola Joki\u0107",
-        "value": 7.0,
+        "name": "Paolo Banchero",
+        "value": 7.1,
+        "gp": 7
+      },
+      {
+        "name": "Deni Avdija",
+        "value": 6.8,
         "gp": 5
       }
     ],
     "tpm": [
       {
         "name": "Desmond Bane",
-        "value": 3.8,
-        "gp": 4
-      },
-      {
-        "name": "Tyrese Maxey",
-        "value": 3.8,
-        "gp": 4
+        "value": 3.6,
+        "gp": 7
       },
       {
         "name": "Dillon Brooks",
@@ -127,31 +122,36 @@
         "gp": 4
       },
       {
-        "name": "Jabari Smith Jr.",
-        "value": 3.5,
-        "gp": 4
+        "name": "Paul George",
+        "value": 3.3,
+        "gp": 8
       },
       {
-        "name": "Nickeil Alexander-Walker",
-        "value": 3.3,
-        "gp": 4
+        "name": "Jabari Smith Jr.",
+        "value": 3.2,
+        "gp": 6
+      },
+      {
+        "name": "Jayson Tatum",
+        "value": 3.2,
+        "gp": 6
       }
     ],
     "bpg": [
       {
         "name": "Victor Wembanyama",
-        "value": 3.3,
-        "gp": 3
-      },
-      {
-        "name": "Isaiah Stewart",
-        "value": 3.0,
-        "gp": 4
+        "value": 5.6,
+        "gp": 5
       },
       {
         "name": "Jarrett Allen",
-        "value": 2.0,
-        "gp": 4
+        "value": 2.3,
+        "gp": 7
+      },
+      {
+        "name": "Ausar Thompson",
+        "value": 2.3,
+        "gp": 7
       },
       {
         "name": "Chet Holmgren",
@@ -159,53 +159,53 @@
         "gp": 4
       },
       {
-        "name": "Marcus Smart",
+        "name": "Austin Reaves",
         "value": 2.0,
-        "gp": 4
+        "gp": 2
       }
     ],
     "spg": [
-      {
-        "name": "Marcus Smart",
-        "value": 3.5,
-        "gp": 4
-      },
-      {
-        "name": "Tari Eason",
-        "value": 3.0,
-        "gp": 4
-      },
       {
         "name": "Franz Wagner",
         "value": 2.8,
         "gp": 4
       },
       {
-        "name": "Dyson Daniels",
-        "value": 2.5,
-        "gp": 4
+        "name": "Marcus Smart",
+        "value": 2.7,
+        "gp": 6
       },
       {
-        "name": "Alperen \u015eeng\u00fcn",
+        "name": "Tari Eason",
+        "value": 2.5,
+        "gp": 6
+      },
+      {
+        "name": "Ausar Thompson",
         "value": 2.3,
-        "gp": 4
+        "gp": 7
+      },
+      {
+        "name": "Reed Sheppard",
+        "value": 2.2,
+        "gp": 6
       }
     ],
     "tovpg": [
       {
         "name": "Cade Cunningham",
-        "value": 6.8,
-        "gp": 4
+        "value": 5.9,
+        "gp": 7
       },
       {
         "name": "James Harden",
-        "value": 6.0,
-        "gp": 4
+        "value": 5.1,
+        "gp": 7
       },
       {
         "name": "LeBron James",
-        "value": 5.3,
-        "gp": 4
+        "value": 4.3,
+        "gp": 6
       },
       {
         "name": "Devin Booker",
@@ -215,97 +215,97 @@
       {
         "name": "Nikola Joki\u0107",
         "value": 3.8,
-        "gp": 5
+        "gp": 6
       }
     ],
     "min": [
       {
-        "name": "Jamal Murray",
-        "value": 198.0,
+        "name": "Tyrese Maxey",
+        "value": 313.0,
         "gp": 0
       },
       {
-        "name": "Nikola Joki\u0107",
-        "value": 194.0,
+        "name": "VJ Edgecombe",
+        "value": 297.0,
         "gp": 0
       },
       {
-        "name": "Amen Thompson",
-        "value": 174.0,
+        "name": "Paul George",
+        "value": 286.0,
         "gp": 0
       },
       {
-        "name": "Jaden McDaniels",
-        "value": 172.0,
+        "name": "Cade Cunningham",
+        "value": 283.0,
         "gp": 0
       },
       {
-        "name": "Rudy Gobert",
-        "value": 167.0,
+        "name": "Paolo Banchero",
+        "value": 273.0,
         "gp": 0
       }
     ]
   },
   "game_records": {
-    "mov_num": 35,
-    "mov_team": "Oklahoma City Thunder",
-    "mod_team": "Phoenix Suns",
-    "mov_context": "Oklahoma City Thunder def. Phoenix Suns 119-84 (Game 1)",
-    "most_games_team": "Denver Nuggets",
-    "most_games_count": 5,
-    "least_games_team": "Cleveland Cavaliers",
+    "mov_num": 51,
+    "mov_team": "New York Knicks",
+    "mod_team": "Atlanta Hawks",
+    "mov_context": "New York Knicks def. Atlanta Hawks 140-89 (Game 6)",
+    "most_games_team": "Philadelphia 76ers",
+    "most_games_count": 8,
+    "least_games_team": "Oklahoma City Thunder",
     "least_games_count": 4,
-    "max_team_pts": 131,
-    "max_team_pts_team": "Oklahoma City Thunder",
-    "max_team_pts_context": "Oklahoma City Thunder vs Phoenix Suns, Game 4",
-    "game7s": 0
+    "max_team_pts": 140,
+    "max_team_pts_team": "New York Knicks",
+    "max_team_pts_context": "New York Knicks vs Atlanta Hawks, Game 6",
+    "game7s": 3
   },
   "player_records": {
-    "top_scorer_game": "Ayo Dosunmu",
-    "top_scorer_context": "43 pts vs DEN (4/25/2026)",
-    "max_player_pts": 43,
-    "max_player_pts_context": "Ayo Dosunmu \u2014 43 pts vs DEN (4/25/2026)"
+    "top_scorer_game": "Cade Cunningham",
+    "top_scorer_context": "45 pts vs ORL (4/29/2026)",
+    "max_player_pts": 45,
+    "max_player_pts_context": "Cade Cunningham \u2014 45 pts vs ORL (4/29/2026)"
   },
   "series": {
     "Cleveland Cavaliers vs Toronto Raptors": {
       "wins": {
-        "Cleveland Cavaliers": 2,
-        "Toronto Raptors": 2
+        "Cleveland Cavaliers": 4,
+        "Toronto Raptors": 3
       },
-      "games": 4,
-      "winner": null
+      "games": 7,
+      "winner": "Cleveland Cavaliers"
     },
     "Denver Nuggets vs Minnesota Timberwolves": {
       "wins": {
         "Denver Nuggets": 2,
-        "Minnesota Timberwolves": 3
+        "Minnesota Timberwolves": 4
       },
-      "games": 5,
-      "winner": null
+      "games": 6,
+      "winner": "Minnesota Timberwolves"
     },
     "Atlanta Hawks vs New York Knicks": {
       "wins": {
-        "New York Knicks": 2,
+        "New York Knicks": 4,
         "Atlanta Hawks": 2
       },
-      "games": 4,
-      "winner": null
+      "games": 6,
+      "winner": "New York Knicks"
     },
     "Houston Rockets vs Los Angeles Lakers": {
       "wins": {
-        "Los Angeles Lakers": 3,
-        "Houston Rockets": 1
+        "Los Angeles Lakers": 4,
+        "Houston Rockets": 2
       },
-      "games": 4,
-      "winner": null
+      "games": 6,
+      "winner": "Los Angeles Lakers"
     },
     "Boston Celtics vs Philadelphia 76ers": {
       "wins": {
         "Boston Celtics": 3,
-        "Philadelphia 76ers": 1
+        "Philadelphia 76ers": 4
       },
-      "games": 4,
-      "winner": null
+      "games": 7,
+      "winner": "Philadelphia 76ers"
     },
     "Oklahoma City Thunder vs Phoenix Suns": {
       "wins": {
@@ -317,17 +317,31 @@
     "Detroit Pistons vs Orlando Magic": {
       "wins": {
         "Orlando Magic": 3,
-        "Detroit Pistons": 1
+        "Detroit Pistons": 4
       },
-      "games": 4,
-      "winner": null
+      "games": 7,
+      "winner": "Detroit Pistons"
     },
     "Portland Trail Blazers vs San Antonio Spurs": {
       "wins": {
-        "San Antonio Spurs": 3,
+        "San Antonio Spurs": 4,
         "Portland Trail Blazers": 1
       },
-      "games": 4,
+      "games": 5,
+      "winner": "San Antonio Spurs"
+    },
+    "New York Knicks vs Philadelphia 76ers": {
+      "wins": {
+        "New York Knicks": 1
+      },
+      "games": 1,
+      "winner": null
+    },
+    "Minnesota Timberwolves vs San Antonio Spurs": {
+      "wins": {
+        "Minnesota Timberwolves": 1
+      },
+      "games": 1,
       "winner": null
     }
   },
