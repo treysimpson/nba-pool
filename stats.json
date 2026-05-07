@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-06T14:01:02.438364Z",
+  "updated": "2026-05-07T14:01:01.025848Z",
   "season": 2026,
   "per_game_leaders": {
     "ppg": [
@@ -15,8 +15,8 @@
       },
       {
         "name": "Jalen Brunson",
-        "value": 27.6,
-        "gp": 7
+        "value": 27.4,
+        "gp": 8
       },
       {
         "name": "Paolo Banchero",
@@ -41,19 +41,19 @@
         "gp": 7
       },
       {
+        "name": "Victor Wembanyama",
+        "value": 10.8,
+        "gp": 6
+      },
+      {
         "name": "Jayson Tatum",
         "value": 10.7,
         "gp": 6
       },
       {
         "name": "Rudy Gobert",
-        "value": 10.6,
-        "gp": 7
-      },
-      {
-        "name": "Karl-Anthony Towns",
-        "value": 10.6,
-        "gp": 7
+        "value": 10.5,
+        "gp": 8
       }
     ],
     "apg": [
@@ -123,8 +123,8 @@
       },
       {
         "name": "Paul George",
-        "value": 3.3,
-        "gp": 8
+        "value": 3.4,
+        "gp": 9
       },
       {
         "name": "Jabari Smith Jr.",
@@ -140,8 +140,8 @@
     "bpg": [
       {
         "name": "Victor Wembanyama",
-        "value": 5.6,
-        "gp": 5
+        "value": 5.0,
+        "gp": 6
       },
       {
         "name": "Chet Holmgren",
@@ -220,28 +220,28 @@
     ],
     "min": [
       {
+        "name": "Tyrese Maxey",
+        "value": 360.0,
+        "gp": 0
+      },
+      {
+        "name": "VJ Edgecombe",
+        "value": 337.0,
+        "gp": 0
+      },
+      {
+        "name": "Paul George",
+        "value": 329.0,
+        "gp": 0
+      },
+      {
         "name": "Cade Cunningham",
         "value": 325.0,
         "gp": 0
       },
       {
-        "name": "Tyrese Maxey",
-        "value": 313.0,
-        "gp": 0
-      },
-      {
-        "name": "VJ Edgecombe",
-        "value": 297.0,
-        "gp": 0
-      },
-      {
-        "name": "James Harden",
-        "value": 294.0,
-        "gp": 0
-      },
-      {
-        "name": "Tobias Harris",
-        "value": 287.0,
+        "name": "Kelly Oubre Jr.",
+        "value": 302.0,
         "gp": 0
       }
     ]
@@ -251,8 +251,8 @@
     "mov_team": "New York Knicks",
     "mod_team": "Atlanta Hawks",
     "mov_context": "New York Knicks def. Atlanta Hawks 140-89 (Game 6)",
-    "most_games_team": "Cleveland Cavaliers",
-    "most_games_count": 8,
+    "most_games_team": "Philadelphia 76ers",
+    "most_games_count": 9,
     "least_games_team": "Phoenix Suns",
     "least_games_count": 4,
     "max_team_pts": 140,
@@ -332,16 +332,17 @@
     },
     "New York Knicks vs Philadelphia 76ers": {
       "wins": {
-        "New York Knicks": 1
+        "New York Knicks": 2
       },
-      "games": 1,
+      "games": 2,
       "winner": null
     },
     "Minnesota Timberwolves vs San Antonio Spurs": {
       "wins": {
-        "Minnesota Timberwolves": 1
+        "Minnesota Timberwolves": 1,
+        "San Antonio Spurs": 1
       },
-      "games": 1,
+      "games": 2,
       "winner": null
     },
     "Cleveland Cavaliers vs Detroit Pistons": {
