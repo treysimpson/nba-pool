@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-12T14:01:01.334032Z",
+  "updated": "2026-05-13T14:01:04.416379Z",
   "season": 2026,
   "per_game_leaders": {
     "ppg": [
@@ -36,24 +36,24 @@
         "gp": 6
       },
       {
+        "name": "Victor Wembanyama",
+        "value": 11.2,
+        "gp": 9
+      },
+      {
         "name": "Jayson Tatum",
         "value": 10.7,
         "gp": 6
       },
       {
-        "name": "Victor Wembanyama",
-        "value": 10.5,
-        "gp": 8
-      },
-      {
-        "name": "Rudy Gobert",
-        "value": 10.4,
-        "gp": 10
-      },
-      {
         "name": "Alperen \u015eeng\u00fcn",
         "value": 10.2,
         "gp": 6
+      },
+      {
+        "name": "Karl-Anthony Towns",
+        "value": 10.0,
+        "gp": 10
       }
     ],
     "apg": [
@@ -140,8 +140,8 @@
     "bpg": [
       {
         "name": "Victor Wembanyama",
-        "value": 4.4,
-        "gp": 8
+        "value": 4.2,
+        "gp": 9
       },
       {
         "name": "Jarrett Allen",
@@ -340,9 +340,9 @@
     "Minnesota Timberwolves vs San Antonio Spurs": {
       "wins": {
         "Minnesota Timberwolves": 2,
-        "San Antonio Spurs": 2
+        "San Antonio Spurs": 3
       },
-      "games": 4,
+      "games": 5,
       "winner": null
     },
     "Cleveland Cavaliers vs Detroit Pistons": {
