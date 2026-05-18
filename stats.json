@@ -1,17 +1,17 @@
 {
-  "updated": "2026-05-13T14:01:04.416379Z",
+  "updated": "2026-05-18T14:01:01.310410Z",
   "season": 2026,
   "per_game_leaders": {
     "ppg": [
       {
-        "name": "Cade Cunningham",
-        "value": 29.2,
-        "gp": 11
-      },
-      {
         "name": "Shai Gilgeous-Alexander",
         "value": 29.1,
         "gp": 8
+      },
+      {
+        "name": "Cade Cunningham",
+        "value": 28.1,
+        "gp": 14
       },
       {
         "name": "Jalen Brunson",
@@ -19,14 +19,14 @@
         "gp": 10
       },
       {
-        "name": "Donovan Mitchell",
-        "value": 26.7,
-        "gp": 11
-      },
-      {
         "name": "Paolo Banchero",
         "value": 26.3,
         "gp": 7
+      },
+      {
+        "name": "Dillon Brooks",
+        "value": 26.0,
+        "gp": 4
       }
     ],
     "rpg": [
@@ -36,14 +36,14 @@
         "gp": 6
       },
       {
-        "name": "Victor Wembanyama",
-        "value": 11.2,
-        "gp": 9
-      },
-      {
         "name": "Jayson Tatum",
         "value": 10.7,
         "gp": 6
+      },
+      {
+        "name": "Victor Wembanyama",
+        "value": 10.7,
+        "gp": 10
       },
       {
         "name": "Alperen \u015eeng\u00fcn",
@@ -70,7 +70,7 @@
       {
         "name": "Cade Cunningham",
         "value": 7.5,
-        "gp": 11
+        "gp": 14
       },
       {
         "name": "LeBron James",
@@ -90,14 +90,14 @@
         "gp": 8
       },
       {
-        "name": "Cade Cunningham",
-        "value": 7.9,
-        "gp": 11
-      },
-      {
         "name": "Paolo Banchero",
         "value": 7.1,
         "gp": 7
+      },
+      {
+        "name": "Cade Cunningham",
+        "value": 7.1,
+        "gp": 14
       },
       {
         "name": "Joel Embiid",
@@ -132,21 +132,26 @@
         "gp": 11
       },
       {
-        "name": "Jabari Smith Jr.",
+        "name": "Duncan Robinson",
         "value": 3.2,
-        "gp": 6
+        "gp": 13
       }
     ],
     "bpg": [
       {
         "name": "Victor Wembanyama",
-        "value": 4.2,
-        "gp": 9
+        "value": 4.1,
+        "gp": 10
       },
       {
         "name": "Jarrett Allen",
-        "value": 2.0,
-        "gp": 11
+        "value": 1.9,
+        "gp": 14
+      },
+      {
+        "name": "Evan Mobley",
+        "value": 1.9,
+        "gp": 14
       },
       {
         "name": "Chet Holmgren",
@@ -154,14 +159,9 @@
         "gp": 8
       },
       {
-        "name": "Scottie Barnes",
-        "value": 1.7,
-        "gp": 7
-      },
-      {
-        "name": "Goga Bitadze",
-        "value": 1.7,
-        "gp": 6
+        "name": "Ausar Thompson",
+        "value": 1.8,
+        "gp": 14
       }
     ],
     "spg": [
@@ -194,13 +194,13 @@
     "tovpg": [
       {
         "name": "Cade Cunningham",
-        "value": 5.7,
-        "gp": 11
+        "value": 5.6,
+        "gp": 14
       },
       {
         "name": "James Harden",
-        "value": 4.7,
-        "gp": 11
+        "value": 4.8,
+        "gp": 14
       },
       {
         "name": "Austin Reaves",
@@ -221,27 +221,27 @@
     "min": [
       {
         "name": "Cade Cunningham",
-        "value": 445.0,
-        "gp": 0
-      },
-      {
-        "name": "Tyrese Maxey",
-        "value": 437.0,
+        "value": 572.0,
         "gp": 0
       },
       {
         "name": "James Harden",
-        "value": 408.0,
+        "value": 524.0,
         "gp": 0
       },
       {
-        "name": "VJ Edgecombe",
-        "value": 407.0,
+        "name": "Donovan Mitchell",
+        "value": 503.0,
+        "gp": 0
+      },
+      {
+        "name": "Evan Mobley",
+        "value": 494.0,
         "gp": 0
       },
       {
         "name": "Tobias Harris",
-        "value": 398.0,
+        "value": 485.0,
         "gp": 0
       }
     ]
@@ -252,13 +252,13 @@
     "mod_team": "Atlanta Hawks",
     "mov_context": "New York Knicks def. Atlanta Hawks 140-89 (Game 6)",
     "most_games_team": "Cleveland Cavaliers",
-    "most_games_count": 11,
+    "most_games_count": 14,
     "least_games_team": "Phoenix Suns",
     "least_games_count": 4,
     "max_team_pts": 144,
     "max_team_pts_team": "New York Knicks",
     "max_team_pts_context": "New York Knicks vs Philadelphia 76ers, Game 4",
-    "game7s": 3
+    "game7s": 4
   },
   "player_records": {
     "top_scorer_game": "Cade Cunningham",
@@ -340,18 +340,18 @@
     "Minnesota Timberwolves vs San Antonio Spurs": {
       "wins": {
         "Minnesota Timberwolves": 2,
-        "San Antonio Spurs": 3
+        "San Antonio Spurs": 4
       },
-      "games": 5,
-      "winner": null
+      "games": 6,
+      "winner": "San Antonio Spurs"
     },
     "Cleveland Cavaliers vs Detroit Pistons": {
       "wins": {
-        "Detroit Pistons": 2,
-        "Cleveland Cavaliers": 2
+        "Detroit Pistons": 3,
+        "Cleveland Cavaliers": 4
       },
-      "games": 4,
-      "winner": null
+      "games": 7,
+      "winner": "Cleveland Cavaliers"
     },
     "Los Angeles Lakers vs Oklahoma City Thunder": {
       "wins": {
