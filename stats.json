@@ -1,12 +1,12 @@
 {
-  "updated": "2026-05-18T14:01:01.310410Z",
+  "updated": "2026-05-19T14:02:30.691941Z",
   "season": 2026,
   "per_game_leaders": {
     "ppg": [
       {
         "name": "Shai Gilgeous-Alexander",
-        "value": 29.1,
-        "gp": 8
+        "value": 28.6,
+        "gp": 9
       },
       {
         "name": "Cade Cunningham",
@@ -36,14 +36,14 @@
         "gp": 6
       },
       {
+        "name": "Victor Wembanyama",
+        "value": 11.9,
+        "gp": 11
+      },
+      {
         "name": "Jayson Tatum",
         "value": 10.7,
         "gp": 6
-      },
-      {
-        "name": "Victor Wembanyama",
-        "value": 10.7,
-        "gp": 10
       },
       {
         "name": "Alperen \u015eeng\u00fcn",
@@ -68,6 +68,11 @@
         "gp": 7
       },
       {
+        "name": "Shai Gilgeous-Alexander",
+        "value": 7.7,
+        "gp": 9
+      },
+      {
         "name": "Cade Cunningham",
         "value": 7.5,
         "gp": 14
@@ -76,18 +81,13 @@
         "name": "LeBron James",
         "value": 7.3,
         "gp": 10
-      },
-      {
-        "name": "Jrue Holiday",
-        "value": 7.2,
-        "gp": 5
       }
     ],
     "ftpg": [
       {
         "name": "Shai Gilgeous-Alexander",
-        "value": 8.9,
-        "gp": 8
+        "value": 8.8,
+        "gp": 9
       },
       {
         "name": "Paolo Banchero",
@@ -140,8 +140,8 @@
     "bpg": [
       {
         "name": "Victor Wembanyama",
-        "value": 4.1,
-        "gp": 10
+        "value": 4.0,
+        "gp": 11
       },
       {
         "name": "Jarrett Allen",
@@ -156,7 +156,7 @@
       {
         "name": "Chet Holmgren",
         "value": 1.8,
-        "gp": 8
+        "gp": 9
       },
       {
         "name": "Ausar Thompson",
@@ -213,9 +213,9 @@
         "gp": 4
       },
       {
-        "name": "LeBron James",
+        "name": "Stephon Castle",
         "value": 3.8,
-        "gp": 10
+        "gp": 12
       }
     ],
     "min": [
@@ -359,6 +359,13 @@
       },
       "games": 4,
       "winner": "Oklahoma City Thunder"
+    },
+    "Oklahoma City Thunder vs San Antonio Spurs": {
+      "wins": {
+        "San Antonio Spurs": 1
+      },
+      "games": 1,
+      "winner": null
     }
   },
   "manual": {
