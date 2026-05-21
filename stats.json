@@ -1,12 +1,12 @@
 {
-  "updated": "2026-05-20T14:01:01.932915Z",
+  "updated": "2026-05-21T14:01:00.779135Z",
   "season": 2026,
   "per_game_leaders": {
     "ppg": [
       {
         "name": "Shai Gilgeous-Alexander",
-        "value": 28.6,
-        "gp": 9
+        "value": 28.7,
+        "gp": 10
       },
       {
         "name": "Jalen Brunson",
@@ -37,8 +37,8 @@
       },
       {
         "name": "Victor Wembanyama",
-        "value": 11.9,
-        "gp": 11
+        "value": 12.3,
+        "gp": 12
       },
       {
         "name": "Jayson Tatum",
@@ -69,8 +69,8 @@
       },
       {
         "name": "Shai Gilgeous-Alexander",
-        "value": 7.7,
-        "gp": 9
+        "value": 7.8,
+        "gp": 10
       },
       {
         "name": "Cade Cunningham",
@@ -86,8 +86,8 @@
     "ftpg": [
       {
         "name": "Shai Gilgeous-Alexander",
-        "value": 8.8,
-        "gp": 9
+        "value": 8.5,
+        "gp": 10
       },
       {
         "name": "Paolo Banchero",
@@ -141,7 +141,7 @@
       {
         "name": "Victor Wembanyama",
         "value": 4.0,
-        "gp": 11
+        "gp": 12
       },
       {
         "name": "Evan Mobley",
@@ -154,14 +154,14 @@
         "gp": 15
       },
       {
-        "name": "Chet Holmgren",
-        "value": 1.8,
-        "gp": 9
-      },
-      {
         "name": "Ausar Thompson",
         "value": 1.8,
         "gp": 14
+      },
+      {
+        "name": "Scottie Barnes",
+        "value": 1.7,
+        "gp": 7
       }
     ],
     "spg": [
@@ -208,14 +208,14 @@
         "gp": 6
       },
       {
+        "name": "Stephon Castle",
+        "value": 4.2,
+        "gp": 13
+      },
+      {
         "name": "Devin Booker",
         "value": 4.0,
         "gp": 4
-      },
-      {
-        "name": "Stephon Castle",
-        "value": 3.8,
-        "gp": 12
       }
     ],
     "min": [
@@ -362,9 +362,10 @@
     },
     "Oklahoma City Thunder vs San Antonio Spurs": {
       "wins": {
-        "San Antonio Spurs": 1
+        "San Antonio Spurs": 1,
+        "Oklahoma City Thunder": 1
       },
-      "games": 1,
+      "games": 2,
       "winner": null
     },
     "Cleveland Cavaliers vs New York Knicks": {
