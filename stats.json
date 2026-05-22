@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-21T14:01:00.779135Z",
+  "updated": "2026-05-22T14:01:01.593926Z",
   "season": 2026,
   "per_game_leaders": {
     "ppg": [
@@ -9,14 +9,14 @@
         "gp": 10
       },
       {
-        "name": "Jalen Brunson",
-        "value": 28.4,
-        "gp": 11
-      },
-      {
         "name": "Cade Cunningham",
         "value": 28.1,
         "gp": 14
+      },
+      {
+        "name": "Jalen Brunson",
+        "value": 27.6,
+        "gp": 12
       },
       {
         "name": "Paolo Banchero",
@@ -47,8 +47,8 @@
       },
       {
         "name": "Karl-Anthony Towns",
-        "value": 10.3,
-        "gp": 11
+        "value": 10.5,
+        "gp": 12
       },
       {
         "name": "Alperen \u015eeng\u00fcn",
@@ -146,12 +146,12 @@
       {
         "name": "Evan Mobley",
         "value": 1.9,
-        "gp": 15
+        "gp": 16
       },
       {
         "name": "Jarrett Allen",
         "value": 1.8,
-        "gp": 15
+        "gp": 16
       },
       {
         "name": "Ausar Thompson",
@@ -199,8 +199,8 @@
       },
       {
         "name": "James Harden",
-        "value": 4.9,
-        "gp": 15
+        "value": 4.6,
+        "gp": 16
       },
       {
         "name": "Austin Reaves",
@@ -220,23 +220,23 @@
     ],
     "min": [
       {
+        "name": "James Harden",
+        "value": 598.0,
+        "gp": 0
+      },
+      {
+        "name": "Donovan Mitchell",
+        "value": 583.0,
+        "gp": 0
+      },
+      {
         "name": "Cade Cunningham",
         "value": 572.0,
         "gp": 0
       },
       {
-        "name": "James Harden",
-        "value": 566.0,
-        "gp": 0
-      },
-      {
-        "name": "Donovan Mitchell",
-        "value": 544.0,
-        "gp": 0
-      },
-      {
         "name": "Evan Mobley",
-        "value": 534.0,
+        "value": 571.0,
         "gp": 0
       },
       {
@@ -252,7 +252,7 @@
     "mod_team": "Atlanta Hawks",
     "mov_context": "New York Knicks def. Atlanta Hawks 140-89 (Game 6)",
     "most_games_team": "Cleveland Cavaliers",
-    "most_games_count": 15,
+    "most_games_count": 16,
     "least_games_team": "Phoenix Suns",
     "least_games_count": 4,
     "max_team_pts": 144,
@@ -370,9 +370,9 @@
     },
     "Cleveland Cavaliers vs New York Knicks": {
       "wins": {
-        "New York Knicks": 1
+        "New York Knicks": 2
       },
-      "games": 1,
+      "games": 2,
       "winner": null
     }
   },
