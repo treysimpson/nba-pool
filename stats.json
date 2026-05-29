@@ -1,22 +1,22 @@
 {
-  "updated": "2026-05-22T14:01:01.593926Z",
+  "updated": "2026-05-29T14:01:00.862192Z",
   "season": 2026,
   "per_game_leaders": {
     "ppg": [
-      {
-        "name": "Shai Gilgeous-Alexander",
-        "value": 28.7,
-        "gp": 10
-      },
       {
         "name": "Cade Cunningham",
         "value": 28.1,
         "gp": 14
       },
       {
+        "name": "Shai Gilgeous-Alexander",
+        "value": 27.1,
+        "gp": 14
+      },
+      {
         "name": "Jalen Brunson",
-        "value": 27.6,
-        "gp": 12
+        "value": 26.9,
+        "gp": 14
       },
       {
         "name": "Paolo Banchero",
@@ -37,8 +37,8 @@
       },
       {
         "name": "Victor Wembanyama",
-        "value": 12.3,
-        "gp": 12
+        "value": 11.0,
+        "gp": 16
       },
       {
         "name": "Jayson Tatum",
@@ -47,8 +47,8 @@
       },
       {
         "name": "Karl-Anthony Towns",
-        "value": 10.5,
-        "gp": 12
+        "value": 10.6,
+        "gp": 14
       },
       {
         "name": "Alperen \u015eeng\u00fcn",
@@ -69,8 +69,8 @@
       },
       {
         "name": "Shai Gilgeous-Alexander",
-        "value": 7.8,
-        "gp": 10
+        "value": 7.9,
+        "gp": 14
       },
       {
         "name": "Cade Cunningham",
@@ -86,8 +86,8 @@
     "ftpg": [
       {
         "name": "Shai Gilgeous-Alexander",
-        "value": 8.5,
-        "gp": 10
+        "value": 8.8,
+        "gp": 14
       },
       {
         "name": "Paolo Banchero",
@@ -140,23 +140,23 @@
     "bpg": [
       {
         "name": "Victor Wembanyama",
-        "value": 4.0,
-        "gp": 12
+        "value": 3.7,
+        "gp": 16
       },
       {
         "name": "Evan Mobley",
-        "value": 1.9,
-        "gp": 16
-      },
-      {
-        "name": "Jarrett Allen",
         "value": 1.8,
-        "gp": 16
+        "gp": 18
       },
       {
         "name": "Ausar Thompson",
         "value": 1.8,
         "gp": 14
+      },
+      {
+        "name": "Jarrett Allen",
+        "value": 1.7,
+        "gp": 18
       },
       {
         "name": "Scottie Barnes",
@@ -199,8 +199,8 @@
       },
       {
         "name": "James Harden",
-        "value": 4.6,
-        "gp": 16
+        "value": 4.7,
+        "gp": 18
       },
       {
         "name": "Austin Reaves",
@@ -208,40 +208,40 @@
         "gp": 6
       },
       {
-        "name": "Stephon Castle",
-        "value": 4.2,
-        "gp": 13
-      },
-      {
         "name": "Devin Booker",
         "value": 4.0,
         "gp": 4
+      },
+      {
+        "name": "LeBron James",
+        "value": 3.8,
+        "gp": 10
       }
     ],
     "min": [
       {
         "name": "James Harden",
-        "value": 598.0,
+        "value": 672.0,
         "gp": 0
       },
       {
         "name": "Donovan Mitchell",
-        "value": 583.0,
+        "value": 652.0,
+        "gp": 0
+      },
+      {
+        "name": "Evan Mobley",
+        "value": 640.0,
+        "gp": 0
+      },
+      {
+        "name": "Devin Vassell",
+        "value": 576.0,
         "gp": 0
       },
       {
         "name": "Cade Cunningham",
         "value": 572.0,
-        "gp": 0
-      },
-      {
-        "name": "Evan Mobley",
-        "value": 571.0,
-        "gp": 0
-      },
-      {
-        "name": "Tobias Harris",
-        "value": 485.0,
         "gp": 0
       }
     ]
@@ -252,7 +252,7 @@
     "mod_team": "Atlanta Hawks",
     "mov_context": "New York Knicks def. Atlanta Hawks 140-89 (Game 6)",
     "most_games_team": "Cleveland Cavaliers",
-    "most_games_count": 16,
+    "most_games_count": 18,
     "least_games_team": "Phoenix Suns",
     "least_games_count": 4,
     "max_team_pts": 144,
@@ -362,18 +362,18 @@
     },
     "Oklahoma City Thunder vs San Antonio Spurs": {
       "wins": {
-        "San Antonio Spurs": 1,
-        "Oklahoma City Thunder": 1
+        "San Antonio Spurs": 3,
+        "Oklahoma City Thunder": 3
       },
-      "games": 2,
+      "games": 6,
       "winner": null
     },
     "Cleveland Cavaliers vs New York Knicks": {
       "wins": {
-        "New York Knicks": 2
+        "New York Knicks": 4
       },
-      "games": 2,
-      "winner": null
+      "games": 4,
+      "winner": "New York Knicks"
     }
   },
   "manual": {
