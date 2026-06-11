@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-29T14:01:00.862192Z",
+  "updated": "2026-06-11T14:01:00.871554Z",
   "season": 2026,
   "per_game_leaders": {
     "ppg": [
@@ -10,13 +10,13 @@
       },
       {
         "name": "Shai Gilgeous-Alexander",
-        "value": 27.1,
-        "gp": 14
+        "value": 27.6,
+        "gp": 15
       },
       {
         "name": "Jalen Brunson",
-        "value": 26.9,
-        "gp": 14
+        "value": 27.4,
+        "gp": 18
       },
       {
         "name": "Paolo Banchero",
@@ -36,19 +36,19 @@
         "gp": 6
       },
       {
-        "name": "Victor Wembanyama",
-        "value": 11.0,
-        "gp": 16
-      },
-      {
         "name": "Jayson Tatum",
         "value": 10.7,
         "gp": 6
       },
       {
+        "name": "Victor Wembanyama",
+        "value": 10.7,
+        "gp": 21
+      },
+      {
         "name": "Karl-Anthony Towns",
         "value": 10.6,
-        "gp": 14
+        "gp": 18
       },
       {
         "name": "Alperen \u015eeng\u00fcn",
@@ -70,7 +70,7 @@
       {
         "name": "Shai Gilgeous-Alexander",
         "value": 7.9,
-        "gp": 14
+        "gp": 15
       },
       {
         "name": "Cade Cunningham",
@@ -87,7 +87,7 @@
       {
         "name": "Shai Gilgeous-Alexander",
         "value": 8.8,
-        "gp": 14
+        "gp": 15
       },
       {
         "name": "Paolo Banchero",
@@ -140,8 +140,8 @@
     "bpg": [
       {
         "name": "Victor Wembanyama",
-        "value": 3.7,
-        "gp": 16
+        "value": 3.5,
+        "gp": 21
       },
       {
         "name": "Evan Mobley",
@@ -220,28 +220,28 @@
     ],
     "min": [
       {
+        "name": "Devin Vassell",
+        "value": 762.0,
+        "gp": 0
+      },
+      {
+        "name": "Stephon Castle",
+        "value": 728.0,
+        "gp": 0
+      },
+      {
+        "name": "Victor Wembanyama",
+        "value": 713.0,
+        "gp": 0
+      },
+      {
+        "name": "Julian Champagnie",
+        "value": 674.0,
+        "gp": 0
+      },
+      {
         "name": "James Harden",
         "value": 672.0,
-        "gp": 0
-      },
-      {
-        "name": "Donovan Mitchell",
-        "value": 652.0,
-        "gp": 0
-      },
-      {
-        "name": "Evan Mobley",
-        "value": 640.0,
-        "gp": 0
-      },
-      {
-        "name": "Devin Vassell",
-        "value": 576.0,
-        "gp": 0
-      },
-      {
-        "name": "Cade Cunningham",
-        "value": 572.0,
         "gp": 0
       }
     ]
@@ -251,14 +251,14 @@
     "mov_team": "New York Knicks",
     "mod_team": "Atlanta Hawks",
     "mov_context": "New York Knicks def. Atlanta Hawks 140-89 (Game 6)",
-    "most_games_team": "Cleveland Cavaliers",
-    "most_games_count": 18,
+    "most_games_team": "San Antonio Spurs",
+    "most_games_count": 22,
     "least_games_team": "Phoenix Suns",
     "least_games_count": 4,
     "max_team_pts": 144,
     "max_team_pts_team": "New York Knicks",
     "max_team_pts_context": "New York Knicks vs Philadelphia 76ers, Game 4",
-    "game7s": 4
+    "game7s": 5
   },
   "player_records": {
     "top_scorer_game": "Cade Cunningham",
@@ -362,11 +362,11 @@
     },
     "Oklahoma City Thunder vs San Antonio Spurs": {
       "wins": {
-        "San Antonio Spurs": 3,
+        "San Antonio Spurs": 4,
         "Oklahoma City Thunder": 3
       },
-      "games": 6,
-      "winner": null
+      "games": 7,
+      "winner": "San Antonio Spurs"
     },
     "Cleveland Cavaliers vs New York Knicks": {
       "wins": {
@@ -374,6 +374,14 @@
       },
       "games": 4,
       "winner": "New York Knicks"
+    },
+    "New York Knicks vs San Antonio Spurs": {
+      "wins": {
+        "New York Knicks": 3,
+        "San Antonio Spurs": 1
+      },
+      "games": 4,
+      "winner": null
     }
   },
   "manual": {
