@@ -385,10 +385,10 @@
     }
   },
   "manual": {
-    "techs_leader": "Devin Booker, Deni Avdija",
-    "ejections_leader": "Nikola Jokic, Julius Randle, Deandre Ayton",
-    "larry_bird_trophy": null,
-    "magic_trophy": null,
-    "finals_mvp": null
+    "techs_leader": "Nikola Jokic, Julius Randle, Mitchell Robinson, Dyson Daniels, Victor Wembanyama, Deni Avdija",
+    "ejections_leader": "Victor Wembanyama, Mitchell Robinson, Dyson Daniels, Nikola Jokic, Julius Randle, Deandre Ayton, Aaron Holiday, Adou Thiero",
+    "larry_bird_trophy": "Jalen Brunson",
+    "magic_trophy": "Victor Wembanyama",
+    "finals_mvp": "Jalen Bunson",
   }
 }
