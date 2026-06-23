@@ -640,7 +640,7 @@ function applyStatsJson(data){
 // BRACKET SCORING
 // ============================================================
 function getSeriesWinner(teamA, teamB){
-  // Look up in seriesResults from scraper
+  if(!teamA || !teamB) return null;
   const key1 = `${teamA} vs ${teamB}`;
   const key2 = `${teamB} vs ${teamA}`;
   const s = seriesResults[key1] || seriesResults[key2];
@@ -649,13 +649,58 @@ function getSeriesWinner(teamA, teamB){
 }
 
 function isTeamEliminated(team){
-  // A team is eliminated if they lost any series
+  // A team is eliminated if they lost any series they appear in
   for(const [key, series] of Object.entries(seriesResults)){
     if(series.winner && series.winner !== team){
       if(key.includes(team)) return true;
     }
   }
   return false;
+}
+
+// Determine the actual real-world matchups for semis/conf-finals based on
+// which R1/semis matchups have completed, using real series data (not picks)
+function getRealMatchups(){
+  // West R1 actual results
+  const westR1Winners = R1_MATCHUPS_WEST.map(m => {
+    const w = getSeriesWinner(m.high, m.low);
+    return w || null; // null = series not decided yet
+  });
+  const eastR1Winners = R1_MATCHUPS_EAST.map(m => {
+    const w = getSeriesWinner(m.high, m.low);
+    return w || null;
+  });
+
+  // Semis matchups: (R1 winner 0 vs R1 winner 1), (R1 winner 2 vs R1 winner 3)
+  const westSemisMatchups = [
+    [westR1Winners[0], westR1Winners[1]],
+    [westR1Winners[2], westR1Winners[3]],
+  ];
+  const eastSemisMatchups = [
+    [eastR1Winners[0], eastR1Winners[1]],
+    [eastR1Winners[2], eastR1Winners[3]],
+  ];
+
+  // Semis winners (only resolvable if both teams in the matchup are known)
+  const westSemisWinners = westSemisMatchups.map(([a,b]) => (a&&b) ? getSeriesWinner(a,b) : null);
+  const eastSemisWinners = eastSemisMatchups.map(([a,b]) => (a&&b) ? getSeriesWinner(a,b) : null);
+
+  // Conf finals matchup
+  const westFinalsMatchup = westSemisWinners;
+  const eastFinalsMatchup = eastSemisWinners;
+  const westFinalsWinner = (westFinalsMatchup[0]&&westFinalsMatchup[1]) ? getSeriesWinner(westFinalsMatchup[0], westFinalsMatchup[1]) : null;
+  const eastFinalsWinner = (eastFinalsMatchup[0]&&eastFinalsMatchup[1]) ? getSeriesWinner(eastFinalsMatchup[0], eastFinalsMatchup[1]) : null;
+
+  // NBA Finals
+  const finalsWinner = (westFinalsWinner&&eastFinalsWinner) ? getSeriesWinner(westFinalsWinner, eastFinalsWinner) : null;
+
+  return {
+    westR1Winners, eastR1Winners,
+    westSemisMatchups, eastSemisMatchups,
+    westSemisWinners, eastSemisWinners,
+    westFinalsWinner, eastFinalsWinner,
+    finalsWinner,
+  };
 }
 
 function scoreBracket(pid){
@@ -665,60 +710,128 @@ function scoreBracket(pid){
   let earned = 0;
   let possible = 0;
   const picks = [];
+  const real = getRealMatchups();
 
-  // Helper: evaluate a single pick
-  function evalPick(pick, opponentPool, round, pts){
-    // Find the actual winner of the matchup involving this pick
-    // For R1 picks, opponent is known; for later rounds it may be TBD
-    const winner = getSeriesWinner(pick, opponentPool);
-    const eliminated = isTeamEliminated(pick);
-    let status = 'pending';
-
-    if(winner === pick){
-      status = 'correct';
-      earned += pts;
-      possible += pts;
-    } else if(winner && winner !== pick){
-      status = 'wrong';
-      // no pts
-    } else if(eliminated){
-      status = 'dead';
-      // can't earn these pts
-    } else {
-      status = 'pending';
-      possible += pts;
-    }
-    picks.push({pick, round, pts, status});
-  }
-
-  // West R1
+  // ---- WEST R1 ----
   const wr1 = b.west.r1;
   R1_MATCHUPS_WEST.forEach((m,i)=>{
     const opp = wr1[i]===m.high ? m.low : m.high;
-    evalPick(wr1[i], opp, 'W R1', ROUND_PTS.r1);
+    const winner = real.westR1Winners[i];
+    const status = winner===null ? 'pending' : (winner===wr1[i] ? 'correct' : 'wrong');
+    if(status==='correct'){ earned+=ROUND_PTS.r1; possible+=ROUND_PTS.r1; }
+    else if(status==='pending'){ possible+=ROUND_PTS.r1; }
+    picks.push({pick:wr1[i], round:'W R1', pts:ROUND_PTS.r1, status});
   });
-  // West Semis
-  b.west.semis.forEach(pick=>{
-    evalPick(pick, null, 'W Semis', ROUND_PTS.semis);
-  });
-  // West Finals
-  evalPick(b.west.confFinals[0], null, 'W Finals', ROUND_PTS.confFinals);
 
-  // East R1
+  // ---- WEST SEMIS ---- (2 picks, one per semis matchup slot)
+  b.west.semis.forEach((pick,i)=>{
+    const winner = real.westSemisWinners[i];
+    const matchup = real.westSemisMatchups[i];
+    let status;
+    if(winner!==null && winner!==undefined){
+      status = winner===pick ? 'correct' : 'wrong';
+    } else {
+      // Not decided yet — check if pick's team already lost in R1 (dead) or matchup teams known but unresolved (pending)
+      const pickStillAlive = matchup.includes(pick) || (matchup[0]===null && matchup[1]===null);
+      // If pick isn't even in the matchup (their R1 team lost), this pick is dead
+      const teamInMatchup = matchup.includes(pick);
+      const eitherSlotUndetermined = matchup[0]===null || matchup[1]===null;
+      if(teamInMatchup){
+        status = 'pending';
+      } else if(eitherSlotUndetermined){
+        // matchup not fully set yet, but pick's team could still be the winner of an undetermined R1 series
+        status = 'pending';
+      } else {
+        status = 'dead'; // matchup fully known and pick's team isn't in it
+      }
+    }
+    if(status==='correct'){ earned+=ROUND_PTS.semis; possible+=ROUND_PTS.semis; }
+    else if(status==='pending'){ possible+=ROUND_PTS.semis; }
+    picks.push({pick, round:'W Semis', pts:ROUND_PTS.semis, status});
+  });
+
+  // ---- WEST CONF FINALS ---- (1 pick)
+  {
+    const pick = b.west.confFinals[0];
+    const winner = real.westFinalsWinner;
+    const matchup = real.westSemisWinners;
+    let status;
+    if(winner!==null && winner!==undefined){
+      status = winner===pick ? 'correct' : 'wrong';
+    } else {
+      const teamInMatchup = matchup.includes(pick);
+      const eitherSlotUndetermined = matchup[0]===null || matchup[1]===null || matchup[0]===undefined || matchup[1]===undefined;
+      status = teamInMatchup || eitherSlotUndetermined ? 'pending' : 'dead';
+    }
+    if(status==='correct'){ earned+=ROUND_PTS.confFinals; possible+=ROUND_PTS.confFinals; }
+    else if(status==='pending'){ possible+=ROUND_PTS.confFinals; }
+    picks.push({pick, round:'W Finals', pts:ROUND_PTS.confFinals, status});
+  }
+
+  // ---- EAST R1 ----
   const er1 = b.east.r1;
   R1_MATCHUPS_EAST.forEach((m,i)=>{
     const opp = er1[i]===m.high ? m.low : m.high;
-    evalPick(er1[i], opp, 'E R1', ROUND_PTS.r1);
+    const winner = real.eastR1Winners[i];
+    const status = winner===null ? 'pending' : (winner===er1[i] ? 'correct' : 'wrong');
+    if(status==='correct'){ earned+=ROUND_PTS.r1; possible+=ROUND_PTS.r1; }
+    else if(status==='pending'){ possible+=ROUND_PTS.r1; }
+    picks.push({pick:er1[i], round:'E R1', pts:ROUND_PTS.r1, status});
   });
-  // East Semis
-  b.east.semis.forEach(pick=>{
-    evalPick(pick, null, 'E Semis', ROUND_PTS.semis);
-  });
-  // East Finals
-  evalPick(b.east.confFinals[0], null, 'E Finals', ROUND_PTS.confFinals);
 
-  // Finals
-  evalPick(b.finals, null, 'Finals', ROUND_PTS.finals);
+  // ---- EAST SEMIS ----
+  b.east.semis.forEach((pick,i)=>{
+    const winner = real.eastSemisWinners[i];
+    const matchup = real.eastSemisMatchups[i];
+    let status;
+    if(winner!==null && winner!==undefined){
+      status = winner===pick ? 'correct' : 'wrong';
+    } else {
+      const teamInMatchup = matchup.includes(pick);
+      const eitherSlotUndetermined = matchup[0]===null || matchup[1]===null;
+      status = teamInMatchup || eitherSlotUndetermined ? 'pending' : 'dead';
+    }
+    if(status==='correct'){ earned+=ROUND_PTS.semis; possible+=ROUND_PTS.semis; }
+    else if(status==='pending'){ possible+=ROUND_PTS.semis; }
+    picks.push({pick, round:'E Semis', pts:ROUND_PTS.semis, status});
+  });
+
+  // ---- EAST CONF FINALS ----
+  {
+    const pick = b.east.confFinals[0];
+    const winner = real.eastFinalsWinner;
+    const matchup = real.eastSemisWinners;
+    let status;
+    if(winner!==null && winner!==undefined){
+      status = winner===pick ? 'correct' : 'wrong';
+    } else {
+      const teamInMatchup = matchup.includes(pick);
+      const eitherSlotUndetermined = matchup[0]===null || matchup[1]===null || matchup[0]===undefined || matchup[1]===undefined;
+      status = teamInMatchup || eitherSlotUndetermined ? 'pending' : 'dead';
+    }
+    if(status==='correct'){ earned+=ROUND_PTS.confFinals; possible+=ROUND_PTS.confFinals; }
+    else if(status==='pending'){ possible+=ROUND_PTS.confFinals; }
+    picks.push({pick, round:'E Finals', pts:ROUND_PTS.confFinals, status});
+  }
+
+  // ---- NBA FINALS ---- (1 pick)
+  {
+    const pick = b.finals;
+    const winner = real.finalsWinner;
+    const wf = real.westFinalsWinner;
+    const ef = real.eastFinalsWinner;
+    let status;
+    if(winner!==null && winner!==undefined){
+      status = winner===pick ? 'correct' : 'wrong';
+    } else {
+      const teamInMatchup = pick===wf || pick===ef;
+      const eitherSlotUndetermined = wf===null || wf===undefined || ef===null || ef===undefined;
+      status = teamInMatchup || eitherSlotUndetermined ? 'pending' : 'dead';
+    }
+    if(status==='correct'){ earned+=ROUND_PTS.finals; possible+=ROUND_PTS.finals; }
+    else if(status==='pending'){ possible+=ROUND_PTS.finals; }
+    picks.push({pick, round:'Finals', pts:ROUND_PTS.finals, status});
+  }
 
   return {earned, possible, picks};
 }
