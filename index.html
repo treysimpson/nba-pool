@@ -857,16 +857,17 @@ function renderBracketGrid(){
 
     // Summary rows — just show round totals
     const roundSummary = [
-      {label:'R1 West', picks:b.west.r1, pts:ROUND_PTS.r1},
-      {label:'Semis W', picks:b.west.semis, pts:ROUND_PTS.semis},
-      {label:'W Finals', picks:b.west.confFinals, pts:ROUND_PTS.confFinals},
-      {label:'R1 East', picks:b.east.r1, pts:ROUND_PTS.r1},
-      {label:'Semis E', picks:b.east.semis, pts:ROUND_PTS.semis},
-      {label:'E Finals', picks:b.east.confFinals, pts:ROUND_PTS.confFinals},
+      {label:'R1 West', picks:b.west.r1, pts:ROUND_PTS.r1, round:'W R1'},
+      {label:'Semis W', picks:b.west.semis, pts:ROUND_PTS.semis, round:'W Semis'},
+      {label:'W Finals', picks:b.west.confFinals, pts:ROUND_PTS.confFinals, round:'W Finals'},
+      {label:'R1 East', picks:b.east.r1, pts:ROUND_PTS.r1, round:'E R1'},
+      {label:'Semis E', picks:b.east.semis, pts:ROUND_PTS.semis, round:'E Semis'},
+      {label:'E Finals', picks:b.east.confFinals, pts:ROUND_PTS.confFinals, round:'E Finals'},
     ].map(round=>{
-      const correct=round.picks.filter(pick=>bScore.picks.find(bp=>bp.pick===pick&&bp.status==='correct')).length;
+      const roundPicks = bScore.picks.filter(bp=>bp.round===round.round);
+      const correct=roundPicks.filter(bp=>bp.status==='correct').length;
       const total=round.picks.length;
-      const dead=round.picks.some(pick=>bScore.picks.find(bp=>bp.pick===pick&&bp.status==='dead'));
+      const dead=roundPicks.some(bp=>bp.status==='dead');
       const cls=correct===total?'bracket-pick-correct':dead?'bracket-pick-dead':'bracket-pick-pending';
       return `<div class="bracket-series-row"><span style="color:var(--muted);font-size:10px;">${round.label}</span><span class="${cls}">${correct}/${total}</span></div>`;
     }).join('');
